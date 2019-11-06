@@ -1,6 +1,6 @@
 {
   "name": "bachelor-thesis",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Everything i need to get my bachelor thesis done",
   "scripts": {
     "release": "standard-version"
