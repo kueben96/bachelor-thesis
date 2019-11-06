@@ -1,0 +1,33 @@
+\section{Prototypische Umsetzung}
+Hier sag ich was ich machen werde
+
+\subsection{Systementwurf}
+Systementwurf: Hier mein angepasstes Architekturmodell -> konkretes Architekturmodell mit Sensoren, Edge Device (RPI), SCP (CF) mit Leo IoT Services; AWS SNS mit API-Schnittstellen
+
+\subsection{Entwicklungsumgebung}
+
+Entwicklungsumgebung: RPI, Sensoren, Git, VSCode, SSH, RPI über WLAN Schnittstelle
+
+\subsection{Umsetzung}
+pro Schritt benutztes Sicherheitstechnologie erklären/erwähnen
+
+\subsubsection{Anbindung der Sensoren an das Edge-Gerät}
+
+\subsubsection{Geräteverwaltung}
+mit SAP Cloud Platform Internet of Things und Device Model hier erstellen und als Bild einfügen und außerdem
+zunächst auf Tenants und User eingehen und Einrichtungs des Services generell erklären mit eventuell den Message Processings
+und Gateways etc
+
+\subsubsection{Einrichtung der Gateway-Edge}
+\subsubsection{Senden der Daten an die Cloud}
+\subsubsection{Erstellen des digitalen Zwillings}
+\subsubsection{Visualisierung mit einer UI5-Applikation}
+\subsubsection{Benachrichtigung mit AWS SNS-Server}
+\subsubsection{Events generieren mit NodeJs}
+\subsection{Evaluation}
+z.B. mit Log Dateien der SCP, Kibana technische Evaluation, Request Responses
+Mit Menschen sprechen
+
+
+
+

@@ -1,0 +1,14 @@
+\section{Abschlussbetrachtung}
+
+\subsection{Reflexion}
+Was hab ich gemacht? (Selbst-Kritisch) z.B.scheiß-Edge und SAP sehr BETA und schlecht dokumentiert blabla
+
+\subsection{Ausblick}
+Ausblick/Weitere Möglichkeiten
+Integration mit SAP Backend
+HANA DB
+APIs/SDK für Leonardo
+Edge Processing mit Interceptors and Adapters, echtes Gerät mit echten Sensorwerten statt RPI und teilweise simulierte Werte
+
+\subsection{Fazit}
+Beantwortung der Frage, wie gut man mit SAP Leonardo digital transformieren kann auch nach RAMI 4.0
