@@ -1,0 +1,26 @@
+{
+  "name": "bachelor-thesis",
+  "version": "0.0.1",
+  "description": "Everything i need to get my bachelor thesis done",
+  "scripts": {
+    "release": "standard-version"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kueben96/bachelor-thesis.git"
+  },
+  "author": "Kübra Tokuc",
+  "bugs": {
+    "url": "https://github.com/kueben96/bachelor-thesis/issues"
+  },
+  "homepage": "https://github.com/kueben96/bachelor-thesis#readme",
+  "devDependencies": {
+    "cz-conventional-changelog": "^3.0.2",
+    "standard-version": "^7.0.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
