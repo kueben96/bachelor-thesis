@@ -16,11 +16,39 @@ die Verfügbarkeit, Erfüllen von Kundenwünschen, digitale Multi-Channeling Pla
 
 \subsection{Problemstellung}
 Monitoring der Sensorwerte einer Windenergieanlage mit SAP-Technologien mit geschlossenem Kreis -> Sensorwerte lösen Aktion wie SMS aus
+\newline
+Da in der Energiewirtschaft langfristige und teure Investitionsgüter bestehen, können Sie nicht einfach durch neue
+digitalisierte Güter ersetzt werden. Umso mehr besteht die Herausforderung, alte Techniken mit neuen Technologien
+auf die Digitalisierung vorzubereiten. Wir haben zum Beispiel eine alte Windenergieanlage, die nicht mit den
+notwendigen Sensoren ausgestattet sind. Es soll trotzdem ermöglicht werden, Konditionen der Anlage und dessen Umgebung
+zu überwachen, um z.B. Wartungsmaßnahmen auszulösen.
 
 \subsection{Lösungsansatz}
-\textcolor{red}{\blindtext}
+
+Da Energiebranche ausschließlich mit \acf{sapisu} ihre Geschäftsprozesse verwaltet, liegt eine digitale Transformation
+mit SAP-Produkten nahe. Dazu wurde ein Raspberry Pi 3 mit entsprechender Sensorik für die Simulation einer Windenergieanlage
+ausgestattet. Die gemessenen Werte wurden an den Internet of Things Service der SAP Cloud Platform gesendet und anschlißend
+einem digitalen Zwilling übergeben. Um den Zwilling mit entsprechenden Messwerten und Grenzüberschreitungen
+sichtbar zu machen, wurde eine SAP UI5-Anwendung entwickelt. Um aus den gemessenen Werten einen Mehrwert zu gewinnen,
+wurde ein \acf{aws} \acf{sns} angebunden, der bei Grenzüberschreitung bestimmter Messwerte eine
+SMS-Benachrichtigung versendet. All diese Maßnahmen werden prototypisch implementiert.
 
 \subsection{Aufbau der Arbeit}
-\textcolor{red}{\blindtext}
+
+\begin{itemize}
+  \item Zunächst Industrie 4.0 und treibende Faktoren allgemein
+  \item Was ist der Mehrwert von Kommunikationssystemen und welche Protokolle sind Grundlage für die Vernetzung?
+  \item Welche Referenzarchitektur vereinheitlicht industrielle Standards und Anforderungen an die Systeme?
+  \item Was ist Cloud Computing und welche Rolle spielen dessen Technologien für Industrie 4.0?
+  \item Welche Toolsets sind für die Lösung vorhanden?
+  \item Use Case: Für welchen Anwendungsfall in der Energiebranche wird ein Prototyp entwickelt?
+  \item Was sind die Anforderungen an den Prototypen? Näherer Bezug auf Energiebranche.
+  \item Welche Komponenten besitzt das entworfene System bzw. sind notwendig?
+  \item Wie sieht die Implementierung im Detail aus?
+  \item Evaluierung des Vorgehens
+  \item Fazit
+\end{itemize}
+
+
 
 \newpage
