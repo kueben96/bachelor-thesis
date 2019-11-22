@@ -31,7 +31,7 @@ sind (dezentrale?) physische Objekte mit einem Datenobekt als virtuelle Präsenz
   \label{}
 \end{figure}
 
-\paragraph{Das \acf{iot}} ist das Verbindungsstück zwischen dem Internet und dem Objekt des \textit{Ubiquitous Computing} \citep{Roth2016}. Das Gerät bzw. das \textit{Thing} ist in der Lage dazu, selbstständig den eigenen Zustand zu erfassen und zu kommunizieren \citep{Kenn2016}. Dafür muss das Gerät allerdings eindeutig mit IP-Adressen identifizierbar sein. Während das \acf{ipv4} mit seinen rund 4,3 Milliarden Adressen noch nicht einmal die in 2016 verbundenen 6 Milliarden Geräte (siehe \autoref{fig:connecteddevices}) platzieren kann, schafft das \ac{ipv6} mit 340 Sextillionen (2 hoch 128) Adressen genügend Platz für 20 Milliarden prognostizierte Geräte in 2020. Das Entscheidende für das \textit{Internet} der Dinge ist, dass die Daten nicht lokal auf dem Gerät gespeichert werden, sondern über das Internet bestimmten Personen oder Parteien zur Verfügung gestellt werden \citep{Hanisch2017}. Einen Mehrwert bilden die Daten durch die zentrale Aggregation und Analyse, auf deren Grundlage Entscheidungen getroffen werden können. Diese Eigenschaften lassen sich durch die für \ac{iot}-Projekte typische Grundarchitektur wiederfinden: \textit{Datentransport, Datenhaltung und Analyse} \citep{Kenn2016}.
+\paragraph{Das \acf{iot}} ist das Verbindungsstück zwischen dem Internet und dem Objekt des \textit{Ubiquitous Computing} \citep{Roth2016}. Das Gerät bzw. das \textit{Thing} ist in der Lage dazu, selbstständig den eigenen Zustand zu erfassen und zu kommunizieren \citep{Kenn2016}. Dafür muss das Gerät allerdings eindeutig mit IP-Adressen identifizierbar sein. Während das \acf{ipv4} mit seinen rund 4,3 Milliarden Adressen noch nicht einmal die in 2016 verbundenen 6 Milliarden Geräte (siehe \autoref{fig:connecteddevices}) platzieren kann, schafft das \ac{ipv6} mit 340 Sextillionen (2 hoch 128) Adressen genügend Platz für 20 Milliarden prognostizierte Geräte in 2020. Das Entscheidende für das \textit{Internet} der Dinge ist, dass die Daten nicht lokal auf dem Gerät gespeichert werden, sondern über das Internet bestimmten Personen oder Parteien zur Verfügung gestellt werden \citep{Hanisch2017}. Einen Mehrwert bilden die Daten durch die zentrale Aggregation und Analyse, auf deren Grundlage Entscheidungen getroffen werden können. Diese Eigenschaften lassen sich in der für \ac{iot}-Projekte typische Grundarchitektur wiederfinden: \textit{Datentransport, Datenhaltung und Analyse} \citep{Kenn2016}.
 
 \begin{figure}[ht]
   \centering
@@ -40,27 +40,20 @@ sind (dezentrale?) physische Objekte mit einem Datenobekt als virtuelle Präsenz
   \label{}
 \end{figure}
 
-\paragraph{Cloud Computing} stellt die IT-Infrastruktur, die ein Industrie 4.0-fähiges \ac{cpss} benötigt. Der \textit{Datentransport} vom Gerät hat oftmals eine Cloud-Plattform als Ziel, auf der die \textit{Datenhaltung} stattfindet. Die in die Cloud auslagerbaren Dienste wie Big Data oder Analytics ermöglichen \textit{Analysen} durch Aggregationen und Auswertungen \citep{Roth2016}.
+\paragraph{Cloud Computing} stellt die IT-Infrastruktur, die ein Industrie 4.0-fähiges \ac{cpss} benötigt. Der \textit{Datentransport} vom Gerät hat oftmals eine Cloud-Plattform als Ziel, auf der die \textit{Datenhaltung} stattfindet \citep{Elsner2018}. Die in die Cloud auslagerbaren Dienste wie Big Data oder Analytics ermöglichen \textit{Analysen} durch Aggregationen und Auswertungen \citep{Roth2016}. Der Nutzen der Cloud steigert sich durch das Kombinieren der Angebote der Cloud-Dienstleister wie Amazon, SAP oder Microsoft \citep{Hnisch2017}. Diese Anbieter stellen besitzen weltweit Rechenzentren, auf denen für Industrie 4.0 ausschlaggebende Services bereitgestellt werden:
 
-Durch kombinierte Nutzung erzeugt sich Mehrwert und man kann all diese Dienste auf die Cloud auslagern, ohne Rechenleistung zu beachten. Dafür haben die größten Cloud-Anbieter Rechenzentrum weltweit aufgebaut. Man muss sich nicht mehr um Hardware kümmern.
+\noindent\hspace*{10mm}
+ \textbf{Big-Data-Technologien} dienen der Verarbeitung der massiven gesammelten Datenmengen und ermöglichen damit die Nutzung, Verwertung, Vermarktung und vor allem Analyse der digitalen Daten \citep{Radtke2019}. Wird oft für predictive Maintenance genutzt.
+
+ \noindent\hspace*{10mm}
+ \textbf{Machine Learning} beruht sich ähnlich wie Big Data auf die \textit{Extraktion von Wissen aus Daten} und ermöglicht dem Computer die selbstständige Ausführung bestimmter Aufgaben, ohne dass sie explizit programmiert werden müssen \citep{Hnisch2017}. Mittels Algorithmen können die Programme aus den Daten lernen und Muster erkennen, aus denen sie Schlussfolgerungen ziehen können \citep{Elsner2018}. Somit könne Aussagen über das wahrscheinlich zukünftige Verhalten des Systems getroffen werden (\textit{Predictive Analytics}), aus denen in Zukunft auch Handlungsoptionen vorgeschlagen werden sollen (\textit{Prescriptive Analytics}) \citep{Huebschle2017}.
+
+ \noindent\hspace*{10mm}
+ \textbf{Blockchain} ist die Technologie, auf der die erste Kryptowährung Bitcoin basiert. Die Haupteigenschaften der digitalen Währung sind die Dezentralität sowie  die Unveränderbarkeit und Transparenz der Transaktionshistorie. Auf Grundlage dieser Eigenschaften eines Peer-to-Peer-Systems entwickeln sich neue Geschäftsmodellmuster in verschiedensten Branchen wie Finanzen,  Logistik und Transport, aber auch neue Sicherheitskonzepte \citep{Elsner2018}.
 
 \begin{itemize}
-  \item Big Data/Machine Learning
-  \item Blockchain
-  \item Machine Learning
-  \item diese technologgischen Begrifflichkeiten kurz erläutern, um sie in den KOntext einzuordnen
-  \item Kontext: alle Verfügbar in der Cloud, weil IOT die Daten erzeugt und sammelt, nun können die anderen Dienste vielleicht mehr damit anfangen, außer zu monitoren und zu steuern
-  \item
+  \item in diesem Kapitel sieht man die Evolution besonders gut
 \end{itemize}
-
-Warum die Cloud die tragende Säule der digitalen Transformation ist und durch welche Technologien sie sich auszeichnet, wird in 2.2.4 ausführlicher erläutert.
-
-
-Welche Technologien sind denn als evolutionär zu bezeichnen?
-
-Hypebegriffe
-Blockchain, Machine Learning, Big Data, Internet of Things, Ubiquitous Computing, Cloud Computing (kurz erwähnen und beschreiben)
-
 
 \subsubsection{Kommunikationssysteme}
 Kosten/Nutzen von Kommunikationssytemen

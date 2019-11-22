@@ -6,11 +6,11 @@ Todo:
   ☐  Abbildungsreferenz von Figure zu Abbildung ändern
 
   Grundlagen:
-  ☐  Defition fertigstellen und Bezug auf Vernetzung zwischen Mensch und Maschine herstellen
-  ☐  Kapitel beenden bis 20. November
   ☐ Buch anschaffen: Cyberphysische Systeme für die prädiktive Instandhaltung
-  ☐  Bild für Industrielle Revolutionen einfügen
+  ☐ Bild für Industrielle Revolutionen einfügen
   ☐ historischer Kontext letzte Zeile -> zwei Quellen als Stütze
+  ☐ Cloud Computing in Technoligischen Treiber versuchen ganz kurz zu erklären mit dem Fokus, dass es die anderen Technologien miteinander vereint
+  ☐ Textbezug Abbildung 1 (CPS in Industrie 4.0)
 
   Prototyp:
     ☐  Coding hübsch machen -> Python @30m
@@ -20,3 +20,7 @@ Todo:
 
   Latex Document:
     ☐
+
+  Fazit/Evaluation/Ausblick , wohin das auch immer gehört:
+    ☐  Leonardo gut geeignet in der Hinsicht, dass man mit IoT gut Werte auslesen kann und kurzfristig reagieren kann, aber noch viel besser wäre es, wenn der Einsatz von Machine Learning Muster erkennen könnte, wann z.B. die Produktion am niedrigsten ist und wann die meisten Störfälle sind etc, dass die Maschine von selbst gesteuert wird, ohne dass Mensch eingreift
+
