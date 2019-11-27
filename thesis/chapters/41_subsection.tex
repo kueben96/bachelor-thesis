@@ -18,7 +18,15 @@ Durch die \textbf{Elektrifizierung} in der Industrie und der Zerlegung von Produ
 
 Die \textbf{dritte industrielle Revolution} ab den 1970er Jahren, in der wir uns noch heute befinden,  brachte die \textbf{Automatisierung} der Produktion durch die \textbf{Digitalisierung} \citep{Voigt2018}. Getrieben wurde die Revolution durch das Wirtschaftswunder der 1960er Jahre \citep{Roth2016} und ermöglicht durch den Ausbau von Informations- und Kommunikationstechnologien. Entscheidende Technologien waren vielfältig. 1941 entwickelte der Bauingenieur Konrad Zuse den ersten programmgesteuerten und vollautomatischen Computer und setzte den Grundstein für eine rasante Entwicklung der nachfolgenden Technologien. Mit der Vebreitung von Mikroprozessoren, der Miniatisierung der Elektronik sowie der nach dem Mooreschen Gesetz vorausgesagten Zunahme der Prozessorstärke nahm die Welt ein neues Tempo an \citep{Sendler2016}. Einen nicht unwesentlichen Beitrag leistet die Raumfahrtechnik, ohne deren Satellitentechnik eine globale Kommunikation nicht möglich wäre. Da der energieintesive Einsatz dieser Technologien ein Bewusstsein über die Endlichkeit der fossilen Ressourcen schuf, kamen auch erneuerbare Energien hinzu \citep{Barthelmaes2017}.
 
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=1.0\linewidth]{industrie_40_revolution.png}
+  \caption[Die vier Stufen Industrieller Revolutionen]{Die vier Stufen Industrieller Revolutionen}
+  \label{fig:revolutions}
+\end{figure}
+
 Die Industrie 4.0 tatsächlich als \textbf{vierte Industrielle Revolution} zu bezeichnen wird kritisiert, da sie u.a. keine neuen technologischen Innovationen hervorbringe, sondern sich lediglich an den Technologien der dritten Revolution bediene \citep{Barthelmaes2017}. Auch wenn die Technologien nicht unbedingt als revolutionär zu bezeichnen sind, durchlaufen sie eine Evolution und stoßen einen Wandel durch Industrie 4.0 an \citep{Roth2016}. Es entstehen eine Vielzahl neuer Geschäftsmodelle und Produktionsprozesse, die zu Effizienzsteigerungen führen \citep{BITKOM2015}.
+
 
 \subsubsection{Technologische Treiber}
 
@@ -30,11 +38,11 @@ sind physische Objekte mit einem Datenobekt als virtuelle Präsenz im Netz und b
 \begin{figure}[ht]
   \centering
   \includegraphics[width=1.0\linewidth]{CPS.png}
-  \caption[ in der Industrie 4.0]{\ac{cpss} in der Industrie 4.0 \citep[S. 30]{Roth2016}}
-  \label{}
+  \caption[CPS in der Industrie 4.0]{\ac{cpss} in der Industrie 4.0 \citep[S. 30]{Roth2016}}
+  \label{fig:cpskreis}
 \end{figure}
 
-\paragraph{Das \acf{iot}} ist das Verbindungsstück zwischen dem Internet und dem Objekt des \textit{Ubiquitous Computing} \citep{Roth2016}. Das Gerät bzw. das \textit{Thing} ist in der Lage dazu, selbstständig den eigenen Zustand zu erfassen und zu kommunizieren \citep{Kenn2016}. Dafür muss das Gerät allerdings eindeutig mit IP-Adressen identifizierbar sein. Während das \acf{ipv4} mit seinen rund 4,3 Milliarden Adressen noch nicht einmal die in 2016 verbundenen 6 Milliarden Geräte (siehe Abbildung \ref{fig:connecteddevices}) platzieren kann, schafft das \ac{ipv6} mit 340 Sextillionen (2 hoch 128) Adressen genügend Platz für 20 Milliarden prognostizierte Geräte in 2020. Das Entscheidende für das \textit{Internet} der Dinge ist, dass die Daten nicht lokal auf dem Gerät gespeichert werden, sondern über das Internet bestimmten Personen oder Parteien zur Verfügung gestellt werden \citep{Hanisch2017}. Einen Mehrwert bilden die Daten durch die zentrale Aggregation und Analyse, auf deren Grundlage Entscheidungen getroffen werden können. Diese Eigenschaften lassen sich in der für \ac{iot}-Projekte typische Grundarchitektur wiederfinden: \textit{Datentransport, Datenhaltung und Analyse} \citep{Kenn2016}.
+\paragraph{Das \acf{iot}} ist das Verbindungsstück zwischen dem Internet und dem Objekt des \textit{Ubiquitous Computing} \citep{Roth2016}. Das Gerät bzw. das \textit{Thing} ist in der Lage dazu, selbstständig den eigenen Zustand zu erfassen und zu kommunizieren \citep{Kenn2016}. Dafür muss das Gerät allerdings eindeutig mit z.B. IP-Adressen oder \ac{rfid} identifizierbar sein. Während das \acf{ipv4} mit seinen rund 4,3 Milliarden Adressen noch nicht einmal die in 2016 verbundenen 6 Milliarden Geräte (siehe Abbildung \ref{fig:connecteddevices}) platzieren kann, schafft das \ac{ipv6} mit 340 Sextillionen (2 hoch 128) Adressen genügend Platz für 20 Milliarden prognostizierte Geräte in 2020. Das Entscheidende für das \textit{Internet} der Dinge ist, dass die Daten nicht lokal auf dem Gerät gespeichert werden, sondern über das Dienste im Internet bestimmten Personen oder Parteien zur Verfügung gestellt werden: \textbf{das Internet der Dinge und Dienste} \citep{Hanisch2017}. Einen Mehrwert bilden die Daten durch die zentrale Aggregation und Analyse, auf deren Grundlage Entscheidungen getroffen werden können. Diese Eigenschaften lassen sich in der für \ac{iot}-Projekte typische Grundarchitektur wiederfinden: \textit{Datentransport, Datenhaltung und Analyse} \citep{Kenn2016}. Der Kreis schließt sich durch die Weitergabe der verarbeiteten Daten als Steuerungsdaten an die Maschine, sodass sich der Fokus von einer Mensch-Maschinen-Interaktion auf eine Maschine-zu-Maschine-Interaktion verschiebt  (s. Abbildung \ref{fig:cpskreis}).
 
 \begin{figure}[ht]
   \centering
