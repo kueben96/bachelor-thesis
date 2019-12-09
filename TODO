@@ -15,8 +15,10 @@ Todo:
   ☐  RAMI Kapitel Sätze fangen alle mit "Die" an.. korrigieren
   ☐  Rami eventuell horizontale Achsen genauer beschreiben
   ☐  Modellierung von Industrie 4.0-Komponenten und RAMI
+  ☐  Industrie 4.0 Komponente Typdaten und Instanzdaten s. Notizbuch erläutern
   ☐ Sicherheit in IoT oder treibende Technologien etc einbinden
-  ☐ evtl. Rami und Industrie 4.0 Komponente als eigenes unterKapitel
+  ☐ predictive Maintenance irgendwo rein (bei big data!)
+  ✔ evtl. Rami und Industrie 4.0 Komponente als eigenes unterKapitel @done(19-12-09 13:58)
 
   Prototyp:
     ☐  Coding hübsch machen -> Python @30m

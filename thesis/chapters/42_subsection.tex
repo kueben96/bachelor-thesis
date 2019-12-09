@@ -2,7 +2,12 @@
 
 Eine Umsetzung von Industrie-4.0-Lösungen setzt technische, organisatorische und normative Bedingungen voraus. Während einige Anforderungen für alle Bereiche in der Industrie gelten, unterscheiden sich explizite Anforderungen und Lösungen je nach individuellen Ausgangssituationen von Branchen und Unternehmen \citep{Bauer2014}. Dementsprechend werden im Folgenden zunächst allgemeine Anforderungen zur Umsetzung einer Lösung für die digitale Transformation näher beschrieben. Einen wesentlichen Stellenwert für die digtale Transformation hat das Cloud Computing als technische Voraussetzung, sodass es einer detaillierteren Erläuterung als in \ref{technologien} bedarf. Als Grundlage für die anwendungsfallbasierte Anforderungsanalyse in \ref{usecase} wird zuletzt ein Branchenbezug für die Energiewirtschaft hergestellt.
 
-\subsubsection{Allgemeine Anforderungen zur Umsetzung von Industrie 4.0}
+\begin{figure}[h]
+  \includegraphics[width=1.0\linewidth]{dimensionen_digitalisierung_fraunhofer.png}
+  \caption[Dimensionen der Digitalisierung]{Dimensionen der Digitalisierung \citep{FraunhoferISE}}
+\end{figure}
+
+\subsubsection{Allgemeine Anforderungen zur Umsetzung von Industrie 4.0}\label{general}
 
 Im Rahmen der Industrie 4.0, die eine Spezialisierung des Internet der Dinge und Dienste darstellt, wachsen die virtuelle und reale Welt zusammen. Daraus ergibt sich die Herausforderung, die Anforderungen der IT, der Elektrotechnik sowie des Maschinenbaus miteinander zu vereinen \citep{Huebner2017}.
 
@@ -17,7 +22,7 @@ Allgmein können die Anforderungen und Voraussetzungen für eine \ac{iot}-Lösun
   \item Qualität
 \end{itemize}
 
-\subsubsection{Standardisierung und Normung}
+\subsubsection{Standardisierung und Normung}\label{rami}
 
 Für die Bewältigung der oben aufgeführten Herausforderungen veröffentlichte die Plattform Industrie 4.0 das \glqq Referenzarchitekturmodell Industrie 4.0\grqq{} (RAMI 4.0) sowie das Konzept zur \glqq Industrie-4.0-Komponente\grqq{}. Beide Modelle wurden 2016 nach DIN SPEC 91345 der Standardisierung zugeführt \citep{Beuth2016}.
 
@@ -29,16 +34,23 @@ Anschließend werden die übertragenen Daten in der Informationsschicht gehalten
 Jede dieser IT-Schichten liegen an zwei wagerechten Achsen an, welche die horizontale Integration der Produktionsgegenstände in den gesamten Produktionprozess beschreiben. Die linke Achse soll den gesamten Lebenszyklus von Assets abbilden, während die rechte Achse diese in Hierarchiestufen der Produktions- und Automatisierungstechnik anordnet. Somit können externe Akteure wie Lieferanten oder Kunden, aber auch das erzeugte Produkt in das Industrie-4.0-Netzwerk aufgenommen werden \citep{BITKOM2015}.
 
 
-
-
-
-\begin{figure}[h]
-  \includegraphics[width=1.0\linewidth]{dimensionen_digitalisierung_fraunhofer.png}
-  \caption[Dimensionen der Digitalisierung]{Dimensionen der Digitalisierung \citep{FraunhoferISE}}
-\end{figure}
-
 % ************* CLOUD COMPUTING ******************
 \subsubsection{Das neue Paradigma: Cloud Computing}
+
+Flexibilität, Skalierbarkeit, Schnelligkeit, Sicherheit und Qualität präsentieren sich als die wichtigsten Voraussetzungen für die erfolgreiche digitale Transformation eines Unternehmens \citep{Acharya2019}. Für die Erzielung dieser Ziele spielt die in \ref{technologien} bereits kurz erläuterte Cloud eine Schlüsselrolle. Denn die Technologien in der Industrie 4.0 sind zwar nicht neu, aber sie müssen in verschiedenen Kombinationen bei niedrigen Preisen und unabhängig vom Ort stets verfügbar sein. Dabei wird dem Nutzer je nach Bedarf das Errichten von IT-Infrastruktur und IT-Ressourcen von dem Cloud-Dienstleister abgenommen \citep{Dzombeta2017}. Entsprechend können die Cloud-Dienste aus folgenden Varianten nach dem Pay-Per-Use-Prinzip erworben werden:
+
+\paragraph{\ac{iaas}:} Bei dieser Variante stellt das Dienstleistungsunternehmen die notwendige Hardware in virtueller Form zur Verfügung. Es können je nach benötigter Menge Speicherplatz, Prozessorleistung oder Netzkapazitäten bestellt oder wieder abbestellt werden \citep{Dzombeta2017}. Kostentechnisch bietet das einen großen Vorteil, da die Server von den Anbietern angeschafft, betrieben und gewartet werden, sodass nur die verbrauchte oder vereinbarte Kapazität in Rechnung gestellt wird. Zu den global dominierenden Anbietern gehören Amazon, Microsoft und Google, die in Nordamerika, Europa und Ostasien eine hohe Dichte an Rechenzentren aufweisen \citep{Acharya2019}.
+\paragraph{\ac{paas}}
+\paragraph{\ac{saas}}
+Die  Cloud spielt bei deBehähiZugrunde liegt den  technologischen Treibern (\ref{technologien}) sowie den empfohlenen Herangehensweisen für die Entwicklung einer Industrie-4.0-Lösung (\ref{rami}) die Technologie des Cloud Computings.
+
+RAMI 4.0 wird als die Grundlage für die Entwicklung neuer Produkte zur Cloud-basierten Kommunikation gesehen.
+Mit Industrie 4.0 wirken an der Konzeption der Automatisierung mehrere Beteiligte und Komponenten mit. Bei der Kommunikation treffen Komponentenhersteller, Automatisierer, Maschinenbauer und Softwarefirmen zusammen und benötigen eine Standardarchitektur, um sich gegenseitig/interoperabel Services anzubieten. Software und Hardware wird in der SOA-Welt nicht mehr getrennt betrachtet. Sensorwerte können im Internet bereitgestellt werden, aber es können auch per Algorithmen Wartungsvorschläge aus historischen Internetdaten an das Asset weitergeleitet werden. All diese Sachen benötigen eine standardisierte Laufzeitumgebung zur Kommunikation
+
+
+
+Flexibilität ist in der digitalen Transformation eine der wichtigsten Eigenschaften. Das SOA-Prinzip eignet sich hervorragend dafür: keine Master-Slave-Beziehungen. Jeder Teilnehmer bietet Services an und Dienstnehmer entnimmt Referenzadresse, die Zugang auf den Dienst erlaub \citep{Adolphs2017}. Kommunikation über XML-basierte Parameteraufrufe, also ohne Hardwareabhängigkeit.
+Functional Services
 
 RAMI ist Referenzarchitektur als Grundlage für neue Produkte zur Cloudbasierten Kommunikation
 SOA-Prinzip Kommunikation
