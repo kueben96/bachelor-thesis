@@ -12,8 +12,10 @@ Todo:
   ✔ historischer Kontext letzte Zeile -> zwei Quellen als Stütze @done(19-11-27 10:02)
   ✔ Cloud Computing in Technoligischen Treiber versuchen ganz kurz zu erklären mit dem Fokus, dass es die anderen Technologien miteinander vereint @done(19-11-27 13:19)
   ✔ Textbezug Abbildung 1 (CPS in Industrie 4.0) @done(19-11-27 09:59)
+  ☐  Kommunikationssysteme: System definieren in RE S.30
   ☐  RAMI Kapitel Sätze fangen alle mit "Die" an.. korrigieren
   ☐  Rami eventuell horizontale Achsen genauer beschreiben
+  ☐  Digitaler Zwilling in virtuelles Abbild
   ☐  Modellierung von Industrie 4.0-Komponenten und RAMI
   ☐  Industrie 4.0 Komponente Typdaten und Instanzdaten s. Notizbuch erläutern
   ☐ Sicherheit in IoT oder treibende Technologien etc einbinden
@@ -25,6 +27,8 @@ Todo:
     ☐  Prototyparchitektur modellieren @4h
     ☐  Codes in Anhang
     ☐  POST-Requests als Listing
+    ☐ KPI in SAP Leonardo?? --> Im Application Enablement bei Events etc. -> S. Forschung Instandhaltung Windparks -_> Smart-Business-Modeler -> Create KPI möglich, vielleicht in Systemanalyse erwähnen
+    https://blogs.sap.com/2018/04/19/how-to-use-sap-smart-business-service-cf-env.-with-sap-cloud-platform-iot-application-enablement-the-setup/
 
   Latex Document:
     ☐
