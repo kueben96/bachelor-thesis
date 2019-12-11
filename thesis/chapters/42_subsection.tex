@@ -59,7 +59,7 @@ Flexibilität, Skalierbarkeit, Schnelligkeit, Sicherheit und Qualität präsenti
   \label{}
 \end{figure}
 
-\paragraph{Cloud-native-Anwendungen und Microservices}
+\paragraph{Cloud-native Anwendungen und Microservices}
 
 Die Eigenschaft cloud-nativ besitzen jene Anwendungen, welche in der Cloud \glqq geboren\grqq{} sind und durch Auschöpfung des Cloud"=Potenzials die Flexibilität, Agilität und Skalierbarkeit von Cloud-Lösungen unterstützen \citep{Acharya2019}. Besonders ist dabei der agile und schnelle Entwicklungsprozess der Software. Eine cloud"=native Anwendung besteht aus mehreren isolierten Services, die unabhängig voneinander entwickelt werden können. Konventionelle Anwendungen sind im Gegensatz dazu monolithischer Natur und basieren meist auf der 3"=Tier"=Architektur. Mit den Bestandteilen Benutzeroberfläche, Datenbank und Anwendungsserver bilden sie ein geschlossenes System. Kleinste Änderungen an einem der Bestandteile führen zu aufwendigen Maßnahmen zur Anpassung des Gesamtsystems \citep{Utecht2018}.
 Anders als monolithische Architekturen zeichnet sich die Microservice-Architektur durch ihre einfache und schnelle Erweiterbarkeit und Anpassungsfähigkeit aus. Ein Microservice ist eine spezielle Funktion, oft Geschäftsfunktion, welche in Containern in in einer isolierten Umgebung ausgeliefert wird und meist an eine eigene Datenbank angebunden ist. In einer Anwendung kommunizieren diese Microservices über APIs oder Messaging"=Prokolle miteinander und bilden ein Gesamtsystem mit heterogenen Datenquellen. Sollte eine Funktion ein Update erforden, muss lediglich der Microservice  gewartet werden. Wenn das System eine neue Funktion erfordert, kann ein neuer Microservice einfach hinzugefügt werden, ohne Abhängigkeiten im Gesamtsystem zu stören. Infrastrukturressourcen können bei Bedarf dynamisch zu- oder abgewiesen werden \citep{Acharya2019}.
@@ -67,8 +67,25 @@ Anders als monolithische Architekturen zeichnet sich die Microservice-Architektu
 
 
 \subsubsection{Der Wandel im Energiesektor}
-Welche Veränderungen durchlebt der Energiesektor?
-Mechanisierung, Automatisierung und Digitalisierung sind die Schlagworte des industriellen Wandels, der auch die Energiewirtschaft betrifft.
+
+Der Wandel in der gesamten Industrielandschaft von der Mechanisierung und Automatisierung zur Digitalisierung betrifft auf ähnliche Weise auch den Energiesektor. Es gibt in Deutschland kaum eine Branche, die sich innerhalb von zwanzig Jahren so rasant geändert hat wie die Energiewirtschaft \citep{Doleski2015}. Treiber dieser schnellen Entwicklungen sind in erster Linie politisch"=regulatorische Faktoren, welche für darauffolgende Anforderungen die Parameter darstellen.
+\\Bis 1998 unterlag die Energieproduktion in Deutschland monopolistischen Strukturen. Einige wenige Versorgungsunternehmen produzierten in zentralen Werken wie Kernkraftanlagen oder Kohlekraftwerke und schleusten die gewonnene Energie in die Netze ein \citep{Utecht2018}. Die Konsumenten hatten bei der Auswahl ihres Energielieferanten kaum Entscheidungsfreiheit. Mit der Liberalisierung und Privatisierung der Strommärkte öffnete sich jedoch der Binnenmarkt für den Wettbewerb \citep{Doleski2017}. Wenn eins Innovationen fördert, dann ist es der Wettbewerb um starke Marktpositionen. Die Herausforderung bestand vor allem darin, innerhalb der strengen gesetzlichen Regularien und eines angespannten Finanzrahmens neue Geschäftsfelder zu erschließen. \textit{Welche Innovationen waren denn das bis zur Energiewende?}.
+
+
+
+\begin{itemize}
+  \item Einleitung ins Thema: rasanter Fortschritt in IT-Industrie, regulatorische Anforderungen inkl. Datenschutz und Sicherheit, Kostenoptinierung innerhalb Unternehmensbereich, Erschließen neuer Geschäftsfelder aber angespannter Finanzrahmen
+  \item Prozesse auf Einsparung hin durchleuchten
+  \item Anfang: Wandel im Energiesektor -> Aufgrund der Historie sich ändernde Rahmenbedingungen, die heute noch Einwirkungen haben
+  \item politische und strukturelle Entwicklungen sind Parameter für darauffolgende Anforderungen
+  \item Rahmenbendingungen für Veränderungen in der Energiewirtschaft (Utility 4.0 essentials s. 5): politisch-regulatorische Umwelt, ökonomische und energiewirtschaftliche Umwelt, gesellschaftliche Umwelt, technologische Umwelt, ökologische Umwelt,
+  \item politisch-regulatorisch auch angetrieben von ökologischen Zielen: In knapp 20 Jahren hat sich kein Sektor so radikal verändert wie der Energiesektor- Ende der 90er Jahre hat die Liberalisierung der Energiebranche die monopolitischen Strukturen der Versorgungsunternehmen  vertrieben. 2000 schon wurde das Erneuerbare-Energien-Gesetz verabschiedet uir systematischen Förderung regenerativer Energiequellen -> Energiewende(nach Fukushima 2011) zwang dann die Branchen sich strukturell in der Wertschöpfungskette zu verändern. Auch in Zukukunft wird die Branche sich rasant ändern! UND ANPASSUNGSFÄHIGKEIT IST A und O in DIGITALER QWELT
+  \item von zentraler Erzeugung zu dezentraler Erzeugung und Verteilung
+  \item ökonomische Faktoren: von monopolitisch in liberalisierten Energiemarkt  -> Wettbewerbsförderung daraus resultierende Innovationen schaffen neue Marktmechanismen. Durch Einsatz von IT verschwimmen Grenzen zwischen energiewirtschaftlicher Leistungserstellung und der Informations- und Kommunikationsindustrie -> \textit{KOnvergenz} unter Branchen, dezentrale Geschäftsmodelle und hoher Investitionsbedarf im Zuge der rechtlichen Regularien
+  \item Energiewirtschaftlich: nach Energiewende viele lokale kleine Erzeungungsanlagen. Die dezentralen Einspeisungs und Versorgungsanlagen erfordern bessere Koordination der zu beherrschenden Datenmengen. -> Anstieg Steuerungskomplexität und Belastung der Netzinfrastruktur. Produktion ist schwankend bei dezentraler Erzeugung, dennoch muss die 50Hz-Frequenz im Gleichgewicht gehalten werden. Die Erzeung muss digital überwacht werden, Paradigmenwechsel von verbrauchsorientierter Erzeugung hin zu erzeugungsorientierten Verbrauch
+  \item gesellschaftlich: Stromanbieterwechsel ist sehr einfach geworden durch erhöhtes Angebot, daher müssen Anbieter sich stärker an Kundenwünschen orientieren. Kunden werden zum aktiven Teil der Wertschöpfung
+  \item technologische Faktoren und Treiber beeinflussen Entwicklung in Energiewirtschaft nachhaltig. Innovationsdruck. Stabile Steuerung dezentraler Stromerzeung und Aufbau großvolumiger, virtueller Erzeugungsstrukturen
+\end{itemize}
 
 
 Hier könnte man Bezug auf Energiesektor (kurz) nehmen und einführen, mit welchen Anforderungen und technologien generell so ein Wandel/Transformation stattfinden kann.
