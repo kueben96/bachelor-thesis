@@ -1,5 +1,7 @@
 \subsection{Toolset/Innovationsplattformen/Werkzeuge} \label{toolset}
 
+Die SAP Cloud Platform bildet
+
 In den letzten 45 Jahren haben sich die SAP-Technologien durch kontinuierliche Veränderungen an die Anforderungen der digitalen Welt angepasst. Die Anfänge der Datenverarbeitung von SAP basierte in den 1960er Jahren auf lokalen PCs und der Mainframe-Architektur. Mit der Client-Server-Architektur und dem darauf basierenden R/3-System konnte die Software ab den 1990er Jahren eine größere Vernetzung und somit einen größeren Informationsaustausch ermöglichen. Mit der Verbreitung des Internets und dem Ausbau des mobilen Breitbandnetzes begann zwischen 2000 und 2010 mit den Technologien wie Cloud, Mobile und Big Data eine digitale Transformation \citep[S. 44]{Elsner2018}. Mit der rasant wachsenden Datenmenge entstanden Möglichkeiten, diese intelligent zu vernetzen und einen Mehrwert daraus zu schöpfen.
 SAP Scloud Platform bildet die technologische Basis für die digitale Transformation mit SAP.
 HANA-Anwendungen auf Microservice-Ebene für die Verarbeitung von Massendaten
@@ -9,51 +11,16 @@ Im folgenden Kapitel werden ausgewählte Plattformen und deren Eigenschaften bes
 
 \subsubsection{SAP Cloud Platform} \label{scp}
 
-Die \acf{scp} ist eine offene \ac{paas}, die eine Entwicklungs- und Laufzeitumgebung für cloud-native Anwendungen bereitstellt und das Rückgrat der Services des SAP Leonardo Portfolios bildet. Unterstützt wird der Betrieb von verschiedenen Global Playern unter den Infrastrukturanbietern wie \ac{aws}, \ac{gcp}, SAP oder Microsoft Azure. Die Anwendungen können mittels verfügbarer Microservices einfach in das SAP-Backend aber auch in heterogene Systemquellen integriert werden. Somit können die Anwendungen zum Beispiel Erweiterungen für die On-Premise-Systeme sowie für \ac{saas} darstellen \citep{Acharya2019}.
-Die verfügbaren Dienste der \ac{scp} können in drei Cloud-Service-Modelle unterteilt werden:
+Die \acf{scp} ist eine offene \ac{paas}, die eine Entwicklungs- und Laufzeitumgebung für cloud-native Anwendungen bereitstellt und das Rückgrat der Services des SAP Leonardo Portfolios bildet. Unterstützt wird der Betrieb von verschiedenen Global Playern unter den Infrastrukturanbietern wie \ac{aws}, \ac{gcp}, SAP oder Microsoft Azure. Im Grunde ermöglicht die Cloud Plattform drei Dinge. Zum einen können Anwendungen zur Erweiterung von On-Premise-Lösungen oder Cloud-Lösungen entwickelt werden. Zudem bietet \ac{scp} Integrationsservices an, um Cloud-Dienste in das SAP-Backend aber auch in heterogene Systemquellen zu integrieren. Anwendungen können aber auch mithilfe von Tools und Microservices von Grund auf entwickelt werden, ohne Hardware und Laufzeit einrichten zu müssen \citep{Acharya2019}.
+Wenn von \textit{Services} gesprochen wird, unterscheidet man zwischen zwei Arten.
+Die \textit{Functional Services} werden genutzt, um Anwendungen nach eigenen Anforderungen zu entwickeln. Es werden z.B. Services aus den Bereichen User-Interface-Entwicklung, mobile Anwendungen, Sicherheit und Authentifizierung, Datenbankdienste und Integration angeboten \citep{Elsner2018}. Wenn die Services von SAP identifizierte Anwendungsfälle behandeln, werden sie als \textit{Business Services} bezeichnet. Diese Dienste müssen für den Einsatz nur noch um den individuellen Geschäftskontext erweitert werden \citep{Utecht2018}.
 
-\paragraph{SAP HANA AppServices}
-\paragraph{SAP HANA DB Services}
- welche Datenbank- und Applikationsdienste für bereitstellt.
-Die SAP Cloud Platform ist eine offene PaaS, die auch SaaS für Kunden bereitstellt.
+\noindent Wie die Anwendungen und Services entwickelt und verwaltet werden können, hängt von der Umgebung ab. Die \ac{scp} stellt drei Umgebungen zur Verfügung, von denen jede mindestens eine Laufzeitumgebung sowie verschiedene Tools zur Entwicklung bereitstellt: Neo, Cloud Foundry und ABAP.
 
-\begin{itemize}
-  \item Cloud-Service-Modelle Utecht2018
-  \item SAP HANA AppServices für Erweiterung von Cloud und Onpremise Anwendungen -> bauen auf Möglichkeiten von SAP HANA DB Services auf
-  \item SAP HANA DB Services Bereitstellung von SAP HANA und Hardwar
-  \item SAP HANA Infrastructure Services schneller Einsatz von SAP HANA Instanzen mit SAP Cloud Platform Integration für Backend Integration
-  \item IaaS lohnt für SAP nicht da Amazon, Google und Microsoft untereinander aufgeteilt
-  \item PaaS: Global Player wie IBM, HP, SAP, Pivotal haben sich für eine Basis entschieden: Cloud Foundry
-  \item CF: Open Source Multi Cloud Application Platform as a Service von der CF Foundation verwaltet
-  \item Entwickelt von VMWare und General Electric
-  \item Gemeinsame Basis: Interoperabilitätund weniger risikoo für Abhänfifkeiten vom Anbieter
-  \item SCP: einzige Platform aufbauend auf InMemory Technologie Stand 2018
-  \item Business Services: als MS/API -> zentraler Ort SAP API Business Hub
-  \item Verschmelzung von IaaS und PaaS -> Einfacher, Services von Überall her zu nutzen
-\end{itemize}
+\paragraph{Neo-Environment} Die SAP Cloud Platform wurde 2012 erstmalig nur in der Neo-Umgebung angeboten und unterstützte nur die Entwicklung von Java-, nativen HANA- und HTML5-Anwendungen \citep{Elsner2018}.
 
+\paragraph{Cloud Foundry-Environment} 2016 wurde die Beta-Version der Open-Source Multi-Cloud-PaaS von VMWare und General Electric entwickelt \citep{Utecht2018}. Schließlich haben sich viele große Technolgieunternehmen wie IBM, Pivotal, Google oder SAP sich für eine gemeinsame Laufzeitumgebung entschieden. Somit wurden sie Teil der Non-Profit-Initiative \textit{Cloud Foundry Foundation}, um die Technologie weiterzuentwickeln. Durch die gemeinsame Basis wird die Interoperabilität von verschiedensten Progammiersprachen und Applikationsdiensten gewährleistet (s. Anhang \ref{cf_table}).  Deshalb ergänzte SAP die \ac{scp} um die Cloud Foundry-Umgebung, in der die Nutzung von Services für das Internet der Dinge, Blockchain oder Machine Learning möglich ist \citep{Elsner2018}. Aufgrund der Kollaboration und den daraus entstandenen Möglichkeiten ist Cloud Foundry mittlerweile ein industrieller Standard \citep{Acharya2019}.
 
-
-
-SAP Cloud Platform und AWS Microservices und APIs
-Programmiersprachen und Laufzeitumgebungen
-alle gängigen IaaS können zum deployen genutzt werden
-Entwicklungsumgebung SAP Web IDE und Laufzeitumgebungen
-CF, NEO, ABAP
-Destinationsss
-Innovationsplattform
-Functional Services und Business Services
-Cloud-to-Cloud Integration möglich (Elsner S.247) um Kompetenzen zu vereinen. z.B. Telekom Cloud mit SCP
-Embedded Platform as a Service mit zwei Lösungsvarianten. SAP Cloud Platform - Neo Environment and SAP Cloud Platform - Cloud Foundry Environment
-Datenbankservices wie verschiedene SAP-HANA-Versionen, MongoDB, PostgreSQL usw
-Portalservices: Fiori Launchpad als Anwendungsportal
-Application Runtime als Java-Anwendung oder XS-Anwendung Entwicklung mit WEB IDE
-Konnektivitätsservice: SAP Cloud Platform Integration
-\ac{api}
-
-\begin{quotation}
-  cf push - and your app is alive -> in die Systemanalyse
-\end{quotation}
 \subsubsection{SAP Leonardo}
 
 Die SAP Cloud Platform bildet die technologische Grundlage für die digitale Transformation mit SAP. Diese Technologien werden um die \textit{SAP-Leonardo-Technologien} ergänzt. Der Begriff lehnt sich an den Innovationsgeist Leonardo da Vincis an und soll die \textit{digitale Rennaissance} mit SAP  darstellen \citep{Howells2017}. Es gilt zu betonen, dass SAP Leonardo nicht als Plattform oder Produkt zu verstehen ist. Es handelt sich vielmehr um eine Sammlung von Functional Services (Vgl.\ref{cloud} Microservices) und Anwendungen der \ac{scp}, die als zukunftsgestaltende Technologien gelten \citep{Elsner2018}. Zu diesen Technologien gehören neben dem Internet der Dinge (\acf{iot}) auch Machine Learning, Big Data, Blockchain und Advanced Analytics. Wie bereits zuvor erwähnt, sind diese Technologien in ihrem Wesen nicht neu. Der innovative Charakter entsteht erst durch die Fähigkeit, die zusammenhängenden Technologien miteinander zu verknüpfen \citep{Utecht2018}. Für den Zweck bietet SAP vierlei Lösungen:
