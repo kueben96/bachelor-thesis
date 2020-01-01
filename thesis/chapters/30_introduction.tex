@@ -37,7 +37,23 @@ Da in der Energiewirtschaft langfristige und teure Investitionsgüter bestehen, 
 digitalisierte Güter ersetzt werden. Umso mehr besteht die Herausforderung, alte Techniken mit neuen Technologien
 auf die Digitalisierung vorzubereiten. Wir haben zum Beispiel eine alte Windenergieanlage, die nicht mit den
 notwendigen Sensoren ausgestattet sind. Es soll trotzdem ermöglicht werden, Konditionen der Anlage und dessen Umgebung
-zu überwachen, um z.B. Wartungsmaßnahmen auszulösen.
+zu überwachen, um z.B. Wartungsmaßnahmen auszulösen. -> Predictive Maintenance
+
+\begin{itemize}
+  \item Technologien zwar bereits im Einsatz aber sind gekapselt -> Insellösungen
+  \item Mehrwert durch integrierte Nutzung mit Stammdaten (liegen im SAP System)
+  \item SCADA z.B. bereits vorhanden aber Daten nicht intelligent vernetzt
+\end{itemize}
+
+
+\begin{itemize}
+  \item[\textbf{FF1}] \textbf{Wie kann SAP Leonardo die digitale Transformation in der Energiewirtschaft mit Internet of Things unterstützen?}
+  \begin{itemize}
+    \item[FF1.1] Welche Anforderungen an ein System ergeben sich aus Sicht der dezentralen Ernergieerzeugung?
+    \item[FF1.2] Welche Möglichkeiten zur intelligenten Vernetzung bietet die zugrundeliegende Systemarchitektur?
+    \item[FF1.2] Mit welcher Systemarchitektur können die Anforderungen aus FF1.1 erfüllt werden?
+  \end{itemize}
+\end{itemize}
 
 \subsection{Lösungsansatz}
 
@@ -47,7 +63,7 @@ ausgestattet. Die gemessenen Werte wurden an den Internet of Things Service der 
 einem digitalen Zwilling übergeben. Um den Zwilling mit entsprechenden Messwerten und Grenzüberschreitungen
 sichtbar zu machen, wurde eine SAP UI5-Anwendung entwickelt. Um aus den gemessenen Werten einen Mehrwert zu gewinnen,
 wurde ein \acf{aws} \acf{sns} angebunden, der bei Grenzüberschreitung bestimmter Messwerte eine
-SMS-Benachrichtigung versendet. All diese Maßnahmen werden prototypisch implementiert.
+SMS-Benachrichtigung versendet. All diese Maßnahmen werden prototypisch implementiert
 
 \begin{figure}[ht]
   \centering
@@ -57,6 +73,8 @@ SMS-Benachrichtigung versendet. All diese Maßnahmen werden prototypisch impleme
 \end{figure}
 
 \subsection{Aufbau der Arbeit}
+
+
 
 \begin{itemize}
   \item Zunächst Industrie 4.0 und treibende Faktoren allgemein
