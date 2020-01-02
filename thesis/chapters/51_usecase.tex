@@ -4,10 +4,8 @@ Die verschiedenen Werttreiber und Anforderungen für ein Digitalisierungskonzept
 Für eine erfolgreiche Transformation müssen daher individuelle Anwendungsfälle identifziert werden.
 In Anbetracht der Dynamik und des rasanten Tempos, in der neue Technologien entstehen,
 ermöglicht ein anwendungsfallbasierter Ansatz eine flexible und agile Anpassung. \citep[S. 31]{Acharya2019}
-\\Aus diesen Gründen wird im Folgenden ein repräsentativer Anwendungsfall für die Energiebranche
-und den damit entstehenden Anforderungen dargestellt.
-
-\subsubsection{Ausgangssituation}
+\\Aus diesen Gründen wird im Folgenden ein repräsentativer Anwendungsfall für die Energiebranche vorgestellt. Die Anforderungen an das Zielsystem werden nach den von \citet{Lauenroth2016} vorgestellten Methoden erhoben.
+\subsubsection{Ausgangssituation} \label{usecase}
 
 Der deutsche Windenergieanlagenhersteller Enercon GmbH aus Aurich ist mit über 29000 Anlagen in 45 Ländern ein Global Player in der Branche. Da das Kerngeschäft des Unternehmens auf dezentraler Energieproduktion basiert, hat Industrie-4.0-Fähigkeit einen besonderen Stellenwert. Sei es die Einspeisung der produzierten Energie in das Smart-Grid, die Fernsteuerung oder die Zustandsüberwachung der Anlagen und Windparks: Das unternehmenseigene \acf{scada}-System ist auf die Enercon-Anlagen abgestimmt bietet umfangreiche Lösungen für die Kunden. Als Kunden stehen die Energieversorgungsunternehmen im Vordergrund, welche sowohl auf Anforderungen der Netzbetreiber als auch der eigenen Kunden, also der Konsumenten, reagieren müssen. Im Kontext des Unbundlings des Energiemarktes etablierte sich die Branchenlösung \acf{sapisu}, welches Bestandteil von SAP ERP ist, als Vertriebs- und Informationssystem für \ac{evu}. Auch die Enercon-IT nutzt SAP-Produkte für das Management der Ressourcen, Logistik oder Kunden. Im Zuge der Anpassung an die Anforderungen der digitalen Welt wird SAP jedoch den Support der bisher auch von Enercon verwendeten Standard-ERP-Software bis 2025 einstellen. Der Fokus wird auf das Nachfolgeprodukt SAP S/4 HANA gesetzt, welche die echtzeitfähige In-Memory-Datenbanktechnologie \acf{hana} für nutzt. Aus dem Grund bereitet sich Enercon rechtzeitig auf die Migration auf S/4 HANA vor. Die Integrations- und Entwicklungsplattform von \ac{hana} bietet zahlreiche Möglichkeiten zur Realisierung von innovativen Softwarelösungen sowohl auf der Cloud als auch On-Premise. Die Neuausrichtung der IT-Architektur ist auch für die erfolgreiche digitale Transformation von Enercon großer Bedeutung.
 
@@ -17,38 +15,25 @@ Der deutsche Windenergieanlagenhersteller Enercon GmbH aus Aurich ist mit über 
 
 \subsubsection{Anforderungserhebung}
 
-Um die Anforderungen für die Umsetzung einer repräsentativen Lösung zu ermitteln, muss zunächst ermittelt werden, welche Einflussfaktoren sich im Kontext des Zielsystems befinden und wo sich die Grenze des Systems befindet. Diese Herangehensweise dient dazu, Probleme, Anforderungen und Lösungen für verschiedene Abstraktionsebenen zu definieren. Nach dem PAL-Modell kann auf die Kontext-, System- sowie die auf technische Ebene abstrahiert werden \citep{Lauenroth2016}.
+Um die Anforderungen für die Umsetzung einer repräsentativen Lösung zu bestimmen, muss zunächst ermittelt werden, welche Einflussfaktoren sich im Kontext des Zielsystems befinden und wo sich die Grenze des Systems befindet. Mit der Evaluation der Ausgangssituation (s. \ref{usecase}) können Anforderungsquellen identifiziert werden, welche sich auf das Zielsystem beziehen und sich im Systemkontext befinden (s. Abbildung \ref{kontext}). Auf Grundlage der Evaluation werden zunächst Probleme, Anforderungen und Lösungen für das Gesamtsystem definiert. Für eine bessere Strukturierung des Systems werden die einzelnen \ac{pal} auf die Ebenen System und Systemkontext, sowie auch auf die technologische Ebene abstrahiert. Die Dokumentation von Anforderungen auf verschiedenen Abstraktionsebenen ist vor allem für die nachträgliche Verwaltung der Anforderungen für zukünftige Softwareprojekte von großem Wert \citep{Lauenroth2016}. Nach \citet{IREB2017} unterscheidet man typischerweise zwischen drei Arten von Anforderungen: funktionale Anforderungen, Qualitätsanforderungen sowie Randbedingungen. Die funktionalen Anforderungen werden weiter in verschiedene Perspektiven unterteilt. Aus der Struktur- bzw. Datenverspektive wird die Struktur der Ein- und Ausgabedaten beschrieben, welche in der Funktionsperpektive verarbeitet werden. Die Verhaltensperspektive beschreibt das Verhalten des Systems auf Basis von Zuständen und Ereignissen \citep{Lauenroth2016}.
+Daraufhin werden aus den ermittelten Anforderungen Teilsysteme identifiziert, für welche die Anfoderungen ebenfalls nach dem \ac{pal}-Model erfasst werden. Die Formulierung von Anforderungen setzt das Vorhandensein einer Lösung voraus, weshalb auch der Prototyp bereits als Anforderungsquelle gelten kann.
+\\\\Aus der Evaluation der Ausgangssituation ergibt sich die in Abbildung \ref{kontext} dargestellte Systemabgrenzung. Die Anforderungsanalyse berücktsichtigt die Stakeholder, welche sowohl mit dem System interagieren als auch direkten Einfluss auf die Anforderungen haben. Als Nutzer des Systems kristallisieren sich die Kunden Enercons (z.B. die \ac{evu}) sowie das Servicepersonal, welches in der Wartung tätig ist. Für das Servicepersonal wurden Anwendungsfälle konkretisiert, welche wichtige Anforderungsquellen sind. Stakeholder, welche eher qualitative Anforderungen an das System stellen, sind die Softwareentwickler/innen und -architekt(inn)en, für welche der Prototyp als Architekturvorlage dienen soll. Die Auftraggeber stellen die direkte Anforderung, eine Lösung und Analyse für SAP Leonardo zu entwickeln, die die Eignung SAP Leonardos als Verwaltungsschale für die Industrie-4.0-Komponente beurteilt. Dies impliziert, dass sich an der IT-Sicht (s. Abbildung \ref{it_layer}) der Referenzarchitektur RAMI 4.0 orientiert werden soll. Bereits existierende Systeme können ebenfalls Einfluss auf das System haben, was jedoch für die Prototypentwicklung nicht relevant ist.
+
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=1\linewidth]{System_Kontext.png}
-  \caption[Das System und der Systemkontext]{Das System und der Systemkontext}
-  \label{}
+  \caption[Systemabgrenzung und Systemkontext]{Systemabgrenzung und Systemkontext}
+  \label{kontext}
 \end{figure}
-
-\begin{itemize}
-  \item Systemgrenzen und Systemkontext identifizieren
-  \item Anforderungsquellen
-  \item  \begin{itemize}
-    \item RAMI 4.0
-    \item Prototyp kann auch als Anforderungsquelle dienen
-    \item Stakeholder ermitteln: Wer hat direkten/indirekten Einfluss auf Anforderungen z.B.  Nutzer des Systems oder Auftragsteller in Organisation
-    \item Dokumente mit Einfluss z.B. Normen oder Standards, die in Referenzen wie RAMI vorhanden sind -> z.B. die Verwaltungsschale erklären und die expliziten Anforderungen im nächsten Subkapitel
-    \item Existierende Systeme: Systeme, die mit dem geplanten System interagieren sollen oder Systeme, die auf ähnliche Weise bereits Existierende
-    \item Beobachtbare Ereignisse oder Prozesse
-    \item irrelevante Umgebung
-  \end{itemize}
-  \item Trennung von Problem , Anforderung und Lösung
-\end{itemize}
-
-
-
-Anforderungsquellen: RAMI 4.0 hinsichtlich Info-Layer
-
 
 
 \subsubsection{Anforderungen}
 
+
+\paragraph{Kontextebene}
+\paragraph{Systemebene}
+\paragraph{Technologische Ebene}
 
 \begin{table}[h]
   \begin{tabular}{ |p{5cm}|p{5cm}|p{5cm}| }
