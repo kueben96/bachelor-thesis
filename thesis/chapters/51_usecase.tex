@@ -5,6 +5,7 @@ Für eine erfolgreiche Transformation müssen daher individuelle Anwendungsfäll
 In Anbetracht der Dynamik und des rasanten Tempos, in der neue Technologien entstehen,
 ermöglicht ein anwendungsfallbasierter Ansatz eine flexible und agile Anpassung. \citep[S. 31]{Acharya2019}
 \\Aus diesen Gründen wird im Folgenden ein repräsentativer Anwendungsfall für die Energiebranche vorgestellt. Die Anforderungen an das Zielsystem werden nach den von \citet{Lauenroth2016} vorgestellten Methoden erhoben.
+
 \subsubsection{Ausgangssituation} \label{usecase}
 
 Der deutsche Windenergieanlagenhersteller Enercon GmbH aus Aurich ist mit über 29000 Anlagen in 45 Ländern ein Global Player in der Branche. Da das Kerngeschäft des Unternehmens auf dezentraler Energieproduktion basiert, hat Industrie-4.0-Fähigkeit einen besonderen Stellenwert. Sei es die Einspeisung der produzierten Energie in das Smart-Grid, die Fernsteuerung oder die Zustandsüberwachung der Anlagen und Windparks: Das unternehmenseigene \acf{scada}-System ist auf die Enercon-Anlagen abgestimmt bietet umfangreiche Lösungen für die Kunden. Als Kunden stehen die Energieversorgungsunternehmen im Vordergrund, welche sowohl auf Anforderungen der Netzbetreiber als auch der eigenen Kunden, also der Konsumenten, reagieren müssen. Im Kontext des Unbundlings des Energiemarktes etablierte sich die Branchenlösung \acf{sapisu}, welches Bestandteil von SAP ERP ist, als Vertriebs- und Informationssystem für \ac{evu}. Auch die Enercon-IT nutzt SAP-Produkte für das Management der Ressourcen, Logistik oder Kunden. Im Zuge der Anpassung an die Anforderungen der digitalen Welt wird SAP jedoch den Support der bisher auch von Enercon verwendeten Standard-ERP-Software bis 2025 einstellen. Der Fokus wird auf das Nachfolgeprodukt SAP S/4 HANA gesetzt, welche die echtzeitfähige In-Memory-Datenbanktechnologie \acf{hana} für nutzt. Aus dem Grund bereitet sich Enercon rechtzeitig auf die Migration auf S/4 HANA vor. Die Integrations- und Entwicklungsplattform von \ac{hana} bietet zahlreiche Möglichkeiten zur Realisierung von innovativen Softwarelösungen sowohl auf der Cloud als auch On-Premise. Die Neuausrichtung der IT-Architektur ist auch für die erfolgreiche digitale Transformation von Enercon großer Bedeutung.
@@ -27,35 +28,56 @@ Daraufhin werden aus den ermittelten Anforderungen Teilsysteme identifiziert, f�
   \label{kontext}
 \end{figure}
 
+% Anforderungsanalyse ***********
 
-\subsubsection{Anforderungen}
+\subsection{Anforderungsanalyse}
 
-
-\paragraph{Kontextebene}
-\paragraph{Systemebene}
-\paragraph{Technologische Ebene}
+Zielsetzung der vorliegenden Anforderungsanalyse, Aufbau der Analyse, Einführung in das Fachgebiet und offene Punkte -> Die Anforderungsanalyse wird nach dem PAL-MOdell auf die verschiedenen Abstraktionsebenen eines Systems durchgeführt.
 
 \begin{table}[h]
-  \begin{tabular}{ |p{5cm}|p{5cm}|p{5cm}| }
+  \begin{tabular}{ p{5cm}|p{5cm}|p{5cm} }
     \toprule
     Problem & Anforderung & Lösung \\
     \midrule
-    \multicolumn{3}{ |l| }{\textbf{Kontextebene} }\\
+    \multicolumn{3}{ l }{\textbf{Kontextebene} }\\
     \hline
-    K-P-1: Blacffdfdfjhdjfhfdhdfjhdfjhdfjhdfjhfdfdhdfjh & K-QA-1: Bkaffdddfsfdfssffsdfsddfsffsd  & K-L-1: Bremsen hhfdsdfsssssssdfdsfsdfdh\\
+    K-P-1: Problem & K-QA-1: Qualitative Anforderung \newline K-FA-1: Funktionale Anforderung \newline K-RA-1: Randbedingung  & K-L-1: Lösung\\
     \hline
-     \multicolumn{3}{ |l| }{\textbf{Systemebene} }\\
+     \multicolumn{3}{ l }{\textbf{Systemebene} }\\
      \hline
-     S-P-1: Blacffdfdfjhdjfhfdhdfjhdfjhdfjhdfjhfdfdhdfjh & S-QA-1: Bkaffdddfsfdfssffsdfsddfsffsd  & S-L-1: Bremsen hhfdsdfsssssssdfdsfsdfdh\\
+     S-P-1: Problem & S-A-1  & S-L-1: Lösung\\
   \hline
-    \multicolumn{3}{ |l| }{\textbf{Technische Ebene} }\\
+    \multicolumn{3}{ l }{\textbf{Technische Ebene} }\\
     \hline
-    T-P-1: Blacffdfdfjhdjfhfdhdfjhdfjhdfjhdfjhfdfdhdfjh & T-QA-1: Bkaffdddfsfdfssffsdfsddfsffsd \newline T-FA-1: Funktionale Anf & T-L-1: Bremsen hhfdsdfsssssssdfdsfsdfdh\\
+    T-P-1: Problem & T-A-1: Anfoderung  & T-L-1: Lösung\\
     \bottomrule
     \end{tabular}
     \label{pal_table}
   \caption{PAL-Tabelle}
 \end{table}
+
+\subsubsection {Kontextebene}
+
+
+
+Use Cases ermitteln und aufschreiben
+RAMI 4.0 Verwaltungsschale Anforderungen finden
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=1\linewidth]{use_case_diagram.png}
+  \caption[Use Case Diagram]{Use Case Diagram -> noch nicht fertig}
+  \label{kontext}
+\end{figure}
+
+\subsubsection{Systemebene}
+
+Anpassbar, Änderbar, Benutzbar, Genau, Performanz, Sicherheit, Übertragbarkeit, Zuverlässigkeit
+
+Datenflussdiagramm
+\subsubsection{Technologische Ebene}
+
+
 
 
 
