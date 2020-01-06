@@ -6,7 +6,7 @@ In Anbetracht der Dynamik und des rasanten Tempos, in der neue Technologien ents
 ermöglicht ein anwendungsfallbasierter Ansatz eine flexible und agile Anpassung. \citep[S. 31]{Acharya2019}
 \\Aus diesen Gründen wird im Folgenden ein repräsentativer Anwendungsfall für die Energiebranche vorgestellt. Die Anforderungen an das Zielsystem werden nach den von \citet{Lauenroth2016} vorgestellten Methoden erhoben.
 
-\subsubsection{Ausgangssituation} \label{usecase}
+\subsubsection{Ausgangsszenario} \label{usecase}
 
 Der deutsche Windenergieanlagenhersteller Enercon GmbH aus Aurich ist mit über 29000 Anlagen in 45 Ländern ein Global Player in der Branche. Da das Kerngeschäft des Unternehmens auf dezentraler Energieproduktion basiert, hat Industrie-4.0-Fähigkeit einen besonderen Stellenwert. Sei es die Einspeisung der produzierten Energie in das Smart-Grid, die Fernsteuerung oder die Zustandsüberwachung der Anlagen und Windparks: Das unternehmenseigene \acf{scada}-System ist auf die Enercon-Anlagen abgestimmt bietet umfangreiche Lösungen für die Kunden. Als Kunden stehen die Energieversorgungsunternehmen im Vordergrund, welche sowohl auf Anforderungen der Netzbetreiber als auch der eigenen Kunden, also der Konsumenten, reagieren müssen. Im Kontext des Unbundlings des Energiemarktes etablierte sich die Branchenlösung \acf{sapisu}, welches Bestandteil von SAP ERP ist, als Vertriebs- und Informationssystem für \ac{evu}. Auch die Enercon-IT nutzt SAP-Produkte für das Management der Ressourcen, Logistik oder Kunden. Im Zuge der Anpassung an die Anforderungen der digitalen Welt wird SAP jedoch den Support der bisher auch von Enercon verwendeten Standard-ERP-Software bis 2025 einstellen. Der Fokus wird auf das Nachfolgeprodukt SAP S/4 HANA gesetzt, welche die echtzeitfähige In-Memory-Datenbanktechnologie \acf{hana} für nutzt. Aus dem Grund bereitet sich Enercon rechtzeitig auf die Migration auf S/4 HANA vor. Die Integrations- und Entwicklungsplattform von \ac{hana} bietet zahlreiche Möglichkeiten zur Realisierung von innovativen Softwarelösungen sowohl auf der Cloud als auch On-Premise. Die Neuausrichtung der IT-Architektur ist auch für die erfolgreiche digitale Transformation von Enercon großer Bedeutung.
 
@@ -16,9 +16,9 @@ Der deutsche Windenergieanlagenhersteller Enercon GmbH aus Aurich ist mit über 
 
 \subsubsection{Anforderungserhebung}
 
-Um die Anforderungen für die Umsetzung einer repräsentativen Lösung zu bestimmen, muss zunächst ermittelt werden, welche Einflussfaktoren sich im Kontext des Zielsystems befinden und wo sich die Grenze des Systems befindet. Mit der Evaluation der Ausgangssituation (s. \ref{usecase}) können Anforderungsquellen identifiziert werden, welche sich auf das Zielsystem beziehen und sich im Systemkontext befinden (s. Abbildung \ref{kontext}). Auf Grundlage der Evaluation werden zunächst Probleme, Anforderungen und Lösungen für das Gesamtsystem definiert. Für eine bessere Strukturierung des Systems werden die einzelnen \ac{pal} auf die Ebenen System und Systemkontext, sowie auch auf die technologische Ebene abstrahiert. Die Dokumentation von Anforderungen auf verschiedenen Abstraktionsebenen ist vor allem für die nachträgliche Verwaltung der Anforderungen für zukünftige Softwareprojekte von großem Wert \citep{Lauenroth2016}. Nach \citet{IREB2017} unterscheidet man typischerweise zwischen drei Arten von Anforderungen: funktionale Anforderungen, Qualitätsanforderungen sowie Randbedingungen. Die funktionalen Anforderungen werden weiter in verschiedene Perspektiven unterteilt. Aus der Struktur- bzw. Datenverspektive wird die Struktur der Ein- und Ausgabedaten beschrieben, welche in der Funktionsperpektive verarbeitet werden. Die Verhaltensperspektive beschreibt das Verhalten des Systems auf Basis von Zuständen und Ereignissen \citep{Lauenroth2016}.
+Um die Anforderungen für die Umsetzung einer repräsentativen Lösung zu bestimmen, muss zunächst ermittelt werden, welche Einflussfaktoren sich im Kontext des Zielsystems befinden und wo sich die Grenze des Systems befindet. Mit der Evaluation der Ausgangssituation (s. \ref{usecase}) können Anforderungsquellen identifiziert werden, welche sich auf das Zielsystem beziehen und sich im Systemkontext befinden (s. Abbildung \ref{kontext}). Auf Grundlage der Evaluation werden zunächst Probleme, Anforderungen und Lösungen für das Gesamtsystem definiert. Für eine bessere Strukturierung des Systems werden die einzelnen \ac{pal} auf die Ebenen System und Systemkontext, sowie auch auf die technische Ebene abstrahiert. Die Dokumentation von Anforderungen auf verschiedenen Abstraktionsebenen ist vor allem für die nachträgliche Verwaltung der Anforderungen für zukünftige Softwareprojekte von großem Wert \citep{Lauenroth2016}. Nach \citet{IREB2017} unterscheidet man typischerweise zwischen drei Arten von Anforderungen: funktionale Anforderungen, Qualitätsanforderungen sowie Randbedingungen. Die funktionalen Anforderungen werden weiter in verschiedene Perspektiven unterteilt. Aus der Struktur- bzw. Datenverspektive wird die Struktur der Ein- und Ausgabedaten beschrieben, welche in der Funktionsperpektive verarbeitet werden. Die Verhaltensperspektive beschreibt das Verhalten des Systems auf Basis von Zuständen und Ereignissen \citep{Lauenroth2016}.
 Daraufhin werden aus den ermittelten Anforderungen Teilsysteme identifiziert, für welche die Anfoderungen ebenfalls nach dem \ac{pal}-Model erfasst werden. Die Formulierung von Anforderungen setzt das Vorhandensein einer Lösung voraus, weshalb auch der Prototyp bereits als Anforderungsquelle gelten kann.
-\\\\Aus der Evaluation der Ausgangssituation ergibt sich die in Abbildung \ref{kontext} dargestellte Systemabgrenzung. Die Anforderungsanalyse berücktsichtigt die Stakeholder, welche sowohl mit dem System interagieren als auch direkten Einfluss auf die Anforderungen haben. Als Nutzer des Systems kristallisieren sich die Kunden Enercons (z.B. die \ac{evu}) sowie das Servicepersonal, welches in der Wartung tätig ist. Für das Servicepersonal wurden Anwendungsfälle konkretisiert, welche wichtige Anforderungsquellen sind. Stakeholder, welche eher qualitative Anforderungen an das System stellen, sind die Softwareentwickler/innen und -architekt(inn)en, für welche der Prototyp als Architekturvorlage dienen soll. Die Auftraggeber stellen die direkte Anforderung, eine Lösung und Analyse für SAP Leonardo zu entwickeln, die die Eignung SAP Leonardos als Verwaltungsschale für die Industrie-4.0-Komponente beurteilt. Dies impliziert, dass sich an der IT-Sicht (s. Abbildung \ref{it_layer}) der Referenzarchitektur RAMI 4.0 orientiert werden soll. Bereits existierende Systeme können ebenfalls Einfluss auf das System haben, was jedoch für die Prototypentwicklung nicht relevant ist.
+\\\\Aus der Evaluation der Ausgangssituation ergibt sich die in Abbildung \ref{kontext} dargestellte Systemabgrenzung. Die Anforderungsanalyse berücktsichtigt die Stakeholder, welche sowohl mit dem System interagieren als auch direkten Einfluss auf die Anforderungen haben. Als Nutzer des Systems kristallisieren sich die Kunden Enercons (z.B. die \ac{evu}) sowie das Servicepersonal, welches in der Wartung tätig ist. Für das Servicepersonal wurden Anwendungsfälle konkretisiert, welche wichtige Anforderungsquellen sind. Stakeholder, welche eher qualitative Anforderungen an das System stellen, sind die Softwareentwickler/innen und -architekt(inn)en, für welche der Prototyp als Architekturvorlage dienen soll. Die Auftraggeber stellen die direkte Anforderung, eine Lösung und Analyse für SAP Leonardo zu entwickeln, die die Eignung SAP Leonardos als Verwaltungsschale für die Industrie-4.0-Komponente beurteilt. Dies impliziert, dass sich an der IT-Sicht (s. Abbildung \ref{it_layer}) der Referenzarchitektur RAMI 4.0 und an dem Konzept der Industrie-4.0-Komponente (s. Abschnitt \ref{rami}) orientiert werden soll. Bereits existierende Systeme können ebenfalls Einfluss auf das System haben, was jedoch für die Prototypentwicklung nicht relevant ist.
 
 
 \begin{figure}[h]
@@ -31,8 +31,9 @@ Daraufhin werden aus den ermittelten Anforderungen Teilsysteme identifiziert, f�
 % Anforderungsanalyse ***********
 
 \subsection{Anforderungsanalyse}
+Im folgenden Kapitel wird die Anforderungsanalyse nach Abstraktionsebenen des \ac{pal}-Modells (s. Tabelle \ref{pal}) durchgeführt. In der Kontextebene werden Anforderungen bestimmt, welche sich direkt oder indirekt die Funktionen des Systems bestimmen. Es werden Einflussfaktoren behandelt, welche sich außerhalb der Systemgrenzen befinden. Die Behandlung der Forschungsfrage FF1.1, welche Anforderungen an ein System sich aus Sicht der dezentralen Energierzeugung ergeben, schafft die Grundlage für die Problemdefinition für die Funktionsweise des eigentlichen Systems. Die Funktionen werden in der Systemebene mit den notwendigen Schnittstellen und Datenstrukturen in einen logischen Aufbau eingeordnet. Anschließend wird auf der technischen Ebene der logische Aufbau technisch beschrieben.
 
-Zielsetzung der vorliegenden Anforderungsanalyse, Aufbau der Analyse, Einführung in das Fachgebiet und offene Punkte -> Die Anforderungsanalyse wird nach dem PAL-MOdell auf die verschiedenen Abstraktionsebenen eines Systems durchgeführt.
+\newpage
 
 \begin{table}[h]
   \begin{tabular}{ p{5cm}|p{5cm}|p{5cm} }
@@ -54,30 +55,87 @@ Zielsetzung der vorliegenden Anforderungsanalyse, Aufbau der Analyse, Einführun
     \end{tabular}
     \label{pal_table}
   \caption{PAL-Tabelle}
+  \label{pal}
 \end{table}
 
+% Kontextebene
 \subsubsection {Kontextebene}
 
-
-
-Use Cases ermitteln und aufschreiben
-RAMI 4.0 Verwaltungsschale Anforderungen finden
+\paragraph{Problemstellungen} Die hier vorgestellten Probleme werden durch das System gelöst
+\paragraph{Kontextmodell}
+Use Case Diagramm
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=1\linewidth]{use_case_diagram.png}
   \caption[Use Case Diagram]{Use Case Diagram -> noch nicht fertig}
-  \label{kontext}
+  \label{usecasediagram}
 \end{figure}
+
+\paragraph{Anwendungsfälle}
+Welcher Anwendungsfall löst welches Problem?
+\paragraph{Anforderungen}
+Anforderungen, die an das geplante System gestellt werden
+Anforderungen der Energiebranche an ein System in Anlehnung an 2.1
+
+\begin{itemize}
+  \item Problemstelltungen/Ziele erläutern
+  \item Kontextmodell: Nutzer, technische Systeme, die mit dem System interagieren (Use Case Diagram) und irrelevante Systeme
+  \item Anwendungsfälle -> Ablauforientiert: Welcher Anwendungsfall löst welches Problem?
+  \item Anforderungen mit Bezug zum System und Systembestandteil
+\end{itemize}
+Use Cases ermitteln und aufschreiben
+RAMI 4.0 Verwaltungsschale Anforderungen finden
+
+
 
 \subsubsection{Systemebene}
 
+\paragraph{Problemstellungen}
+\paragraph{Systemmodell}
+
+Abbildung s. \ref{ebenen_i40}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.5\linewidth]{Ebenen_I40_Kompo.png}
+  \caption[Ebenen der Industrie-4.0-Komponente]{Ebenen der Industrie-4.0-Komponente \citep[S. 52]{BITKOM2015}}
+  \label{ebenen_i40}
+\end{figure}
+
+\paragraph{Aufbau der Nutzeroberfläche}
+\paragraph{Anwendungsfälle}
+\paragraph{Anforderungen}
+
+\begin{itemize}
+  \item logischer Aufbau des Systems
+  \item Problemstellung/Ziele: ergeben sich aus Anforderungen der Kontextebene
+  \item Systemmodell: Schnittstellen, Funktionen, Datenstrukturen
+  \item Schnittstellen: Verbindung des Systems zur Umwelt (technisch und Nutzer) -> wurden im Kontextmodell definiert
+  \item technisch: Beschreibung der Daten, die mit Umwelt ausgetauscht werden
+  \item Nutzer: bennen
+  \item Funktionen: Funktionalitäten des Systems, Datenverarbeitung
+  \item Funktionen verbunden mit Anwendungsfällen auf Kontextebene
+  \item oder andere Funktionen der Systemebene: zentralisierte Funktiona
+  \item oder Anwendungsfälle auf Systemebene: Funktion realisiert Teilfunktionalität auf Systemebene
+  \item triviale Funktionnen wie Logout oder Login nur kurz -> Fokus auf geschäftskritische Funktionen
+  \item Funktion kann nur diejenigen Daten verarbeiten, welche in Datenstrukturen und Schnittstellen zur Verfügung gestellt werden
+  \item Datenstrukturen: ER-Diagramm oder Klassenmodelle
+  \item Aufbau Nutzeroberflächen: falls vorhanden, setzt Schnittstellen und Daten voraus
+  \item Anwendungsfälle auf Kontextebene können auf Systemebene konkretisiert werden
+  \item Anforderungen: Anforderungen an innere Bestandteile des Systems
+\end{itemize}
 Anpassbar, Änderbar, Benutzbar, Genau, Performanz, Sicherheit, Übertragbarkeit, Zuverlässigkeit
 
 Datenflussdiagramm
-\subsubsection{Technologische Ebene}
+\subsubsection{Technische Ebene}
 
-
+\begin{itemize}
+  \item technische Ebene z.B. Datenbanken bestimmter Hersteller oder Vorgaben zur Umsetzungstechnolgie wie Programmiersprachen oder Frameworks -> in diesem Fall SAP Leonardo und SCP
+  \item Problemstellung/Ziele
+  \item Technischer aufbau des Systems: technische Architekturbeschreibungen, technische Datenmodelle, verwendete Hardwaresysteme
+  \item Elemente des Sytemmodells vollständig abdecken
+\end{itemize}
 
 
 
