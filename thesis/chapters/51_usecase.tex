@@ -8,7 +8,7 @@ ermöglicht ein anwendungsfallbasierter Ansatz eine flexible und agile Anpassung
 
 \subsubsection{Ausgangsszenario} \label{usecase}
 
-Der deutsche Windenergieanlagenhersteller Enercon GmbH aus Aurich ist mit über 29000 Anlagen in 45 Ländern ein Global Player in der Branche. Da das Kerngeschäft des Unternehmens auf dezentraler Energieproduktion basiert, hat Industrie-4.0-Fähigkeit einen besonderen Stellenwert. Sei es die Einspeisung der produzierten Energie in das Smart-Grid, die Fernsteuerung oder die Zustandsüberwachung der Anlagen und Windparks: Das unternehmenseigene \acf{scada}-System ist auf die Enercon-Anlagen abgestimmt bietet umfangreiche Lösungen für die Kunden. Als Kunden stehen die Energieversorgungsunternehmen im Vordergrund, welche sowohl auf Anforderungen der Netzbetreiber als auch der eigenen Kunden, also der Konsumenten, reagieren müssen. Im Kontext des Unbundlings des Energiemarktes etablierte sich die Branchenlösung \acf{sapisu}, welches Bestandteil von SAP ERP ist, als Vertriebs- und Informationssystem für \ac{evu}. Auch die Enercon-IT nutzt SAP-Produkte für das Management der Ressourcen, Logistik oder Kunden. Im Zuge der Anpassung an die Anforderungen der digitalen Welt wird SAP jedoch den Support der bisher auch von Enercon verwendeten Standard-ERP-Software bis 2025 einstellen. Der Fokus wird auf das Nachfolgeprodukt SAP S/4 HANA gesetzt, welche die echtzeitfähige In-Memory-Datenbanktechnologie \acf{hana} für nutzt. Aus dem Grund bereitet sich Enercon rechtzeitig auf die Migration auf S/4 HANA vor. Die Integrations- und Entwicklungsplattform von \ac{hana} bietet zahlreiche Möglichkeiten zur Realisierung von innovativen Softwarelösungen sowohl auf der Cloud als auch On-Premise. Die Neuausrichtung der IT-Architektur ist auch für die erfolgreiche digitale Transformation von Enercon großer Bedeutung.
+Der deutsche Windenergieanlagenhersteller Enercon GmbH aus Aurich ist mit über 29000 Anlagen in 45 Ländern ein Global Player in der Branche. Da das Kerngeschäft des Unternehmens auf dezentraler Energieproduktion basiert, hat Industrie-4.0-Fähigkeit einen besonderen Stellenwert. Sei es die Einspeisung der produzierten Energie in das Smart-Grid, die Fernsteuerung oder die Zustandsüberwachung der Anlagen und Windparks: Das unternehmenseigene \acf{scada}-System ist auf die Enercon-Anlagen abgestimmt bietet umfangreiche Lösungen für die Kunden. Jedoch versendet das \ac{scada}-System die Messwerte bisher nur alle 10 Minuten das \ac{cms}. Als Kunden stehen die Energieversorgungsunternehmen im Vordergrund, welche sowohl auf Anforderungen der Netzbetreiber als auch der eigenen Kunden, also der Konsumenten, reagieren müssen. Im Kontext des Unbundlings des Energiemarktes etablierte sich die Branchenlösung \acf{sapisu}, welches Bestandteil von SAP ERP ist, als Vertriebs- und Informationssystem für \ac{evu}. Auch die Enercon-IT nutzt SAP-Produkte für das Management der Ressourcen, Logistik oder Kunden. Im Zuge der Anpassung an die Anforderungen der digitalen Welt wird SAP jedoch den Support der bisher auch von Enercon verwendeten Standard-ERP-Software bis 2025 einstellen. Der Fokus wird auf das Nachfolgeprodukt SAP S/4 HANA gesetzt, welche die echtzeitfähige In-Memory-Datenbanktechnologie \acf{hana} für nutzt. Aus dem Grund bereitet sich Enercon rechtzeitig auf die Migration auf S/4 HANA vor. Die Integrations- und Entwicklungsplattform von \ac{hana} bietet zahlreiche Möglichkeiten zur Realisierung von innovativen Softwarelösungen sowohl auf der Cloud als auch On-Premise. Die Neuausrichtung der IT-Architektur ist auch für die erfolgreiche digitale Transformation von Enercon großer Bedeutung.
 
 \noindent Im besonderen Interesse liegt die SAP Leonardo \ac{iot} Foundation, vor allem in Anbetracht einer möglichen Integration von Stammdaten aus dem S/4 HANA System. Dafür ist zunächst eine Analyse der SAP Leonardo Systemarchitektur mitsamt der Perspektiven gewünscht. Dies könne als Entscheidungsgrundlage für eine Erweiterung des Geschäftsfeldes von Energieproduktion auf IT-Dienstleistungen dienen. Außerdem soll prototypisch dargestellt werden, inwiefern sich SAP Leonardo IoT als Verwaltungsschale für die Industrie-4.0-Komponente eignet. Langfristiges Ziel des Unternehmens sei es, das \ac{scada}-System über die Kommunikationsschnittstelle mit dem OPC XML-DA Protokoll echtzeitfähig zu gestalten. Um Risiken vor Inbetriebnahme und Kosten zu minimieren soll jedoch zunächst eine einfache Simulation genügen.
 
@@ -18,7 +18,7 @@ Der deutsche Windenergieanlagenhersteller Enercon GmbH aus Aurich ist mit über 
 
 Um die Anforderungen für die Umsetzung einer repräsentativen Lösung zu bestimmen, muss zunächst ermittelt werden, welche Einflussfaktoren sich im Kontext des Zielsystems befinden und wo sich die Grenze des Systems befindet. Mit der Evaluation der Ausgangssituation (s. \ref{usecase}) können Anforderungsquellen identifiziert werden, welche sich auf das Zielsystem beziehen und sich im Systemkontext befinden (s. Abbildung \ref{kontext}). Auf Grundlage der Evaluation werden zunächst Probleme, Anforderungen und Lösungen für das Gesamtsystem definiert. Für eine bessere Strukturierung des Systems werden die einzelnen \ac{pal} auf die Ebenen System und Systemkontext, sowie auch auf die technische Ebene abstrahiert. Die Dokumentation von Anforderungen auf verschiedenen Abstraktionsebenen ist vor allem für die nachträgliche Verwaltung der Anforderungen für zukünftige Softwareprojekte von großem Wert \citep{Lauenroth2016}. Nach \citet{IREB2017} unterscheidet man typischerweise zwischen drei Arten von Anforderungen: funktionale Anforderungen, Qualitätsanforderungen sowie Randbedingungen. Die funktionalen Anforderungen werden weiter in verschiedene Perspektiven unterteilt. Aus der Struktur- bzw. Datenverspektive wird die Struktur der Ein- und Ausgabedaten beschrieben, welche in der Funktionsperpektive verarbeitet werden. Die Verhaltensperspektive beschreibt das Verhalten des Systems auf Basis von Zuständen und Ereignissen \citep{Lauenroth2016}.
 Daraufhin werden aus den ermittelten Anforderungen Teilsysteme identifiziert, für welche die Anfoderungen ebenfalls nach dem \ac{pal}-Model erfasst werden. Die Formulierung von Anforderungen setzt das Vorhandensein einer Lösung voraus, weshalb auch der Prototyp bereits als Anforderungsquelle gelten kann.
-\\\\Aus der Evaluation der Ausgangssituation ergibt sich die in Abbildung \ref{kontext} dargestellte Systemabgrenzung. Die Anforderungsanalyse berücktsichtigt die Stakeholder, welche sowohl mit dem System interagieren als auch direkten Einfluss auf die Anforderungen haben. Als Nutzer des Systems kristallisieren sich die Kunden Enercons (z.B. die \ac{evu}) sowie das Servicepersonal, welches in der Wartung tätig ist. Für das Servicepersonal wurden Anwendungsfälle konkretisiert, welche wichtige Anforderungsquellen sind. Stakeholder, welche eher qualitative Anforderungen an das System stellen, sind die Softwareentwickler/innen und -architekt(inn)en, für welche der Prototyp als Architekturvorlage dienen soll. Die Auftraggeber stellen die direkte Anforderung, eine Lösung und Analyse für SAP Leonardo zu entwickeln, die die Eignung SAP Leonardos als Verwaltungsschale für die Industrie-4.0-Komponente beurteilt. Dies impliziert, dass sich an der IT-Sicht (s. Abbildung \ref{it_layer}) der Referenzarchitektur RAMI 4.0 und an dem Konzept der Industrie-4.0-Komponente (s. Abschnitt \ref{rami}) orientiert werden soll. Bereits existierende Systeme können ebenfalls Einfluss auf das System haben, was jedoch für die Prototypentwicklung nicht relevant ist.
+\\\\Aus der Evaluation der Ausgangssituation ergibt sich die in Abbildung \ref{kontext} dargestellte Systemabgrenzung. Die Anforderungsanalyse berücktsichtigt die Stakeholder, welche sowohl mit dem System interagieren als auch direkten Einfluss auf die Anforderungen haben. Als Nutzer des Systems kristallisieren sich die Kunden Enercons (z.B. die \ac{evu}) sowie das Servicepersonal, welches in der Wartung tätig ist. Für das Servicepersonal wurden Anwendungsfälle konkretisiert, welche wichtige Anforderungsquellen sind. Stakeholder, welche eher qualitative Anforderungen an das System stellen, sind die Softwareentwickler/innen und -architekt(inn)en, für welche der Prototyp als Architekturvorlage dienen soll. Die Auftraggeber stellen die direkte Anforderung, eine Lösung und Analyse für SAP Leonardo zu entwickeln, die die Eignung SAP Leonardos als Verwaltungsschale für die Industrie-4.0-Komponente beurteilt. Dies impliziert, dass sich an der IT-Sicht (s. Abbildung \ref{it_layer}) der Referenzarchitektur RAMI 4.0 und an dem Konzept der Industrie-4.0-Komponente (s. Abschnitt \ref{rami}) orientiert werden soll. Berücksichtigt werden sollen außerdem die Anforderungen, die sich aus der Beschaffenheit der Branche der Energiewirtschaft ergeben. Bereits existierende Systeme können ebenfalls Einfluss auf das System haben, was jedoch für die Prototypentwicklung nicht relevant ist.
 
 
 \begin{figure}[h]
@@ -31,7 +31,7 @@ Daraufhin werden aus den ermittelten Anforderungen Teilsysteme identifiziert, f�
 % Anforderungsanalyse ***********
 
 \subsection{Anforderungsanalyse}
-Im folgenden Kapitel wird die Anforderungsanalyse nach Abstraktionsebenen des \ac{pal}-Modells (s. Tabelle \ref{pal}) durchgeführt. In der Kontextebene werden Anforderungen bestimmt, welche sich direkt oder indirekt die Funktionen des Systems bestimmen. Es werden Einflussfaktoren behandelt, welche sich außerhalb der Systemgrenzen befinden. Die Behandlung der Forschungsfrage FF1.1, welche Anforderungen an ein System sich aus Sicht der dezentralen Energierzeugung ergeben, schafft die Grundlage für die Problemdefinition für die Funktionsweise des eigentlichen Systems. Die Funktionen werden in der Systemebene mit den notwendigen Schnittstellen und Datenstrukturen in einen logischen Aufbau eingeordnet. Anschließend wird auf der technischen Ebene der logische Aufbau technisch beschrieben.
+Im folgenden Kapitel wird die Anforderungsanalyse nach Abstraktionsebenen des \ac{pal}-Modells (s. Tabelle \ref{pal}) durchgeführt. In der Kontextebene werden Anforderungen bestimmt, welche sich direkt oder indirekt die Funktionen des Systems bestimmen. Es werden Einflussfaktoren behandelt, welche sich außerhalb der Systemgrenzen befinden. Die Behandlung der Forschungsfrage FF1.1, welche Anforderungen an ein System für die digitale Transformation sich aus Sicht der dezentralen Energierzeugung ergeben, schafft die Grundlage für die Problemdefinition für die Funktionsweise des eigentlichen Systems. Die Funktionen werden in der Systemebene mit den notwendigen Schnittstellen und Datenstrukturen in einen logischen Aufbau eingeordnet. Anschließend wird auf der technischen Ebene der logische Aufbau technisch beschrieben.
 
 \newpage
 
@@ -46,7 +46,7 @@ Im folgenden Kapitel wird die Anforderungsanalyse nach Abstraktionsebenen des \a
     \hline
      \multicolumn{3}{ l }{\textbf{Systemebene} }\\
      \hline
-     S-P-1: Problem & S-A-1  & S-L-1: Lösung\\
+     S-P-1: Problem & S-A-1: Anforderung  & S-L-1: Lösung\\
   \hline
     \multicolumn{3}{ l }{\textbf{Technische Ebene} }\\
     \hline
@@ -54,26 +54,55 @@ Im folgenden Kapitel wird die Anforderungsanalyse nach Abstraktionsebenen des \a
     \bottomrule
     \end{tabular}
     \label{pal_table}
-  \caption{PAL-Tabelle}
+  \caption{Das PAL-Modell}
   \label{pal}
 \end{table}
 
 % Kontextebene
 \subsubsection {Kontextebene}
 
-\paragraph{Problemstellungen} Die hier vorgestellten Probleme werden durch das System gelöst
+\paragraph{Problemstellungen}
+Die Probleme, die durch das Zielsystem gelöst werden sollen, sind durch verschiedene Einflussfaktoren aus dem Kontext des Systems verursacht. In erster Linie steht das Problem der dezentralen Energieerzeugung aus dem Branchenkontext (s. Abschnitt \ref{energy}). Da die Erzeugung von schwankenden (Umwelt-) Bedingungen abhängt, müssen kontinuierlich Daten erhoben werden, um Leistungsqualität und -verfügbarkeit zu gewährleisten. Gleichzeitig steigt der Koordinationsaufwand aufgrund der großen Datenmengen. Weil die \ac{scada}-Systeme Messdaten nur im 10-Minuten-Takt versenden, können keine aktuellen Zustandsdaten eingesehen und nicht rechtzeitig auf Probleme reagiert werden. Problematisch ist dies besonders in Anbetracht der erhöhten Steuerungskomplexität der Anlagen. Als ein weiteres Problem kann die hohe Abhängigkeit der Branche von gesetzlichen Vorgaben gesehen werden. Die sich regelmäßig ändernden Regularien können die Strukturen und die Beschaffenheit der Branche grundlegend ändern. Aus diesem Grund kann sich die Umsetzung von ohnehin schon komplexen und interdisziplinären Industrie-4.0-Projekten für die Energiebranche als große Herausforderung erweisen, aber auch einen enormen Mehrwert bringen. Zudem ergibt sich aus dem Ausgangsszenario die Prolematik, dass das bestehende System zur Zustandsüberwachung keine Integration von intelligenten Diensten ermöglicht. Mit dem Umstieg auf SAP S/4 HANA stellt sich die Frage, inwiefern sich das  Innovationsportfolio SAP Leonardo als Verwaltungsschale für die Anlagen eignet.
+
+\begin{table}[H]
+  \begin{tabularx}{\textwidth}{@{}lXp{2cm}@{}}
+      \toprule
+      ID                & Problem & Quelle \\
+      \midrule
+      \textbf{K-P-1}              &       Anstieg der Steuerungskomplexität der Anlagen durch dezentrale Energieerzeugung               & \textit{Branche}                \\
+      \multicolumn{1}{r}{K-P-1.1} &  Koordination großer Datenmengen     \\
+      \multicolumn{1}{r}{K-P-1.2} &  Die Gewährleistung der Leistungsqualität und Leistungsverfügbarkeit \\
+      \multicolumn{1}{r}{K-P-1.3} &  Verzögerung der Reaktion auf Probleme aufgrund des 10-Minuten-Takts der SCADA-Systeme & \textit{Auftraggeber} \\\addlinespace
+      \textbf{K-P-2}              & Strenge Regularien können die Branche stetig ändern                     & \textit{Branche}                \\ \addlinespace
+      \textbf{K-P-3}              & Interdisziplinäre und koplexe Struktur von Industrie-4.0-Projekten                      & \textit{RAMI 4.0}                \\
+      \textbf{K-P-4}              &  Eignung der SAP Leonardo Foundation als Verwaltungsschale  & \textit{Auftraggeber} \\
+      \multicolumn{1}{r}{K-P-4.1} &  Nutzung von intelligenten Diensten\\
+      \addlinespace
+      \bottomrule
+  \end{tabularx}
+  \label{kontext_probleme}
+  \caption{Auflistung der zu lösenden Probleme}
+\end{table}
+
 \paragraph{Kontextmodell}
-Use Case Diagramm
+
+Die oben definierten Probleme schaffen eine Struktur für ihre Lösung (vgl. \ac{pal}-Modell Lösungssäule). Das Kontextmodell dient dazu, eine erste statische Struktur des Zielsystems auf Grundlage der identifizierten Anwendungsfälle und Lösungsmöglichkeiten zu schaffen.
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=1\linewidth]{use_case_diagram.png}
-  \caption[Use Case Diagram]{Use Case Diagram -> noch nicht fertig}
-  \label{usecasediagram}
+  \includegraphics[width=1.15\linewidth]{use_case_basic.png}
+  \caption[Use Case Diagramm der Kontextebene]{Use Case Diagramm der Kontextebene}
+  \label{usecase_basic}
 \end{figure}
+
+
+
+
+
 
 \paragraph{Anwendungsfälle}
 Welcher Anwendungsfall löst welches Problem?
+
 \paragraph{Anforderungen}
 Anforderungen, die an das geplante System gestellt werden
 Anforderungen der Energiebranche an ein System in Anlehnung an 2.1
@@ -92,6 +121,9 @@ RAMI 4.0 Verwaltungsschale Anforderungen finden
 \subsubsection{Systemebene}
 
 \paragraph{Problemstellungen}
+
+Cyberpyhsisches Embedded System muss durch eine Verwaltungsschale erzeugt werden -> Industrie-4.0-Komponente ist Spezialisierung des CPS
+
 \paragraph{Systemmodell}
 
 Abbildung s. \ref{ebenen_i40}
@@ -105,6 +137,13 @@ Abbildung s. \ref{ebenen_i40}
 
 \paragraph{Aufbau der Nutzeroberfläche}
 \paragraph{Anwendungsfälle}
+
+\begin{figure}[ht!]
+  \centering
+  \noindent\makebox[\textwidth]{\includegraphics[width=\paperwidth]{usecase_ext1.png}}
+  \caption[Use Case Diagram]{Use Case Diagram}
+  \label{usecasediagram}
+\end{figure}
 \paragraph{Anforderungen}
 
 \begin{itemize}
