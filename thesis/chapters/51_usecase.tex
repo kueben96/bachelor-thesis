@@ -8,17 +8,17 @@ ermöglicht ein anwendungsfallbasierter Ansatz eine flexible und agile Anpassung
 
 \subsubsection{Ausgangsszenario} \label{usecase}
 
-Der deutsche Windenergieanlagenhersteller Enercon GmbH aus Aurich ist mit über 29000 Anlagen in 45 Ländern ein Global Player in der Branche. Da das Kerngeschäft des Unternehmens auf dezentraler Energieproduktion basiert, hat Industrie-4.0-Fähigkeit einen besonderen Stellenwert. Sei es die Einspeisung der produzierten Energie in das Smart-Grid, die Fernsteuerung oder die Zustandsüberwachung der Anlagen und Windparks: Das unternehmenseigene \acf{scada}-System ist auf die Enercon-Anlagen abgestimmt bietet umfangreiche Lösungen für die Kunden. Jedoch versendet das \ac{scada}-System die Messwerte bisher nur alle 10 Minuten das \ac{cms}. Als Kunden stehen die Energieversorgungsunternehmen im Vordergrund, welche sowohl auf Anforderungen der Netzbetreiber als auch der eigenen Kunden, also der Konsumenten, reagieren müssen. Im Kontext des Unbundlings des Energiemarktes etablierte sich die Branchenlösung \acf{sapisu}, welches Bestandteil von SAP ERP ist, als Vertriebs- und Informationssystem für \ac{evu}. Auch die Enercon-IT nutzt SAP-Produkte für das Management der Ressourcen, Logistik oder Kunden. Im Zuge der Anpassung an die Anforderungen der digitalen Welt wird SAP jedoch den Support der bisher auch von Enercon verwendeten Standard-ERP-Software bis 2025 einstellen. Der Fokus wird auf das Nachfolgeprodukt SAP S/4 HANA gesetzt, welche die echtzeitfähige In-Memory-Datenbanktechnologie \acf{hana} für nutzt. Aus dem Grund bereitet sich Enercon rechtzeitig auf die Migration auf S/4 HANA vor. Die Integrations- und Entwicklungsplattform von \ac{hana} bietet zahlreiche Möglichkeiten zur Realisierung von innovativen Softwarelösungen sowohl auf der Cloud als auch On-Premise. Die Neuausrichtung der IT-Architektur ist auch für die erfolgreiche digitale Transformation von Enercon großer Bedeutung.
+Der Windenergieanlagenhersteller Enercon GmbH aus Aurich verzeichnet 29000 Anlagen in 45 Ländern. Da das Kerngeschäft des Unternehmens auf den Bau von Anlagen für die dezentrale Energieerzeugung basiert, hat Industrie-4.0-Fähigkeit einen besonderen Stellenwert. Sei es die Einspeisung der produzierten Energie in das Smart-Grid, die Fernsteuerung oder die Zustandsüberwachung der Anlagen und Windparks: Das unternehmenseigene \acf{scada}-System ist auf die Enercon-Anlagen abgestimmt bietet umfangreiche Lösungen für die Kunden. Allerdings versendet das \ac{scada}-System die Messwerte bisher nur alle 15 Minuten das \ac{cms}. Zudem ist es eine technische Insellösung, welche die betriebwirtschaftliche Welt nicht integriert. Als Kunden stehen die Energieversorgungsunternehmen im Vordergrund, mit denen Enercon Verträge für Wartungsservices abschließt. Die Enercon-IT nutzt SAP-Produkte für das Management der Ressourcen,Logistik oder Kunden. Im Zuge der Anpassung an die Anforderungen der digitalen Welt wird SAP jedoch den Support der bisher auch von Enercon verwendeten Standard-ERP-Software bis 2025 einstellen. Der Fokus wird auf das Nachfolgeprodukt SAP S/4 HANA gesetzt, welche die echtzeitfähige In-Memory-Datenbanktechnologie \acf{hana} für nutzt. Aus diesem Grund bereitet sich Enercon rechtzeitig auf die Migration auf S/4 HANA vor. Die Integrations- und Entwicklungsplattform von \ac{hana} bietet zahlreiche Möglichkeiten zur Realisierung von innovativen Softwarelösungen sowohl auf der Cloud als auch On-Premise. Die Neuausrichtung der IT-Architektur ist auch für die erfolgreiche digitale Transformation von Enercon großer Bedeutung.
 
-\noindent Im besonderen Interesse liegt die SAP Leonardo \ac{iot} Foundation, vor allem in Anbetracht einer möglichen Integration von Stammdaten aus dem S/4 HANA System. Dafür ist zunächst eine Analyse der SAP Leonardo Systemarchitektur mitsamt der Perspektiven gewünscht. Dies könne als Entscheidungsgrundlage für eine Erweiterung des Geschäftsfeldes von Energieproduktion auf IT-Dienstleistungen dienen. Außerdem soll prototypisch dargestellt werden, inwiefern sich SAP Leonardo IoT als Verwaltungsschale für die Industrie-4.0-Komponente eignet. Langfristiges Ziel des Unternehmens sei es, das \ac{scada}-System über die Kommunikationsschnittstelle mit dem OPC XML-DA Protokoll echtzeitfähig zu gestalten. Um Risiken vor Inbetriebnahme und Kosten zu minimieren soll jedoch zunächst eine einfache Simulation genügen.
+\noindent Im besonderen Interesse liegt die SAP Leonardo \ac{iot} Foundation, vor allem in Anbetracht einer möglichen Integration von Stammdaten aus dem S/4 HANA System. Dafür ist zunächst eine Analyse der SAP Leonardo Systemarchitektur mitsamt der Perspektiven gewünscht. Dies könne als Entscheidungsgrundlage für eine Erweiterung des Geschäftsfeldes von Energieproduktion auf IT-Dienstleistungen dienen. Außerdem soll prototypisch dargestellt werden, inwiefern sich SAP Leonardo IoT als Verwaltungsschale für die Industrie-4.0-Komponente eignet. Langfristiges Ziel des Unternehmens sei es, das \ac{scada}-System echtzeitfähig zu gestalten. Um Risiken vor Inbetriebnahme und Kosten zu minimieren soll jedoch zunächst eine einfache Simulation genügen.
 
-\noindent Die Simulation soll dem Servicepersonal in der Wartung ermöglichen, die Zustandsdaten des digitalen Zwillings einer Anlage in Echtzeit zu überwachen. Wenn kritische Messwerte empfangen werden, soll das Personal sofort benachrichtigt werden, damit Wartungsmaßnahmen eingeleitet werden können. Die Softwareentwickler/innen sollen den Prototypen beliebig sowohl um (Mess-)Geräte als auch um App-Funktionalitäten erweitern können.
+\noindent Die Simulation soll dem Servicepersonal in der Wartung und den Kunden ermöglichen, die Zustandsdaten des digitalen Zwillings einer Anlage in Echtzeit zu überwachen. Wenn kritische Messwerte empfangen werden, soll das Personal sofort benachrichtigt werden, damit Wartungsmaßnahmen eingeleitet werden können. Die Softwareentwickler/innen sollen den Prototypen beliebig sowohl um (Mess-)Geräte als auch um App-Funktionalitäten erweitern können.
 
 \subsubsection{Anforderungserhebung}
 
-Um die Anforderungen für die Umsetzung einer repräsentativen Lösung zu bestimmen, muss zunächst ermittelt werden, welche Einflussfaktoren sich im Kontext des Zielsystems befinden und wo sich die Grenze des Systems befindet. Mit der Evaluation der Ausgangssituation (s. \ref{usecase}) können Anforderungsquellen identifiziert werden, welche sich auf das Zielsystem beziehen und sich im Systemkontext befinden (s. Abbildung \ref{kontext}). Auf Grundlage der Evaluation werden zunächst Probleme, Anforderungen und Lösungen für das Gesamtsystem definiert. Für eine bessere Strukturierung des Systems werden die einzelnen \ac{pal} auf die Ebenen System und Systemkontext, sowie auch auf die technische Ebene abstrahiert. Die Dokumentation von Anforderungen auf verschiedenen Abstraktionsebenen ist vor allem für die nachträgliche Verwaltung der Anforderungen für zukünftige Softwareprojekte von großem Wert \citep{Lauenroth2016}. Nach \citet{IREB2017} unterscheidet man typischerweise zwischen drei Arten von Anforderungen: funktionale Anforderungen, Qualitätsanforderungen sowie Randbedingungen. Die funktionalen Anforderungen werden weiter in verschiedene Perspektiven unterteilt. Aus der Struktur- bzw. Datenverspektive wird die Struktur der Ein- und Ausgabedaten beschrieben, welche in der Funktionsperpektive verarbeitet werden. Die Verhaltensperspektive beschreibt das Verhalten des Systems auf Basis von Zuständen und Ereignissen \citep{Lauenroth2016}.
+Um die Anforderungen für die Umsetzung einer repräsentativen Lösung zu bestimmen, muss zunächst ermittelt werden, welche Einflussfaktoren sich im Kontext des Zielsystems befinden und wo sich die Grenze des Systems befindet. Mit der Evaluation der Ausgangssituation (s. \ref{usecase}) können Anforderungsquellen identifiziert werden, welche sich auf das Zielsystem beziehen und sich im Systemkontext befinden (s. Abbildung \ref{kontext}). Auf Grundlage der Evaluation werden zunächst Probleme, Anforderungen und Lösungen für das System definiert. Für eine bessere Strukturierung des Systems werden die einzelnen \ac{pal} auf die Ebenen System und Systemkontext, sowie auch auf die technische Ebene abstrahiert. Die Dokumentation von Anforderungen auf verschiedenen Abstraktionsebenen ist vor allem für die nachträgliche Verwaltung der Anforderungen für zukünftige Softwareprojekte von großem Wert \citep{Lauenroth2016}. Nach \citet{IREB2017} unterscheidet man typischerweise zwischen drei Arten von Anforderungen: funktionale Anforderungen, Qualitätsanforderungen sowie Randbedingungen. Die funktionalen Anforderungen werden weiter in verschiedene Perspektiven unterteilt. Aus der Struktur- bzw. Datenverspektive wird die Struktur der Ein- und Ausgabedaten beschrieben, welche in der Funktionsperpektive verarbeitet werden. Die Verhaltensperspektive beschreibt das Verhalten des Systems auf Basis von Zuständen und Ereignissen \citep{Lauenroth2016}.
 Daraufhin werden aus den ermittelten Anforderungen Teilsysteme identifiziert, für welche die Anfoderungen ebenfalls nach dem \ac{pal}-Model erfasst werden. Die Formulierung von Anforderungen setzt das Vorhandensein einer Lösung voraus, weshalb auch der Prototyp bereits als Anforderungsquelle gelten kann.
-\\\\Aus der Evaluation der Ausgangssituation ergibt sich die in Abbildung \ref{kontext} dargestellte Systemabgrenzung. Die Anforderungsanalyse berücktsichtigt die Stakeholder, welche sowohl mit dem System interagieren als auch direkten Einfluss auf die Anforderungen haben. Als Nutzer des Systems kristallisieren sich die Kunden Enercons (z.B. die \ac{evu}) sowie das Servicepersonal, welches in der Wartung tätig ist. Für das Servicepersonal wurden Anwendungsfälle konkretisiert, welche wichtige Anforderungsquellen sind. Stakeholder, welche eher qualitative Anforderungen an das System stellen, sind die Softwareentwickler/innen und -architekt(inn)en, für welche der Prototyp als Architekturvorlage dienen soll. Die Auftraggeber stellen die direkte Anforderung, eine Lösung und Analyse für SAP Leonardo zu entwickeln, die die Eignung SAP Leonardos als Verwaltungsschale für die Industrie-4.0-Komponente beurteilt. Dies impliziert, dass sich an der IT-Sicht (s. Abbildung \ref{it_layer}) der Referenzarchitektur RAMI 4.0 und an dem Konzept der Industrie-4.0-Komponente (s. Abschnitt \ref{rami}) orientiert werden soll. Berücksichtigt werden sollen außerdem die Anforderungen, die sich aus der Beschaffenheit der Branche der Energiewirtschaft ergeben. Bereits existierende Systeme können ebenfalls Einfluss auf das System haben, was jedoch für die Prototypentwicklung nicht relevant ist.
+\\\\Aus der Evaluation der Ausgangssituation ergibt sich die in Abbildung \ref{kontext} dargestellte Systemabgrenzung. Die Anforderungsanalyse berücktsichtigt die Stakeholder, welche sowohl mit dem System interagieren als auch direkten Einfluss auf die Anforderungen haben. Als Nutzer des Systems kristallisieren sich die Kunden Enercons (z.B. die \ac{evu}) sowie das Servicepersonal, welches in der Wartung tätig ist. Stakeholder, welche eher qualitative Anforderungen an das System stellen, sind die Softwareentwickler/innen und -architekt(inn)en, für welche der Prototyp als Architekturvorlage dienen soll. Die Auftraggeber stellen die direkte Anforderung, eine Lösung und Analyse für SAP Leonardo zu entwickeln, die die Eignung SAP Leonardos als Verwaltungsschale für die Industrie-4.0-Komponente beurteilt. Dies impliziert, dass sich an der IT-Sicht (s. Abbildung \ref{it_layer}) der Referenzarchitektur RAMI 4.0 und an dem Konzept der Industrie-4.0-Komponente (s. Abschnitt \ref{rami}) orientiert werden soll. Berücksichtigt werden sollen außerdem die Anforderungen, die sich aus der Beschaffenheit der Branche der Energiewirtschaft ergeben. Bereits existierende Systeme können ebenfalls Einfluss auf das System haben, was jedoch für die Prototypentwicklung nicht relevant ist.
 
 
 \begin{figure}[h]
@@ -62,7 +62,7 @@ Im folgenden Kapitel wird die Anforderungsanalyse nach Abstraktionsebenen des \a
 \subsubsection {Kontextebene}
 
 \paragraph{Problemstellungen}
-Die Probleme, die durch das Zielsystem gelöst werden sollen, sind durch verschiedene Einflussfaktoren aus dem Kontext des Systems verursacht. In erster Linie steht das Problem der dezentralen Energieerzeugung aus dem Branchenkontext (s. Abschnitt \ref{energy}). Da die Erzeugung von schwankenden (Umwelt-) Bedingungen abhängt, müssen kontinuierlich Daten erhoben werden, um Leistungsqualität und -verfügbarkeit zu gewährleisten. Gleichzeitig steigt der Koordinationsaufwand aufgrund der großen Datenmengen. Weil die \ac{scada}-Systeme Messdaten nur im 10-Minuten-Takt versenden, können keine aktuellen Zustandsdaten eingesehen und nicht rechtzeitig auf Probleme reagiert werden. Problematisch ist dies besonders in Anbetracht der erhöhten Steuerungskomplexität der Anlagen.
+Die Probleme, die durch das Zielsystem gelöst werden sollen, sind durch verschiedene Einflussfaktoren aus dem Kontext des Systems verursacht. In erster Linie steht das Problem der dezentralen Energieerzeugung aus dem Branchenkontext (s. Abschnitt \ref{energy}). Da die Erzeugung von schwankenden (Umwelt-) Bedingungen abhängt, müssen kontinuierlich Daten erhoben werden, um Leistungsqualität und -verfügbarkeit zu gewährleisten. Gleichzeitig steigt der Koordinationsaufwand aufgrund der großen Datenmengen. Weil die \ac{scada}-Systeme Messdaten nur im 15-Minuten-Takt versenden, können keine aktuellen Zustandsdaten eingesehen und nicht rechtzeitig auf Probleme reagiert werden. Problematisch ist dies besonders in Anbetracht der erhöhten Steuerungskomplexität der Anlagen.
 Als ein weiteres Problem kann die hohe Abhängigkeit der Branche von gesetzlichen Vorgaben gesehen werden. Die sich regelmäßig ändernden Regularien können die Strukturen und die Beschaffenheit der Branche grundlegend ändern. Aus diesem Grund kann sich die Umsetzung von ohnehin schon komplexen und interdisziplinären Industrie-4.0-Projekten für die Energiebranche als große Herausforderung erweisen, aber auch einen enormen Mehrwert bringen. Zudem ergibt sich aus dem Ausgangsszenario die Prolematik, dass das bestehende System zur Zustandsüberwachung keine Integration von intelligenten Diensten ermöglicht. Mit dem Umstieg auf SAP S/4 HANA stellt sich die Frage, inwiefern sich das  Innovationsportfolio SAP Leonardo als Verwaltungsschale für die Anlagen eignet. In diesem Zusammenhang ergibt sich aus dem Ausgangsszenario jedoch die Problematik des erhöhten Risikos bei großen Industrie-4.0-Projekten. Auch \citet{Lauenroth2016} mahnen bei Projekten für Anlagen mit komplexer Systemelektronik unf -mechanik zur Vorsicht. Ein Change Request für solch komplexe Systeme wie Windenergieanlagen wäre zu teuer.
 
 \begin{table}[H]
@@ -70,7 +70,7 @@ Als ein weiteres Problem kann die hohe Abhängigkeit der Branche von gesetzliche
       \toprule
       ID                & Problem & Quelle \\
       \midrule
-      \textbf{K-P-1}              &       Anstieg der Steuerungskomplexität der Anlagen durch dezentrale Energieerzeugung               & \textit{Branche}                \\
+      \textbf{K-P-1}              &       Anstieg der Steuerungskomplexität der Anlagen wegen der dezentrale Energieerzeugung               & \textit{Branche}                \\
       \multicolumn{1}{r}{K-P-1.1} &  Koordination großer Datenmengen     \\
       \multicolumn{1}{r}{K-P-1.2} &  Die Gewährleistung der Leistungsqualität und Leistungsverfügbarkeit \\
       \multicolumn{1}{r}{K-P-1.3} &  Verzögerung der Reaktion auf Probleme aufgrund des 10-Minuten-Takts der SCADA-Systeme & \textit{Auftraggeber} \\\addlinespace
@@ -83,13 +83,13 @@ Als ein weiteres Problem kann die hohe Abhängigkeit der Branche von gesetzliche
       \bottomrule
   \end{tabularx}
   \label{kontext_probleme}
-  \caption{Löungen aus Kontextebene}
+  \caption{Probleme aus Kontextebene}
 \end{table}
 
 \paragraph{Kontextmodell}
 
-Die oben definierten Probleme schaffen eine Struktur für ihre Lösung (vgl. \ac{pal}-Modell Lösungssäule). Das Kontextmodell dient dazu, eine erste statische Struktur des Zielsystems auf Grundlage der identifizierten Anwendungsfälle und Lösungsmöglichkeiten zu schaffen \citep{Lauenroth2016}. Es sind im Systemkontext zwar viele Stakeholder aufgelistet, aber für die prototypische Lösungsentwicklung werden die Anwendungsfälle und Einflussparameter im Sinne der Risikominimierung (K-P-4.2) auf das Wesentliche reduziert. Für den Prototypen werden die Kunden als Nutzer außer Acht gelassen, da für diese keine Geschäftsprozesse konkretisiert wurden.  Die Anwendungsfälle können eine erste grobe Struktur des Systems bilden, doch sie wird genau so durch die Rahmenbedingungen im Systemkontext geformt.
-Mit dem in Abbildung \ref{usecase_basic} dargestellten Use Case Diagramm werden zusammenhängende Anwendungsfälle zur Lösung der Probleme in K-P-1 aufgeführt. In dem Diagramm wird der gewünschte Geschäftsprozess des Auftraggebers für das Wartungspersonal in Elemente aufgeteilt, die durch das System aufgegriffen werden.
+Die oben definierten Probleme schaffen eine Struktur für ihre Lösung (vgl. \ac{pal}-Modell Lösungssäule). Das Kontextmodell dient dazu, eine erste statische Struktur des Zielsystems auf Grundlage der identifizierten Anwendungsfälle und Lösungsmöglichkeiten zu schaffen \citep{Lauenroth2016}. Als Nutzer des Systems bestimmen die Anwendungsfälle des Kunden und des Wartungspersonals die erste grobe Struktur des Systems, doch sie wird genau so durch die Rahmenbedingungen im Systemkontext geformt.
+Mit dem in Abbildung \ref{usecase_basic} dargestellten Use Case Diagramm werden zusammenhängende Anwendungsfälle zur Lösung der Probleme in K-P-1 aufgeführt. In dem Diagramm wird der gewünschte Geschäftsprozess des Auftraggebers für die Nutzer in Elemente aufgeteilt, die durch das System aufgegriffen werden.
 
 \begin{figure}[ht!]
   \centering
@@ -154,14 +154,78 @@ Die Anforderungsdefinition in der Kontextebene ist von hoher Abstraktion gepräg
 \newpage
 
 \subsubsection{Systemebene}
+Um den inneren logischen Aufbau des Systems zu spezifizieren, müssen die Lösungen und Anforderungen der Kontextebene erneut in zu lösende Probleme zerlegt werden. Anschließend wird das Systemmodell vorgestellt, welches mit seinen Schnittstellen, Funktionen und Datenstrukturen die Probleme lösen soll. Da aus der Spezifikation der Systemfunktionen sich neue Anwendungsfälle ergeben, werden diese ebenfalls spezifiziert. Schließlich werden die Anforderungen an das System definiert.
 
-\paragraph{Problemstellungen}
+\paragraph{Problemstellungen} Damit das System die Anforderungen der des Systemkontextes lösen kann, muss es spezielle Probleme lösen. Das Hauptproblem ist die Virtualisierung eines physischen Assets mitsamt der zugehörigen Messdaten. Unabhängig davon, wo sich der Nutzer befindet, soll er jederzeit den Zustand der Anlage durch den digitalen Zwilling einsehen können. Dabei soll es dem Nutzer ermöglicht werden, den digitalen Zwilling eindeutig einer realen Anlage zuzuordnen. Um einen Mehrwert aus den gemessenen Daten zu erlangen, muss das System die Bedeutung bestimmter Daten erkennen und ggf. eine Benachrichtigung versenden.
 
-Zielmodell erstellen
+\begin{table}[ht!]
+  \begin{tabularx}{\textwidth}{@{}lXp{2cm}@{}}
+      \toprule
+      ID                & Problem & Quelle \\
+      \midrule
+      \textbf{S-P-1}              &       Übergabe des pyhsischen Assets in die digitale Welt               &  K-FA-1               \\
+      \multicolumn{1}{r}{S-P1.1} &  Erzeugung eines cyber-physischen Systems als Messinstrument  & \\
+      \multicolumn{1}{r}{S-P1.1} &  Empfang aller Zustandsdaten der Anlage     \\
+      \multicolumn{1}{r}{S-P1.2} &  Identifikation der Anlage     \\
+      \multicolumn{1}{r}{S-P1.3} &  Erkennung der Bedeutung eines Messwerts  & K-FA.13\\
+      \multicolumn{1}{r}{S-P1.4} &  Orts- und zeitunabhängige Anzeige der Zustandsdaten einer Anlage     \\
+      \multicolumn{1}{r}{S-P1.5} &  Verortung einer Anlage & K-FA.1.2\\
+      \multicolumn{1}{r}{S-P1.6} &  Erkennung der Grenzüberschreitung eines Messwerts & K-FA-1.4\\
+      \multicolumn{1}{r}{S-P1.7} &  Erkennung der Notwendigkeit einer erneuten Benachrichtigung\\
+      \textbf{S-P-2}              &  Bereitstellung einer flexiblen Systemarchitektur  & K-QA \\
+      \textbf{S-P-3}              &  Bereitstellung einer standard-konformen Systemarchitektur K-RA \\
+      \addlinespace
+      \bottomrule
+  \end{tabularx}
+  \label{system_probleme}
+  \caption{Probleme aus Systemebene}
 
-Cyberpyhsisches Embedded System muss durch eine Verwaltungsschale erzeugt werden -> Industrie-4.0-Komponente ist Spezialisierung des CPS
+\end{table}
+
 
 \paragraph{Systemmodell}
+
+Damit das System die Anwendungsfälle aus Abbildung \ref{usecase_basic} ermöglichen kann, enthält es im Inneren bestimmte Funktionen, Schnittstellen und Datenstrukturen. Von der Virtualisierung der Anlage bis zur Präsentation für den Nutzer fließen viele Daten. Der Fluss der Daten über die Funktionen und Schnittstellen ergibt ein erstes grobes Systemmodell (s.Abbildung \ref{dataflow}). Die gelben Objekte repräsentieren sind Schnittstellen, die die Verbindung des Systems mit der Umwelt beschreiben. Über die Funktionen (grün) fließen die Daten an die Datenspeicher (rot), bis sie schließlich bei den Nutzern ankommen. Dieses Diagramm dient nicht dazu, den Datenfluss zu kontrollieren, d.h. Bedingungen zu setzen. Es soll lediglich einen Überblick über den Aufbau des Systems geben.
+
+\begin{figure}[ht!]
+  \centering
+  \noindent\makebox[\textwidth]{\includegraphics[width=\paperwidth]{data_flow.png}}
+  \caption[Datenflussdiagramm]{Datenflussdiagramm}
+  \label{dataflow}
+\end{figure}
+
+\noindent Aus dem Diagramm sind die \textbf{Schnittstellen} Anlage, Systemadmin, die Nutzer und der Benachrichtigungsdienst zu entnehmen. Technisch gesehen existieren noch andere Schnittstellen, die Daten austauschen.
+
+\begin{enumerate}
+  \item Sensoren zu \textit{Anlage}: Messwerte werden durch Computerverarbeitung Eigenschaften der Anlage zugeordnet. \begin{itemize}
+    \item 1 Anlage besteht aus n Sensoren und 1 Gateway
+  \end{itemize}
+  \item Anlage zur Cloud: Messwerte \textit{Gateway} werden über ein Protokoll an eine Destination in der Cloud gesendet
+  \item Cloud zur Geräteverwaltung
+  \item Cloud zum digitalen Zwilling: \textit{Message Processing}
+  \item Regeln zum digitalen Zwilling
+  \item Events zum digitalen Zwilling
+  \item Benachrichtigungsdienst zu dem digitalen Zwilling/Messwerten
+  \item Nutzer zur IoT-App
+\end{enumerate}
+
+Funktionen: Datenflussdiagramm
+\begin{itemize}
+  \item Funktionen im Sinne der Verarbeitung von Daten
+  \item werden direkt durch Schnittstellen oder andere Funktionen ausgelöst
+  \item Verbunden mit Anwendungsfällen aus Kontextebene
+  \item Andere Funktionen aus Systemebene
+  \item Anwendungfälle auf Systemebene
+\end{itemize}
+
+Datenstrukturen
+
+\begin{itemize}
+  \item sämtliche im System gespeicherte Daten: Datum und Bezeichner
+  \item ER-Modelle: Device Modell mit Angepassten Capabilties
+\end{itemize}
+
+
 
 Abbildung s. \ref{ebenen_i40}
 
@@ -182,6 +246,35 @@ Abbildung s. \ref{ebenen_i40}
   \label{usecasediagram}
 \end{figure}
 \paragraph{Anforderungen}
+
+In Bezug auf Datenstrukturen, Schnittstellen, Funktionen, Elemente in Nutzeroberfläche
+
+\begin{table}[ht!]
+  \begin{tabularx}{\textwidth}{@{}lXp{2cm}@{}}
+      \toprule
+      ID                & Anforderung & Quelle \\
+      \midrule
+      % Funktionale Anforderungen
+      \textbf{S-FA-1}              &  Das System muss dem Nutzer Zugriff auf den digitalen Zwilling der Anlage gewähren.  & \textit{K-P-1}                \\
+      \multicolumn{1}{r}{S-FA-1.1} &  Das Sytem muss dem Nutzer die aktuellen Messewerte in Echtzeit anzeigen.    & \textit{K-P-1.1}\\
+      \multicolumn{1}{r}{S-FA-1.2} & Das System muss dem Nutzer die Verortung der Anlage ermöglichen. \\
+      \multicolumn{1}{r}{S-FA-1.3} & Das System muss dem Nutzer prädiktive Informationen liefern.\\
+      \multicolumn{1}{r}{S-FA-1.4} & Das System muss dem Nutzer die Reaktion auf kritische Zustände in Echtzeit ermöglichen.  & \textit{K-P-1.2}\\
+      % Qualitative Anforderungen
+      \textbf{S-QA-1}              & Die Architektur des Systems muss dem \ac{sa} die flexible Anpassung an Änderungen erlauben.     & \textit{K-P-2}                \\
+      \textbf{S-QA-2}              & Die Architektur des Systems muss dem \ac{sa} die Einbindung neuer Anlagen erlauben.           & \textit{Auftraggeber}                \\
+      \textbf{S-QA-3}              &  Die Architektur des System muss dem \ac{sa} die Einbindung von intelligenten Diensten erlauben.  & \textit{K-P-4.1} \\
+      \textbf{S-QA-4}              &  Die Architektur des System muss dem \ac{sa} erlauben, das System um Funktionen zu erweitern.  & \textit{K-P-4.1} \\
+      % Rahmenbedingungen
+      \textbf{S-RA-1}              & Für die Umsetzung des Prototypen muss die SAP Leonardo IoT Foundation verwendet werden.       & \textit{K-P-4} \\
+      \textbf{S-RA-2}              & Die Architektur des Systems muss mit \ac{rami} konform sein.      & \textit{K-P-3} \\
+      \textbf{S-RA-3}              & Die Simulation muss die Eigenschaften einer Industrie-4.0-Komponente aufweisen.      & \textit{K-P-4.2} \\
+      \addlinespace
+      \bottomrule
+  \end{tabularx}
+  \caption{Anforderungen aus Kontextebene}
+  \label{kontext_anforderungen}
+\end{table}
 
 \begin{itemize}
   \item logischer Aufbau des Systems
@@ -204,11 +297,35 @@ Abbildung s. \ref{ebenen_i40}
 Anpassbar, Änderbar, Benutzbar, Genau, Performanz, Sicherheit, Übertragbarkeit, Zuverlässigkeit
 
 Datenflussdiagramm
+
+% Technische Ebene
 \subsubsection{Technische Ebene}
 Das ist eher Teil der Software-Architektur, daher nur ganz kurz fassen
 
 \paragraph{Problemstellungen und Ziele}
 Ergeben sich aus Anforderungen der Systemebene
+
+\begin{table}[ht!]
+  \begin{tabularx}{\textwidth}{@{}lXp{2cm}@{}}
+      \toprule
+      ID                & Problem & Quelle \\
+      \midrule
+      \textbf{S-P-1}              &       Übergabe des pyhsischen Asssets in die digitale Welt               & \textit{Branche}                \\
+      \multicolumn{1}{r}{T-P1.1} &  Erzeugung eines cyber-physischen Systems als Messinstrument \\
+      \multicolumn{1}{r}{T-P1.1} &  Empfang der Zustandsdaten der Anlage     \\
+      \multicolumn{1}{r}{T-P1.2} &  Erkennung der Bedeutung eines Messwerts \\
+      \multicolumn{1}{r}{T-P1.3} &  Ortsunabhängige Anzeige der Zustandsdaten einer Anlage     \\
+      \multicolumn{1}{r}{T-P1.4} &  Verortung einer Anlage \\
+      \multicolumn{1}{r}{T-P1.5} &  Erkennung der Grenzüberschreitung eines Messwerts \\
+      \multicolumn{1}{r}{T-P1.6} &  Erkennung der Notwendigkeit einer erneuten Benachrichtigung\\
+      \textbf{S-T-2}              &  Bereitstellung einer flexiblen Systemarchitektur   \\
+      \textbf{S-T-3}              &  Bereitstellung einer standard-konformen Systemarchitektur \\
+      \addlinespace
+      \bottomrule
+  \end{tabularx}
+  \label{system_probleme}
+  \caption{Probleme aus technischer Ebene}
+\end{table}
 \paragraph{Technischer Aufbau des Systems}
 verwendete Technologien und konkrete Ausprägung des Systems
 z.B. technische Architekturbeschreibungen, technische Datenmodelle oder verwendete Hardwaresysteme
