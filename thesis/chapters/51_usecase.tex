@@ -16,9 +16,9 @@ Der Windenergieanlagenhersteller Enercon GmbH aus Aurich verzeichnet 29000 Anlag
 
 \subsubsection{Anforderungserhebung}
 
-Um die Anforderungen für die Umsetzung einer repräsentativen Lösung zu bestimmen, muss zunächst ermittelt werden, welche Einflussfaktoren sich im Kontext des Zielsystems befinden und wo sich die Grenze des Systems befindet. Mit der Evaluation der Ausgangssituation (s. \ref{usecase}) können Anforderungsquellen identifiziert werden, welche sich auf das Zielsystem beziehen und sich im Systemkontext befinden (s. Abbildung \ref{kontext}). Auf Grundlage der Evaluation werden zunächst Probleme, Anforderungen und Lösungen für das System definiert. Für eine bessere Strukturierung des Systems werden die einzelnen \ac{pal} auf die Ebenen System und Systemkontext, sowie auch auf die technische Ebene abstrahiert. Die Dokumentation von Anforderungen auf verschiedenen Abstraktionsebenen ist vor allem für die nachträgliche Verwaltung der Anforderungen für zukünftige Softwareprojekte von großem Wert \citep{Lauenroth2016}. Nach \citet{IREB2017} unterscheidet man typischerweise zwischen drei Arten von Anforderungen: funktionale Anforderungen, Qualitätsanforderungen sowie Randbedingungen. Die funktionalen Anforderungen werden weiter in verschiedene Perspektiven unterteilt. Aus der Struktur- bzw. Datenverspektive wird die Struktur der Ein- und Ausgabedaten beschrieben, welche in der Funktionsperpektive verarbeitet werden. Die Verhaltensperspektive beschreibt das Verhalten des Systems auf Basis von Zuständen und Ereignissen \citep{Lauenroth2016}.
-Daraufhin werden aus den ermittelten Anforderungen Teilsysteme identifiziert, für welche die Anfoderungen ebenfalls nach dem \ac{pal}-Model erfasst werden. Die Formulierung von Anforderungen setzt das Vorhandensein einer Lösung voraus, weshalb auch der Prototyp bereits als Anforderungsquelle gelten kann.
-\\\\Aus der Evaluation der Ausgangssituation ergibt sich die in Abbildung \ref{kontext} dargestellte Systemabgrenzung. Die Anforderungsanalyse berücktsichtigt die Stakeholder, welche sowohl mit dem System interagieren als auch direkten Einfluss auf die Anforderungen haben. Als Nutzer des Systems kristallisieren sich die Kunden Enercons (z.B. die \ac{evu}) sowie das Servicepersonal, welches in der Wartung tätig ist. Stakeholder, welche eher qualitative Anforderungen an das System stellen, sind die Softwareentwickler/innen und -architekt(inn)en, für welche der Prototyp als Architekturvorlage dienen soll. Die Auftraggeber stellen die direkte Anforderung, eine Lösung und Analyse für SAP Leonardo zu entwickeln, die die Eignung SAP Leonardos als Verwaltungsschale für die Industrie-4.0-Komponente beurteilt. Dies impliziert, dass sich an der IT-Sicht (s. Abbildung \ref{it_layer}) der Referenzarchitektur RAMI 4.0 und an dem Konzept der Industrie-4.0-Komponente (s. Abschnitt \ref{rami}) orientiert werden soll. Berücksichtigt werden sollen außerdem die Anforderungen, die sich aus der Beschaffenheit der Branche der Energiewirtschaft ergeben. Bereits existierende Systeme können ebenfalls Einfluss auf das System haben, was jedoch für die Prototypentwicklung nicht relevant ist.
+Um die Anforderungen für die Umsetzung einer repräsentativen Lösung zu bestimmen, muss zunächst ermittelt werden, welche Einflussfaktoren sich im Kontext des Zielsystems befinden und wo sich die Grenze des Systems befindet. Mit der Evaluation der Ausgangssituation (s. \ref{usecase}) können Anforderungsquellen identifiziert werden, welche sich auf das Zielsystem beziehen und sich im Systemkontext befinden (s. Abbildung \ref{kontext}). Auf Grundlage der Evaluation werden zunächst Probleme, Anforderungen und Lösungen für das System definiert. Für eine bessere Strukturierung des Systems werden die einzelnen \ac{pal} auf die Ebenen System und Systemkontext, sowie auch auf die technische Ebene abstrahiert. Die Dokumentation von Anforderungen auf verschiedenen Abstraktionsebenen ist vor allem für die nachträgliche Verwaltung der Anforderungen für zukünftige Softwareprojekte von großem Wert \citep{Lauenroth2016}. Nach \citet{IREB2017} unterscheidet man typischerweise zwischen drei Arten von Anforderungen: funktionale Anforderungen, Qualitätsanforderungen sowie Randbedingungen.
+Die Formulierung von Anforderungen setzt das Vorhandensein einer Lösung voraus, weshalb auch der Prototyp bereits als Anforderungsquelle gelten kann.
+\\\\Aus der Evaluation der Ausgangssituation ergibt sich die in Abbildung \ref{kontext} dargestellte Systemabgrenzung. Die Anforderungsanalyse berücktsichtigt die Stakeholder, welche sowohl mit dem System interagieren als auch direkten Einfluss auf die Anforderungen haben. Als Nutzer des Systems kristallisieren sich die Kunden Enercons (z.B. die \ac{evu}) sowie das Servicepersonal, welches in der Wartung tätig ist. Stakeholder, welche eher qualitative Anforderungen an das System stellen, sind die Softwareentwickler/innen und -architekt(inn)en, für welche der Prototyp als Architekturvorlage dienen soll. Die Auftraggeber stellen die direkte Anforderung, eine Lösung und Analyse für SAP Leonardo zu entwickeln, die die Eignung SAP Leonardos als Verwaltungsschale für die \ac{i40} beurteilt. Dies impliziert, dass sich an der IT-Sicht (s. Abbildung \ref{it_layer}) der Referenzarchitektur RAMI 4.0 und an dem Konzept der Industrie-4.0-Komponente (s. Abschnitt \ref{rami}) orientiert werden soll. Berücksichtigt werden sollen außerdem die Anforderungen, die sich aus der Beschaffenheit der Branche der Energiewirtschaft ergeben. Bereits existierende Systeme können ebenfalls Einfluss auf das System haben, was jedoch für die Prototypentwicklung nicht relevant ist.
 
 
 \begin{figure}[h]
@@ -31,9 +31,8 @@ Daraufhin werden aus den ermittelten Anforderungen Teilsysteme identifiziert, f�
 % Anforderungsanalyse ***********
 
 \subsection{Anforderungsanalyse}
-Im folgenden Kapitel wird die Anforderungsanalyse nach Abstraktionsebenen des \ac{pal}-Modells (s. Tabelle \ref{pal}) durchgeführt. In der Kontextebene werden Anforderungen bestimmt, welche sich direkt oder indirekt die Funktionen des Systems bestimmen. Es werden Einflussfaktoren behandelt, welche sich außerhalb der Systemgrenzen befinden. Die Behandlung der Forschungsfrage FF1.1, welche Anforderungen an ein System für die digitale Transformation sich aus Sicht der dezentralen Energierzeugung ergeben, schafft die Grundlage für die Problemdefinition für die Funktionsweise des eigentlichen Systems. Die Funktionen werden in der Systemebene mit den notwendigen Schnittstellen und Datenstrukturen in einen logischen Aufbau eingeordnet. Anschließend wird auf der technischen Ebene der logische Aufbau technisch beschrieben.
+Im folgenden Kapitel wird die Anforderungsanalyse nach Abstraktionsebenen des \ac{pal}-Modells (s. Tabelle \ref{pal}) durchgeführt. In der Kontextebene werden Anforderungen bestimmt, welche sich direkt oder indirekt die Funktionen des Systems bestimmen. Die Behandlung der Forschungsfrage FF1.1, welche Anforderungen an ein System für die digitale Transformation sich aus Sicht der dezentralen Energierzeugung ergeben, schafft die Grundlage für die Problemdefinition für die Funktionsweise des eigentlichen Systems. Die Funktionen werden in der Systemebene mit den notwendigen Schnittstellen und Datenstrukturen in einen logischen Aufbau eingeordnet. Anschließend wird auf der technischen Ebene der logische Aufbau technisch beschrieben.
 
-\newpage
 
 \begin{table}[h]
   \begin{tabular}{ p{4cm}|p{5cm}|p{4cm} }
@@ -42,15 +41,15 @@ Im folgenden Kapitel wird die Anforderungsanalyse nach Abstraktionsebenen des \a
     \midrule
     \multicolumn{3}{ l }{\textbf{Kontextebene} }\\
     \hline
-    K-P-1: Problem & K-QA-1: Qualitative Anforderung \newline K-FA-1: Funktionale Anforderung \newline K-RA-1: Randbedingung  & K-L-1: Lösung\\
+    K-P-N & K-A-N & K-L-N\\
     \hline
      \multicolumn{3}{ l }{\textbf{Systemebene} }\\
      \hline
-     S-P-1: Problem & S-A-1: Anforderung  & S-L-1: Lösung\\
+     S-P-N & S-A-N  & S-L-N\\
   \hline
     \multicolumn{3}{ l }{\textbf{Technische Ebene} }\\
     \hline
-    T-P-1: Problem & T-A-1: Anfoderung  & T-L-1: Lösung\\
+    T-P-N & T-A-N  & T-L-N\\
     \bottomrule
     \end{tabular}
     \label{pal_table}
@@ -122,41 +121,13 @@ Ein wesentliches Merkmal von Industrie-4.0-Projekten ist die Interdisziplinarit�
 
 \paragraph{Anforderungen}
 
-Die Anforderungsdefinition in der Kontextebene ist von hoher Abstraktion geprägt. Sie entstehen aus den wesentlichen Problemen, die das Zielsystem zu lösen hat. Es wird zunächst ein grober Überblick über die wichtigsten Anforderungen an das Gesamtsystem gegeben, um eine Orientierung für die Anforderungserhebung auf Systemebene zu schaffen. Nach \citet{Doleski2016} gibt es drei wesentliche Anforderungen an Energieunternehmen. Zum einen gilt es die Informationsflut aus der dezentralen Produktion zu bewältigen. Bezogen auf das Zielsystem bedeutet dies, Messwerte aus der Anlage in einem digitalen Zwilling visuell bereitzustellen. Außerdem müssen diese Informationen Wissen erzeugen. Das System muss dies durch die Bereitstellung von prädiktiven Informationen und durch Reaktion auf kritische Zustände ermöglichen. Zudem müssen aus den Informationen relevante Erkenntnisse für die Unternehmensführung gewonnen werden. Dafür muss das Zielsystem eine Möglichkeit für die Einbindung von intelligenten Diensten zur Datenverarbeitung aufweisen. Für einen besseren Überblick sind die Anforderungen in Tabelle \ref{kontext_anforderungen} gelistet.
+Die Anforderungsdefinition in der Kontextebene ist von hoher Abstraktion geprägt. Sie entstehen aus den wesentlichen Problemen, die das Zielsystem zu lösen hat. Es wird zunächst ein grober Überblick über die wichtigsten Anforderungen an das Gesamtsystem gegeben, um eine Orientierung für die Anforderungserhebung auf Systemebene zu schaffen. Nach \citet{Doleski2016} gibt es drei wesentliche Anforderungen an Energieunternehmen. Zum einen gilt es die Informationsflut aus der dezentralen Produktion zu bewältigen. Bezogen auf das Zielsystem bedeutet dies, Messwerte aus der Anlage in einem digitalen Zwilling visuell bereitzustellen. Außerdem müssen diese Informationen Wissen erzeugen. Das System muss dies durch die Bereitstellung von prädiktiven Informationen und durch Reaktion auf kritische Zustände ermöglichen. Zudem müssen aus den Informationen relevante Erkenntnisse für die Unternehmensführung gewonnen werden. Dafür muss das Zielsystem eine Möglichkeit für die Einbindung von intelligenten Diensten zur Datenverarbeitung aufweisen. Für einen besseren Überblick sind die Anforderungen im Anhang  \ref{anfkontext} gelistet.
 
-\begin{table}[ht!]
-  \begin{tabularx}{\textwidth}{@{}lXp{2cm}@{}}
-      \toprule
-      ID                & Anforderung & Quelle \\
-      \midrule
-      % Funktionale Anforderungen
-      \textbf{K-FA-1}              &   Das System muss dem Nutzer Zugriff auf den digitalen Zwilling der Anlage gewähren.  & \textit{K-P-1}                \\
-      \multicolumn{1}{r}{K-FA-1.1} &  Das Sytem muss dem Nutzer die aktuellen Messewerte in Echtzeit anzeigen.    & \textit{K-P-1.1}\\
-      \multicolumn{1}{r}{K-FA-1.2} & Das System muss dem Nutzer die Verortung der Anlage ermöglichen. \\
-      \multicolumn{1}{r}{K-FA-1.3} & Das System muss dem Nutzer prädiktive Informationen liefern.\\
-      \multicolumn{1}{r}{K-FA-1.4} & Das System muss dem Nutzer die Reaktion auf kritische Zustände in Echtzeit ermöglichen.  & \textit{K-P-1.2}\\
-      % Qualitative Anforderungen
-      \textbf{K-QA-1}              & Die Architektur des Systems muss dem \ac{sa} die flexible Anpassung an Änderungen erlauben.     & \textit{K-P-2}                \\
-      \textbf{K-QA-2}              & Die Architektur des Systems muss dem \ac{sa} die Einbindung neuer Anlagen erlauben.           & \textit{Auftraggeber}                \\
-      \textbf{K-QA-3}              &  Die Architektur des System muss dem \ac{sa} die Einbindung von intelligenten Diensten erlauben.  & \textit{K-P-4.1} \\
-      \textbf{K-QA-4}              &  Die Architektur des System muss dem \ac{sa} erlauben, das System um Funktionen zu erweitern.  & \textit{K-P-4.1} \\
-      % Rahmenbedingungen
-      \textbf{K-RA-1}              & Für die Umsetzung des Prototypen muss die SAP Leonardo IoT Foundation verwendet werden.       & \textit{K-P-4} \\
-      \textbf{K-RA-2}              & Die Architektur des Systems muss mit \ac{rami} konform sein.      & \textit{K-P-3} \\
-      \textbf{K-RA-3}              & Die Simulation muss die Eigenschaften einer Industrie-4.0-Komponente aufweisen.      & \textit{K-P-4.2} \\
-      \addlinespace
-      \bottomrule
-  \end{tabularx}
-  \caption{Anforderungen aus Kontextebene}
-  \label{kontext_anforderungen}
-\end{table}
-
-\newpage
 
 \subsubsection{Systemebene}
-Um den inneren logischen Aufbau des Systems zu spezifizieren, müssen die Lösungen und Anforderungen der Kontextebene erneut in zu lösende Probleme zerlegt werden. Anschließend wird das Systemmodell vorgestellt, welches mit seinen Schnittstellen, Funktionen und Datenstrukturen die Probleme lösen soll. Da aus der Spezifikation der Systemfunktionen sich neue Anwendungsfälle ergeben, werden diese ebenfalls spezifiziert. Schließlich werden die Anforderungen an das System definiert.
+Um den inneren logischen Aufbau Prototypen zu spezifizieren, müssen die Lösungen und Anforderungen der Kontextebene erneut in zu lösende Probleme zerlegt werden. Anschließend wird das Systemmodell vorgestellt, welches mit seinen Schnittstellen, Funktionen und Datenstrukturen die Probleme lösen soll. Da aus der Spezifikation der Systemfunktionen sich neue Anwendungsfälle ergeben, werden diese ebenfalls spezifiziert. Schließlich werden die Anforderungen an das System definiert.
 
-\paragraph{Problemstellungen} Damit das System die Anforderungen der des Systemkontextes lösen kann, muss es spezielle Probleme lösen. Das Hauptproblem ist die Virtualisierung eines physischen Assets mitsamt der zugehörigen Messdaten. Unabhängig davon, wo sich der Nutzer befindet, soll er jederzeit den Zustand der Anlage durch den digitalen Zwilling einsehen können. Dabei soll es dem Nutzer ermöglicht werden, den digitalen Zwilling eindeutig einer realen Anlage zuzuordnen. Um einen Mehrwert aus den gemessenen Daten zu erlangen, muss das System die Bedeutung bestimmter Daten erkennen und ggf. eine Benachrichtigung versenden.
+\paragraph{Problemstellungen} Damit der Prototyp die Anforderungen der des Systemkontextes lösen kann, muss es spezielle Probleme lösen. Das Hauptproblem ist die Virtualisierung eines physischen Assets mitsamt der zugehörigen Messdaten. Unabhängig davon, wo sich der Nutzer befindet, soll er jederzeit den Zustand der Anlage durch den digitalen Zwilling einsehen können. Dabei soll es dem Nutzer ermöglicht werden, den digitalen Zwilling eindeutig einer realen Anlage zuzuordnen. Um einen Mehrwert aus den gemessenen Daten zu erlangen, muss der Prototyp die Bedeutung bestimmter Daten erkennen und ggf. eine Benachrichtigung versenden.
 
 \begin{table}[ht!]
   \begin{tabularx}{\textwidth}{@{}lXp{2cm}@{}}
@@ -164,7 +135,6 @@ Um den inneren logischen Aufbau des Systems zu spezifizieren, müssen die Lösun
       ID                & Problem & Quelle \\
       \midrule
       \textbf{S-P-1}              &       Übergabe des pyhsischen Assets in die digitale Welt               &  K-FA-1               \\
-      \multicolumn{1}{r}{S-P1.1} &  Erzeugung eines cyber-physischen Systems als Messinstrument  & \\
       \multicolumn{1}{r}{S-P1.1} &  Empfang aller Zustandsdaten der Anlage     \\
       \multicolumn{1}{r}{S-P1.2} &  Identifikation der Anlage     \\
       \multicolumn{1}{r}{S-P1.3} &  Erkennung der Bedeutung eines Messwerts  & K-FA.13\\
@@ -185,7 +155,7 @@ Um den inneren logischen Aufbau des Systems zu spezifizieren, müssen die Lösun
 
 \paragraph{Systemmodell}
 
-Damit das System die Anwendungsfälle aus Abbildung \ref{usecase_basic} ermöglichen kann, enthält es im Inneren bestimmte Funktionen, Schnittstellen und Datenstrukturen. Von der Virtualisierung der Anlage bis zur Präsentation für den Nutzer fließen viele Daten. Der Fluss der Daten über die Funktionen und Schnittstellen ergibt ein erstes grobes Systemmodell (s.Abbildung \ref{dataflow}). Die gelben Objekte repräsentieren sind Schnittstellen, die die Verbindung des Systems mit der Umwelt beschreiben. Über die Funktionen (grün) fließen die Daten an die Datenspeicher (rot), bis sie schließlich bei den Nutzern ankommen. Dieses Diagramm dient nicht dazu, den Datenfluss zu kontrollieren, d.h. Bedingungen zu setzen. Es soll lediglich einen Überblick über den Aufbau des Systems geben.
+Damit der Prototyp die Anwendungsfälle aus Abbildung \ref{usecase_basic} ermöglichen kann, enthält es im Inneren bestimmte Funktionen, Schnittstellen und Datenstrukturen. Von der Virtualisierung der Anlage bis zur Präsentation für den Nutzer fließen viele Daten. Der Fluss der Daten über die Funktionen und Schnittstellen ergibt ein erstes grobes Systemmodell (s.Abbildung \ref{dataflow}). Die gelben Objekte repräsentieren sind Schnittstellen, die die Verbindung des Systems mit der Umwelt beschreiben. Über die Funktionen (grün) fließen die Daten an die Datenspeicher (rot), bis sie schließlich bei den Nutzern ankommen. Dieses Diagramm dient nicht dazu, den Datenfluss zu kontrollieren, d.h. Bedingungen zu setzen. Es soll lediglich einen Überblick über den Aufbau des Systems geben.
 
 \begin{figure}[ht!]
   \centering
@@ -194,40 +164,18 @@ Damit das System die Anwendungsfälle aus Abbildung \ref{usecase_basic} ermögli
   \label{dataflow}
 \end{figure}
 
-\noindent Aus dem Diagramm sind die \textbf{Schnittstellen} Anlage, Systemadmin, die Nutzer und der Benachrichtigungsdienst zu entnehmen. Technisch gesehen existieren noch andere Schnittstellen, die Daten austauschen.
+\noindent Aus dem Diagramm sind die \textbf{Schnittstellen} Anlage, Systemadmin, die Nutzer und der Benachrichtigungsdienst zu entnehmen. Technisch gesehen existieren noch andere Schnittstellen, über die Daten verarbeitet und ausgetauscht werden.
 
 \begin{enumerate}
-  \item Sensoren zu \textit{Anlage}: Messwerte werden durch Computerverarbeitung Eigenschaften der Anlage zugeordnet. \begin{itemize}
-    \item 1 Anlage besteht aus n Sensoren und 1 Gateway
-  \end{itemize}
-  \item Anlage zur Cloud: Messwerte \textit{Gateway} werden über ein Protokoll an eine Destination in der Cloud gesendet
-  \item Cloud zur Geräteverwaltung
-  \item Cloud zum digitalen Zwilling: \textit{Message Processing}
-  \item Regeln zum digitalen Zwilling
-  \item Events zum digitalen Zwilling
-  \item Benachrichtigungsdienst zu dem digitalen Zwilling/Messwerten
-  \item Nutzer zur IoT-App
+  \item \textit{Systemadmin} zur \textit{Cloud}: Der Systemadmin soll über Benutzerschnittstellen zur Geräteverwaltung Typen und Instanzen der Anlage definieren. Eine Anlage soll aus aus n Sensoren und einem Gateway bestehen.
+  \item \textit{Sensoren} zu \textit{Anlage}: Sensoren sollen Windgeschwindkeit (km/h), Luftfeuchtigkeit (\%), Temperatur (°C), Luftdruck (hpA) und die Luftdichte ($m^3$) erfassen.
+  \item \textit{Anlage} zur \textit{Cloud}: Messwerte sollen von der Anlage über ein \textit{Gateway} an die Zieladresse der Anlageninstanz gesendet werden.
+  \item \textit{Systemadmin} zum \textit{digitalen Zwilling}: Der Systemadmin soll über Benutzerschnittstellen Anlagentypen und -instanzen für die Zwillinge erzeugen, damit sie in eine Anwendung integriert werden können. Außerdem sollen Regeln und Funktionen für die Anlagentypen definiert werden.
+  \item \textit{Anlageninstanz} zum \textit{digitalen Zwilling}: Die Messwerte der Anlage sollen dem digitalen Zwilling übergeben werden.
+  \item \textit{Benachrichtigungsdienst} zum \textit{digitalen Zwilling}: Der Benachrichtigungsdienst soll über die definierten Regeln für die Anlage aktiviert werden.
+  \item \textit{Nutzer} zur \textit{Anwendung}: Die Nutzer sollen die Anlagen über eine grafische Benutzerschnittstelle einsehen können.
 \end{enumerate}
 
-Funktionen: Datenflussdiagramm
-\begin{itemize}
-  \item Funktionen im Sinne der Verarbeitung von Daten
-  \item werden direkt durch Schnittstellen oder andere Funktionen ausgelöst
-  \item Verbunden mit Anwendungsfällen aus Kontextebene
-  \item Andere Funktionen aus Systemebene
-  \item Anwendungfälle auf Systemebene
-\end{itemize}
-
-Datenstrukturen
-
-\begin{itemize}
-  \item sämtliche im System gespeicherte Daten: Datum und Bezeichner
-  \item ER-Modelle: Device Modell mit Angepassten Capabilties
-\end{itemize}
-
-
-
-Abbildung s. \ref{ebenen_i40}
 
 \begin{figure}[h]
   \centering
@@ -236,71 +184,24 @@ Abbildung s. \ref{ebenen_i40}
   \label{ebenen_i40}
 \end{figure}
 
-\paragraph{Aufbau der Nutzeroberfläche}
 \paragraph{Anwendungsfälle}
+
+Damit die Anwendungsfälle der Nutzer erfüllt werden können, müssen innerhalb des Systems Anwendungsfälle neue behandelt werden. Die neuen Fälle betreffen die Funktionen, die der Systemadministrator ausführen muss, damit die physische Anlage und dessen Daten virtuell repräsentiert werden können.
 
 \begin{figure}[ht!]
   \centering
-  \noindent\makebox[\textwidth]{\includegraphics[width=\paperwidth]{usecase_ext1.png}}
+  \noindent\makebox[\textwidth]{\includegraphics[width=\paperwidth]{usecase_ext2.png}}
   \caption[Erweitertes Use Case Diagramm auf Systemebene]{Erweitertes Use Case Diagramm auf Systemebene}
   \label{usecasediagram}
 \end{figure}
 \paragraph{Anforderungen}
+Hier werden explizite Anforderungen an den Prototypen gestellt.
 
-In Bezug auf Datenstrukturen, Schnittstellen, Funktionen, Elemente in Nutzeroberfläche
 
-\begin{table}[ht!]
-  \begin{tabularx}{\textwidth}{@{}lXp{2cm}@{}}
-      \toprule
-      ID                & Anforderung & Quelle \\
-      \midrule
-      % Funktionale Anforderungen
-      \textbf{S-FA-1}              &  Das System muss dem Nutzer Zugriff auf den digitalen Zwilling der Anlage gewähren.  & \textit{K-P-1}                \\
-      \multicolumn{1}{r}{S-FA-1.1} &  Das Sytem muss dem Nutzer die aktuellen Messewerte in Echtzeit anzeigen.    & \textit{K-P-1.1}\\
-      \multicolumn{1}{r}{S-FA-1.2} & Das System muss dem Nutzer die Verortung der Anlage ermöglichen. \\
-      \multicolumn{1}{r}{S-FA-1.3} & Das System muss dem Nutzer prädiktive Informationen liefern.\\
-      \multicolumn{1}{r}{S-FA-1.4} & Das System muss dem Nutzer die Reaktion auf kritische Zustände in Echtzeit ermöglichen.  & \textit{K-P-1.2}\\
-      % Qualitative Anforderungen
-      \textbf{S-QA-1}              & Die Architektur des Systems muss dem \ac{sa} die flexible Anpassung an Änderungen erlauben.     & \textit{K-P-2}                \\
-      \textbf{S-QA-2}              & Die Architektur des Systems muss dem \ac{sa} die Einbindung neuer Anlagen erlauben.           & \textit{Auftraggeber}                \\
-      \textbf{S-QA-3}              &  Die Architektur des System muss dem \ac{sa} die Einbindung von intelligenten Diensten erlauben.  & \textit{K-P-4.1} \\
-      \textbf{S-QA-4}              &  Die Architektur des System muss dem \ac{sa} erlauben, das System um Funktionen zu erweitern.  & \textit{K-P-4.1} \\
-      % Rahmenbedingungen
-      \textbf{S-RA-1}              & Für die Umsetzung des Prototypen muss die SAP Leonardo IoT Foundation verwendet werden.       & \textit{K-P-4} \\
-      \textbf{S-RA-2}              & Die Architektur des Systems muss mit \ac{rami} konform sein.      & \textit{K-P-3} \\
-      \textbf{S-RA-3}              & Die Simulation muss die Eigenschaften einer Industrie-4.0-Komponente aufweisen.      & \textit{K-P-4.2} \\
-      \addlinespace
-      \bottomrule
-  \end{tabularx}
-  \caption{Anforderungen aus Kontextebene}
-  \label{kontext_anforderungen}
-\end{table}
-
-\begin{itemize}
-  \item logischer Aufbau des Systems
-  \item Problemstellung/Ziele: ergeben sich aus Anforderungen der Kontextebene
-  \item Systemmodell: Schnittstellen, Funktionen, Datenstrukturen
-  \item Schnittstellen: Verbindung des Systems zur Umwelt (technisch und Nutzer) -> wurden im Kontextmodell definiert
-  \item technisch: Beschreibung der Daten, die mit Umwelt ausgetauscht werden
-  \item Nutzer: bennen
-  \item Funktionen: Funktionalitäten des Systems, Datenverarbeitung
-  \item Funktionen verbunden mit Anwendungsfällen auf Kontextebene
-  \item oder andere Funktionen der Systemebene: zentralisierte Funktiona
-  \item oder Anwendungsfälle auf Systemebene: Funktion realisiert Teilfunktionalität auf Systemebene
-  \item triviale Funktionnen wie Logout oder Login nur kurz -> Fokus auf geschäftskritische Funktionen
-  \item Funktion kann nur diejenigen Daten verarbeiten, welche in Datenstrukturen und Schnittstellen zur Verfügung gestellt werden
-  \item Datenstrukturen: ER-Diagramm oder Klassenmodelle
-  \item Aufbau Nutzeroberflächen: falls vorhanden, setzt Schnittstellen und Daten voraus
-  \item Anwendungsfälle auf Kontextebene können auf Systemebene konkretisiert werden
-  \item Anforderungen: Anforderungen an innere Bestandteile des Systems
-\end{itemize}
-Anpassbar, Änderbar, Benutzbar, Genau, Performanz, Sicherheit, Übertragbarkeit, Zuverlässigkeit
-
-Datenflussdiagramm
 
 % Technische Ebene
 \subsubsection{Technische Ebene}
-Das ist eher Teil der Software-Architektur, daher nur ganz kurz fassen
+Im Kapitel der Systemebene wurde logisch beschrieben, was der Prototyp können soll und über welche Schnittstellen diese Ziele erreicht werden sollen. Allerdings wurde noch nicht beschrieben, wie diese Ziele technisch realisiert werden sollen.
 
 \paragraph{Problemstellungen und Ziele}
 Ergeben sich aus Anforderungen der Systemebene
@@ -310,16 +211,11 @@ Ergeben sich aus Anforderungen der Systemebene
       \toprule
       ID                & Problem & Quelle \\
       \midrule
-      \textbf{S-P-1}              &       Übergabe des pyhsischen Asssets in die digitale Welt               & \textit{Branche}                \\
-      \multicolumn{1}{r}{T-P1.1} &  Erzeugung eines cyber-physischen Systems als Messinstrument \\
-      \multicolumn{1}{r}{T-P1.1} &  Empfang der Zustandsdaten der Anlage     \\
-      \multicolumn{1}{r}{T-P1.2} &  Erkennung der Bedeutung eines Messwerts \\
-      \multicolumn{1}{r}{T-P1.3} &  Ortsunabhängige Anzeige der Zustandsdaten einer Anlage     \\
-      \multicolumn{1}{r}{T-P1.4} &  Verortung einer Anlage \\
-      \multicolumn{1}{r}{T-P1.5} &  Erkennung der Grenzüberschreitung eines Messwerts \\
-      \multicolumn{1}{r}{T-P1.6} &  Erkennung der Notwendigkeit einer erneuten Benachrichtigung\\
-      \textbf{S-T-2}              &  Bereitstellung einer flexiblen Systemarchitektur   \\
-      \textbf{S-T-3}              &  Bereitstellung einer standard-konformen Systemarchitektur \\
+      \textbf{S-T-1}              &       Erzeugung eines cyber-physischen Systems als Messinstrument                        \\
+      \multicolumn{1}{r}{T-P1.1} &  Kommunikation der Messwerte \\
+      \textbf{S-T-2}              &  Einbindung eines Benachrichtigungsdienstes \\
+      \textbf{S-T-3} & Kategorisierung der Messwerte \\
+      \textbf{S-T-3}              &  Versenden einer Benachrichtigungs-SMS \\
       \addlinespace
       \bottomrule
   \end{tabularx}

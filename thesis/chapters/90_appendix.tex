@@ -32,7 +32,80 @@
   \caption[Eigenschaften der Cloud-Foundry-Umgebung]{Eigenschaften der Cloud-Foundry-Umgebung \citep[S. 195]{Utecht2018}}
 \end{table}
 
-\section{Anhang 2}
+
+\newpage
+\section{Anforderungen}
+
+\subsection{Anforderungen aus Kontextebene} \label{anfkontext}
+\begin{table}[ht!]
+  \begin{tabularx}{\textwidth}{@{}lXp{2cm}@{}}
+      \toprule
+      ID                & Anforderung & Quelle \\
+      \midrule
+      % Funktionale Anforderungen
+      \textbf{K-FA-1}              &   Das System muss dem Nutzer Zugriff auf den digitalen Zwilling der Anlage gewähren.  & \textit{K-P-1}                \\
+      \multicolumn{1}{r}{K-FA-1.1} &  Das Sytem muss dem Nutzer die aktuellen Messewerte in Echtzeit anzeigen.    & \textit{K-P-1.1}\\
+      \multicolumn{1}{r}{K-FA-1.2} & Das System muss dem Nutzer die Verortung der Anlage ermöglichen. \\
+      \multicolumn{1}{r}{K-FA-1.3} & Das System muss dem Nutzer prädiktive Informationen liefern.\\
+      \multicolumn{1}{r}{K-FA-1.4} & Das System muss dem Nutzer die Reaktion auf kritische Zustände in Echtzeit ermöglichen.  & \textit{K-P-1.2}\\
+      % Qualitative Anforderungen
+      \textbf{K-QA-1}              & Die Architektur des Systems muss dem \ac{sa} die flexible Anpassung an Änderungen erlauben.     & \textit{K-P-2}                \\
+      \textbf{K-QA-2}              & Die Architektur des Systems muss dem \ac{sa} die Einbindung neuer Anlagen erlauben.           & \textit{Auftraggeber}                \\
+      \textbf{K-QA-3}              &  Die Architektur des System muss dem \ac{sa} die Einbindung von intelligenten Diensten erlauben.  & \textit{K-P-4.1} \\
+      \textbf{K-QA-4}              &  Die Architektur des System muss dem \ac{sa} erlauben, das System um Funktionen zu erweitern.  & \textit{K-P-4.1} \\
+      % Rahmenbedingungen
+      \textbf{K-RA-1}              & Für die Umsetzung des Prototypen muss die SAP Leonardo IoT Foundation verwendet werden.       & \textit{K-P-4} \\
+      \textbf{K-RA-2}              & Die Architektur des Systems muss mit \ac{rami} konform sein.      & \textit{K-P-3} \\
+      \textbf{K-RA-3}              & Die Simulation muss die Eigenschaften einer Industrie-4.0-Komponente aufweisen.      & \textit{K-P-4.2} \\
+      \addlinespace
+      \bottomrule
+  \end{tabularx}
+  \caption{Anforderungen aus Kontextebene}
+  \label{kontext_anforderungen}
+\end{table}
+
+\newpage
+\subsection{Anforderungen aus Systemebene}
+
+%\begin{table}[ht!]
+  \begin{tabularx}{\textwidth}{@{}lXp{2cm}@{}}
+      \toprule
+      ID                & Anforderung & Quelle \\
+      \midrule
+      \endhead
+      % Funktionale Anforderungen
+      \textbf{S-FA-1}              &  Das Messinstrument muss min. alle 5 Sekunden Umgebungsdaten erfassen und verarbeiten können.   &  \textit{Kontext}     \\
+      \multicolumn{1}{r}{S-FA-1.1} &   Das Messinstrument muss die Messungen nach der Erfassung kommunizieren können & \textit{\ac{i40}}\\
+      \multicolumn{1}{r}{S-FA-1.1} &   Das Messinstrument muss als Entität in einem übergeordneten IT-System vorliegen & \textit{\ac{i40}}\\
+      \textbf{S-FA-2}              &   Der Prototyp muss das Messinstrument virtuell als Anlage beschreiben können & \textit{\ac{i40}}        \\
+      \multicolumn{1}{r}{S-FA-2.1} &   Der Prototyp muss das Messinstrument eindeutig per \textit{URI} identifizieren können  & \textit{\ac{i40}}\\
+      \multicolumn{1}{r}{S-FA-2.2} &   Der Prototyp muss das Messinstrument eindeutig per Koordinaten verorten können  & \textit{\ac{i40}}\\
+      \multicolumn{1}{r}{S-FA-2.3} & Der Prototyp muss die Daten der virtuellen Repräsentation halten  & \textit{\ac{i40}} \\
+      \multicolumn{1}{r}{S-FA-2.4} & Der Prototyp muss die Grenzüberschreitung der empfangenen Daten erkennen &  \textit{Kontext}\\
+      \multicolumn{1}{r}{S-FA-2.5} & Der Prototyp muss die empfangenen Daten kategorisieren &  \textit{Kontext}\\
+      \multicolumn{1}{r}{S-FA-2.6} & Der Prototyp muss eine Benachrichtiungs-SMS versenden  &  \textit{Kontext}\\
+      \multicolumn{1}{r}{S-FA-2.7} & Der Prototyp muss den Zeitpunkt der letzten gesendeten Nachricht identifizieren  &  \textit{Kontext} \\
+      \multicolumn{1}{r}{S-FA-2.8} & Der Prototyp muss Ereignisse generieren  &  \textit{Kontext}\\
+      \multicolumn{1}{r}{S-FA-2.9} & Der Prototyp muss die Anlage an eine Anwendung übergeben &  \textit{Kontext} \\
+      \textbf{S-FA-3}              &  Der Prototyp muss dem Nutzer eine Benutzerschnittstelle zur Verfügung stellen    & \textit{Kontext}  \\
+      \multicolumn{1}{r}{S-FA-3.1} &  Die Benutzerschnittstelle muss alle Anlagen auf einer Karte verorten \\
+      \multicolumn{1}{r}{S-FA-3.2} &  Die Benutzerschnittstelle muss die schnelle Bewertung des Zustands ermöglichen \\
+      \multicolumn{1}{r}{S-FA-3.3} &  Die Benutzerschnittstelle muss alle Messwerte auflisten \\
+      \multicolumn{1}{r}{S-FA-3.4} &  Die Benutzerschnittstelle muss die Messwerte visualisieren \\
+      \textbf{S-QA-1}              & Die Benutzerschnittstelle muss intuitiv sein   \\
+      % Qualitative Anforderungen
+      \textbf{S-QA-2}              & Die Architektur des Systems muss dem \ac{sa} die horizontale Integration der Anlage ermöglichen.   & \textit{RAMI 4.0} \\
+      \textbf{S-QA-3}              &  Die Kommunikation muss nach einem einheitlichen semantischen Modell erfolgen  & \textit{\ac{i40}} \\
+      % Rahmenbedingungen
+      \textbf{S-QA-4}              &  Die Architektur des Systems muss dem \ac{sa} die horizontale Integration der Anlage ermöglichen.        & \textit{RAMI: Funktion} \\
+      \addlinespace
+      \bottomrule
+      \caption{Anforderungen aus Systemebene}
+  \end{tabularx}
+
+  %\label{system_anforderungen}
+%\end{table}
+
 
 \begin{figure}[h]
   \centering

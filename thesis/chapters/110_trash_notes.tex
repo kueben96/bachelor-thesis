@@ -202,3 +202,27 @@ Neben der Datenerfassung und Fernüberwachung können Anlagen und Windparks aus 
  Obwohl viele ihrer Anlagen bereits Condistion Monitoring Systeme haben, gibt es noch immer Anlagen, die nicht internetfähig sind. Da das Ersetzen der Anlagen durch neue IoT-fähige Anlagen sowohl Ressourcenverschwendung als kostenspielig wäre, werden diese mit entsprechender Systemelektronik (Sensorik/Edge Geräte) nachgerüstet auch (s. retrofit). Diese Anlagen sollen digital abgebildet werden, um Zustände erfassen zu können. Nun fragt sich Enercon, vor allem im Zuge der Umstellung auf die von SAP HANA ermöglichten Im-Memory-Leistungen und weil die Stammdaten (Unternehmensgedächtnis, Basis für digital Twin) im SAP System liegen, wie sich wohl SAP Produkte für Monitoring und predictive maintenance eignen.
 Außerdem verfolgen Sie zukünfig das Ziel, ihr Geschäftsfeld noch weiter zu erweitern, indem sie neben Produktion von Energie auch IT-Dienstleistungen z.B. für die Energieversorger im Zusammenhang mit den Produktionanlagen anzubieten.
 Ich werde beauftragt, die Systemlanschaft von SAP Produkten (insb. Leonardo) für die digitale Transformation zu analysieren und prototypisch darstellen, wie/ob der Zustand einer (alte) WEA erfasst werden kann und ob auf Zustandsänderungen reagiert werden kann. Da Enercon ein global Player ist, möchten sie sich an RAMI 4.0 orientieren und die Informationssicht standardisiert haben. Auch das soll geprüft werden. Außerdem prüfen, wie die offlinefähigkeit ist und analysieren, welche Fähigkeiten das System zur Erweiterung des Industrie-4.0Netzes bietet.
+
+
+\subsubsection{Anforderungsanalyse}
+\begin{itemize}
+  \item logischer Aufbau des Systems
+  \item Problemstellung/Ziele: ergeben sich aus Anforderungen der Kontextebene
+  \item Systemmodell: Schnittstellen, Funktionen, Datenstrukturen
+  \item Schnittstellen: Verbindung des Systems zur Umwelt (technisch und Nutzer) -> wurden im Kontextmodell definiert
+  \item technisch: Beschreibung der Daten, die mit Umwelt ausgetauscht werden
+  \item Nutzer: bennen
+  \item Funktionen: Funktionalitäten des Systems, Datenverarbeitung
+  \item Funktionen verbunden mit Anwendungsfällen auf Kontextebene
+  \item oder andere Funktionen der Systemebene: zentralisierte Funktiona
+  \item oder Anwendungsfälle auf Systemebene: Funktion realisiert Teilfunktionalität auf Systemebene
+  \item triviale Funktionnen wie Logout oder Login nur kurz -> Fokus auf geschäftskritische Funktionen
+  \item Funktion kann nur diejenigen Daten verarbeiten, welche in Datenstrukturen und Schnittstellen zur Verfügung gestellt werden
+  \item Datenstrukturen: ER-Diagramm oder Klassenmodelle
+  \item Aufbau Nutzeroberflächen: falls vorhanden, setzt Schnittstellen und Daten voraus
+  \item Anwendungsfälle auf Kontextebene können auf Systemebene konkretisiert werden
+  \item Anforderungen: Anforderungen an innere Bestandteile des Systems
+\end{itemize}
+Anpassbar, Änderbar, Benutzbar, Genau, Performanz, Sicherheit, Übertragbarkeit, Zuverlässigkeit
+
+Datenflussdiagramm
