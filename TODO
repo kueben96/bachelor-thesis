@@ -26,11 +26,12 @@ Todo:
     ☐ Grundlagen kann ruhig 20 Seiten, also kann hinsichtlich Energiesektor evtl noch was hinzugefügt werden
   ☐  Doleski Quellen checken
 
+
   Hauptteil:
 
   Anhang:
     ☐ evtl Glossar (z.B: von Fraunhofer hinzufügen)
-
+    ☐ Begriffliche Konsistenzen/Inkonsistenzen checken: Messinstrument, Asset, Produktionsanlage, Anlage..
   Prototyp:
     ☐  Coding hübsch machen -> Python @30m
     ☐  Prototyparchitektur modellieren @4h

@@ -149,25 +149,18 @@ Damit der Prototyp die Anwendungsfälle aus Abbildung \ref{usecase_basic} ermög
 
 \begin{enumerate}
   \item \textit{Systemadmin} zur \textit{Cloud}: Der Systemadmin soll über Benutzerschnittstellen zur Geräteverwaltung Typen und Instanzen der Anlage definieren. Eine Anlage soll aus aus n Sensoren und einem Gateway bestehen.
-  \item \textit{Sensoren} zu \textit{Anlage}: Sensoren sollen Windgeschwindkeit (km/h), Luftfeuchtigkeit (\%), Temperatur (°C), Luftdruck (hpA) und die Luftdichte ($m^3$) erfassen.
-  \item \textit{Anlage} zur \textit{Cloud}: Messwerte sollen von der Anlage über ein \textit{Gateway} an die Zieladresse der Anlageninstanz gesendet werden.
-  \item \textit{Systemadmin} zum \textit{digitalen Zwilling}: Der Systemadmin soll über Benutzerschnittstellen Anlagentypen und -instanzen für die Zwillinge erzeugen, damit sie in eine Anwendung integriert werden können. Außerdem sollen Regeln und Funktionen für die Anlagentypen definiert werden.
+  \item \textit{Sensoren} zur \textit{Anlage}: Sensoren sollen Windgeschwindkeit (km/h), Luftfeuchtigkeit (\%), Temperatur (°C), Luftdruck (hpA) und die Luftdichte ($m^3$) erfassen.
+  \item \textit{Anlage} zur \textit{Cloud}: Messwerte sollen von der Anlage über ein \textit{Gateway} an die Zieladresse der Anlageninstanz in der Geräteverwaltung gesendet werden.
+  \item \textit{Systemadmin} zum \textit{digitalen Zwilling}: Der Systemadmin soll über Programmierschnittstellen Anlagentypen und -instanzen für die Zwillinge erzeugen, damit sie in eine Anwendung integriert werden können. Außerdem sollen Regeln und Funktionen für die Anlagentypen definiert werden.
   \item \textit{Anlageninstanz} zum \textit{digitalen Zwilling}: Die Messwerte der Anlage sollen dem digitalen Zwilling übergeben werden.
   \item \textit{Benachrichtigungsdienst} zum \textit{digitalen Zwilling}: Der Benachrichtigungsdienst soll über die definierten Regeln für die Anlage aktiviert werden.
   \item \textit{Nutzer} zur \textit{Anwendung}: Die Nutzer sollen die Anlagen über eine grafische Benutzerschnittstelle einsehen können.
 \end{enumerate}
 
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=0.5\linewidth]{Ebenen_I40_Kompo.png}
-  \caption[Ebenen der Industrie-4.0-Komponente]{Ebenen der Industrie-4.0-Komponente \citep[S. 52]{BITKOM2015}}
-  \label{ebenen_i40}
-\end{figure}
-
+% Use Cases
 \paragraph{Anwendungsfälle}
 
-Damit die Anwendungsfälle der Nutzer erfüllt werden können, müssen innerhalb des Systems Anwendungsfälle neue behandelt werden. Die neuen Fälle betreffen die Funktionen, die der Systemadministrator ausführen muss, damit die physische Anlage und dessen Daten virtuell repräsentiert werden können.
+Damit die Anwendungsfälle der Nutzer erfüllt werden können, müssen innerhalb des Systems neue Anwendungsfälle behandelt werden. Die neuen Fälle betreffen die Funktionen, die der Systemadministrator ausführen muss, damit die physische Anlage und dessen Daten virtuell repräsentiert werden können. In Abbildung \ref{usecasediagram} werden die neu ermittelten Anwendungsfälle in einem erweiterten Use Case Diagramm dargestellt.
 
 \begin{figure}[ht!]
   \centering
@@ -175,86 +168,89 @@ Damit die Anwendungsfälle der Nutzer erfüllt werden können, müssen innerhalb
   \caption[Erweitertes Use Case Diagramm auf Systemebene]{Erweitertes Use Case Diagramm auf Systemebene}
   \label{usecasediagram}
 \end{figure}
+% Anforderungen Systemebene
 \paragraph{Anforderungen}
-Hier werden explizite Anforderungen an den Prototypen gestellt.
 
+Die Evaluation des Lösungsmodells mit dem Anwendungsfalldiagramm und dem Datenflussdiagramm ergibt die wesentlichen Teilsysteme des geplanten Systems. Die funktionale Anforderungsdefinition bezieht sich demnach auf die Teilbereiche, die ein Gesamtsystem ergeben (s. Anhang \ref{anf_system}):
+\begin{enumerate}
+  \item \textit{Das Messinstrument zur Simulation einer Anlage} (S-FA-1) muss min. alle 5 Sekunden die Daten erfassen, verarbeiten und direkt an die Geräteverwaltung senden können.
+  \item \textit{Die Integration und Virtualisierung der Anlage} (S-FA-2) einschließlich der Behandlung der Anwendungsfälle muss vom Prototypen gewährleistet werden.
+  \item \textit{Die Visualisierung der Anlage} (S-FA-3) muss durch eine Benutzerschnittstelle für die Nutzer gewährleistet werden.
+\end{enumerate}
 
+\noindent Die detaillierte Definition der Anforderungen an Teilfunktionalitäten und an die Qualität und Sicherheit ist der Tabelle aus dem Anhang \ref{anf_system} zu entnehmen.
 
 % Technische Ebene
 \subsubsection{Technische Ebene}
 Im Kapitel der Systemebene wurde logisch beschrieben, was der Prototyp können soll und über welche Schnittstellen diese Ziele erreicht werden sollen. Allerdings wurde noch nicht beschrieben, wie diese Ziele technisch realisiert werden sollen.
 
-\paragraph{Problemstellungen und Ziele}
-Ergeben sich aus Anforderungen der Systemebene
+\paragraph{Problemstellungen}
 
-\begin{table}[ht!]
+Damit das System nach dem vorgestellten Aufbau realisiert werden kann, muss das  technische System bestimmte Probleme lösen:
+
   \begin{tabularx}{\textwidth}{@{}lXp{2cm}@{}}
       \toprule
       ID                & Problem & Quelle \\
       \midrule
-      \textbf{S-T-1}              &       Erzeugung eines cyber-physischen Systems als Messinstrument                        \\
-      \multicolumn{1}{r}{T-P1.1} &  Kommunikation der Messwerte \\
-      \textbf{S-T-2}              &  Einbindung eines Benachrichtigungsdienstes \\
-      \textbf{S-T-3} & Kategorisierung der Messwerte \\
-      \textbf{S-T-3}              &  Versenden einer Benachrichtigungs-SMS \\
+      \endhead
+      \textbf{T-P-1}              &       Erzeugung eines cyber-physischen Systems als Messinstrument für die Anlagensimulation                       \\
+      \multicolumn{1}{r}{T-P-1.1} & Lokale Verarbeitung der Messwerte  & \textit{S-FA-1}  \\
+      \multicolumn{1}{r}{T-P-1.1} & Kommunikation zwischen Anlage und Geräteverwaltung  \\
+      \textbf{T-P-2}              &    Übergabe in die digitale Welt    & \textit{S-FA-2} \\
+      \multicolumn{1}{r}{T-P-2.1}              &       Einheitliche Kommunikation im Gesamtsystem      \\
+      \multicolumn{1}{r}{T-P-2.2}              &  Adressierbarkeit aller Komponenten \\
+      \multicolumn{1}{r}{T-P-2.3} & Erzeugung eines digitalen Zwillings \\
+      \multicolumn{1}{r}{T-P-2.4} & Datentransfer zum digitalen Zwilling \\
+      \multicolumn{1}{r}{T-P-2.5} & Kategorisierung der Messwerte \\
+      \multicolumn{1}{r}{T-P-2.6} & Generierung von Events \\
+      \textbf{T-P-3}              &  Einbindung eines externen Benachrichtigungsdienstes &\textit{S-FA-2}\\
+      \textbf{T-P-4}              &  Erzeugung einer Anwendung zur Visualisierung & \textit{S-FA-3}\\
+      \multicolumn{1}{r}{T-P-4.1} & Hardware- und ortsunabhängige Verfügbarkeit der Informationen  \\
+      \textbf{T-P-5}              &  Sicherheit der Informationen & \textit{S-QA-3}\\
       \addlinespace
       \bottomrule
+      \caption{Probleme aus technischer Ebene}
+      \label{technik_probleme}
   \end{tabularx}
-  \label{system_probleme}
-  \caption{Probleme aus technischer Ebene}
-\end{table}
-\paragraph{Technischer Aufbau des Systems}
-verwendete Technologien und konkrete Ausprägung des Systems
-z.B. technische Architekturbeschreibungen, technische Datenmodelle oder verwendete Hardwaresysteme
-
-\paragraph{Anforderungen}
-müssen sich stets an die Elemente des technischen Aufbaus beziehen
-\begin{itemize}
-  \item technische Ebene z.B. Datenbanken bestimmter Hersteller oder Vorgaben zur Umsetzungstechnolgie wie Programmiersprachen oder Frameworks -> in diesem Fall SAP Leonardo und SCP
-  \item Problemstellung/Ziele
-  \item Technischer aufbau des Systems: technische Architekturbeschreibungen, technische Datenmodelle, verwendete Hardwaresysteme
-  \item Elemente des Sytemmodells vollständig abdecken
-\end{itemize}
 
 
 
-Was muss das System können? An RAMI orientieren -> Was muss erfüllt werden ?
-Scada macht über Protokolle und Schnittstellen Telemetriedaten der Windenergieanlage
-schreibt das Lokal in eine DB und erzeugt Alarmmeldungen
-quittieren lokal am Rechner
-alle 10 Minuten --> mit Leonardo schnellere Reaktion in Echtzeit
-50 Hz Frequenz -> muss gehalten werden, um schnell auf Probleme reagieren zu können
+% Lösung aus technischer Ebene
+\paragraph{Technischer Aufbau des Systems} \label{technischeraufbau}
+
+Für die Simulation einer Windenergieanlage wird ein kommunikationsfähiges System benötigt, welches Schnittstellen für Sensoren als Messmittel aufweist (T-P-1). Durch die Nutzung eines \textit{Raspberry Pi 3 Model B} können durch die lokale Nutzung von Python-Skripten die Messwerte verarbeitet werden. Anschließend können die Messwerte durch die Anwendung des REST-Paradigmas über ein Gateway an die SAP Cloud Platform gesendet werden. Die weiteren Probleme werden durch die Nutzung der SAP-Leonardo-Technologien gelöst. Diese werden im nachfolgenden Kapitel detaillierter analysiert. Daher wird der technische Aufbau im Detail in dem nachfolgenden Kapitel vorgestellt. Technisch soll das System dem Paradigma des Cloud-Computing, also der Nutzung von Microservices, folgen.
+
+\paragraph{Anforderungen} Die technische Umsetzung des Prototypen muss folgenden Anforderungen folgen:
+
+  \begin{tabularx}{\textwidth}{@{}lXp{1.5cm}@{}}
+      \toprule
+      ID                & Anforderung & Quelle \\
+      \midrule
+      \endhead
+      \textbf{T-FA-1}              &    Die Simulation muss hardwareseitig rechnergestützt sein       & \textit{T-P-1}                \\
+      \multicolumn{1}{r}{T-FA-1.1} &   Die Hardware muss Schnittstellen zur Sensoreinbindung aufweisen \\
+      \multicolumn{1}{r}{T-FA-1.1} &   Die Software muss fähig sein, Berechnungen mit den empfangenen Sensorwerten zu durchzuführen \\
+      \multicolumn{1}{r}{T-FA-1.1} &   Die Software muss fähig sein, Messwerte über eine REST-API an ein Gateway zu versenden \\
+      \textbf{T-FA-2}              &   Das Gateway muss fähig sein, die Messwerte offline zu empfangen   \\
+      \multicolumn{1}{r}{T-FA-2.1}     &   Das Gateway muss fähig sein, die empfangenen Daten über eine REST-API zu versenden   \\
+      \multicolumn{1}{r}{T-FA-2.2} & Das Gateway kann fähig sein, die erfassten Daten vor dem Versenden zu verarbeiten \\
+      \textbf{T-FA-3}            &      Der Prototyp muss fähig sein, die Messwerte vom Gateway zu empfangen &    \textit{T-P-2}    \\
+      \multicolumn{1}{r}{T-FA-3.1}    &  Der Prototyp muss fähig sein, die Messwerte einer eindeutigen \textit{DeviceId} zuzuordnen \\
+      \multicolumn{1}{r}{T-FA-3.2}    &  Der Prototyp muss fähig sein, der \textit{DeviceId} eine eindeutige \textit{GatewayId} zuzuordnen \\
+      \multicolumn{1}{r}{T-FA-3.3}    &  Der Prototyp muss fähig sein, die Messwerte einer \textit{DeviceId} an einen digitalen Zwilling zu übergeben\\
+      \multicolumn{1}{r}{T-FA-3.4}    &  Der Prototyp muss fähig sein, die Metadaten einer \textit{DeviceId} an einen digitalen Zwilling zu übergeben \\
+
+      \multicolumn{1}{r}{T-FA-3.5}  &  Der Prototyp muss fähig sein, Messwerte als \textit{High, Medium, Low} zu kategorisieren \\
+      \multicolumn{1}{r}{T-FA-3.6}  &  Der Prototyp muss fähig sein, automatisch POST-Anfragen die Web-API eines \ac{sns} zu senden  \\
+
+      \textbf{T-R-1} & Der Prototyp muss die digitalen Zwillinge in einer UI5-Web-Applikation visualisieren \\
+      \textbf{T-R-2} & Der Prototyp und zugehörige Daten müssen in der SAP Cloud Platform gehosted sein  \\
+      \addlinespace
+      \bottomrule
+      \caption{Anforderungen aus technischer Ebene}
+      \label{technik_anforderung}
+  \end{tabularx}
+
+  \newpage
 
 
-\begin{itemize}
-  \item erneuerbare Energien werden von der Plattform Industrie 4.0 kaum berücksichtigt !
-  \item Was Kann SCADA-System? daten erfassen, an cloud senden, verarbeiten, digitaler zwilling unf steuern, aktionen und regeln für predictive Maintenance
-  \item Fähigkeit, große Datenmengen auch offline zu verarbeiten -> Latenzprobleme
-  \item ANFORDERUNG! WENN DIE Anlagen ins Smart Grid aufgenommen werden sollen, müssen sie Kommunikationsfähig sein!!!!
-  \item Aus Requirements Engineering S. 10: Simulation vor Inbetriebnahme, um Fehler in Anforderungsanalyse festzustellen, damit Change Requests gemacht werden können
-  \item Bei Anlagen, die mehrere Millionen Euro kosten, sind anders als in Software Mechanik und Elektronik eingebaut. Ein Change Request wäre viel zu teuer
-  \item Anforderungsanalyse der Simulation beseitigt die Risiken nicht vollständig, da die Simulation nur so gut ist, wie man sich vorher Gedanken gemacht hat
-  \item Welche Anforderungen ergeben sich aus dem Wandel?
-  \item Anforderungen wie predictive Maintenance und Bezug auf RAMI 4.0.
-  \item SAP als Tool, da Energiesektor hauptsächlich \acf{sapisu}
-  \item Industrie 4.0-Komponente (Bitkom s. 52) mit verschiedenen Ebenene
-\end{itemize}
-
-\textbf{Anforderungen an Versorgungsunternehmen im Energiesystem der Zukunft \citep[S. 19]{Doleski2016}}
-
-\paragraph{Merkmale von Akteuren in der digitalen Welt}
-\begin{itemize}
-  \item Allgegenwärtige Informationsverfügbarkeit
-  \item Soziale Visualisierung1
-  \item Absolute Mobilität
-  \item Permanente Erreichbarkeit
-  \item Lokalisierung
-  \item Leistungsfähige Technologien
-\end{itemize}
-
-\paragraph{Wesentliche Herausforderungen für Energieunternehmen \citep[S. 21]{Doleski2016}}
-\begin{enumerate}
-  \item \textbf{Informationsflut}: zunehmendes Informationsangebot kann nicht oder nur bedingt aufgenommen werden
-  \item \textbf{Informationsverarbeitung}: zunehmendes Informationsangebot kann nicht zu Wissen verarbeitet werden
-  \item \textbf{Informationssysteme}: bestehende Informationssysteme liefern oftmals keine relevanten Informationen für die Unternehmensführung
-\end{enumerate}

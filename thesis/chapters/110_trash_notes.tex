@@ -226,3 +226,44 @@ Ich werde beauftragt, die Systemlanschaft von SAP Produkten (insb. Leonardo) fü
 Anpassbar, Änderbar, Benutzbar, Genau, Performanz, Sicherheit, Übertragbarkeit, Zuverlässigkeit
 
 Datenflussdiagramm
+
+Was muss das System können? An RAMI orientieren -> Was muss erfüllt werden ?
+Scada macht über Protokolle und Schnittstellen Telemetriedaten der Windenergieanlage
+schreibt das Lokal in eine DB und erzeugt Alarmmeldungen
+quittieren lokal am Rechner
+alle 10 Minuten --> mit Leonardo schnellere Reaktion in Echtzeit
+50 Hz Frequenz -> muss gehalten werden, um schnell auf Probleme reagieren zu können
+
+
+\begin{itemize}
+  \item erneuerbare Energien werden von der Plattform Industrie 4.0 kaum berücksichtigt !
+  \item Was Kann SCADA-System? daten erfassen, an cloud senden, verarbeiten, digitaler zwilling unf steuern, aktionen und regeln für predictive Maintenance
+  \item Fähigkeit, große Datenmengen auch offline zu verarbeiten -> Latenzprobleme
+  \item ANFORDERUNG! WENN DIE Anlagen ins Smart Grid aufgenommen werden sollen, müssen sie Kommunikationsfähig sein!!!!
+  \item Aus Requirements Engineering S. 10: Simulation vor Inbetriebnahme, um Fehler in Anforderungsanalyse festzustellen, damit Change Requests gemacht werden können
+  \item Bei Anlagen, die mehrere Millionen Euro kosten, sind anders als in Software Mechanik und Elektronik eingebaut. Ein Change Request wäre viel zu teuer
+  \item Anforderungsanalyse der Simulation beseitigt die Risiken nicht vollständig, da die Simulation nur so gut ist, wie man sich vorher Gedanken gemacht hat
+  \item Welche Anforderungen ergeben sich aus dem Wandel?
+  \item Anforderungen wie predictive Maintenance und Bezug auf RAMI 4.0.
+  \item SAP als Tool, da Energiesektor hauptsächlich \acf{sapisu}
+  \item Industrie 4.0-Komponente (Bitkom s. 52) mit verschiedenen Ebenene
+\end{itemize}
+
+\textbf{Anforderungen an Versorgungsunternehmen im Energiesystem der Zukunft \citep[S. 19]{Doleski2016}}
+
+\paragraph{Merkmale von Akteuren in der digitalen Welt}
+\begin{itemize}
+  \item Allgegenwärtige Informationsverfügbarkeit
+  \item Soziale Visualisierung1
+  \item Absolute Mobilität
+  \item Permanente Erreichbarkeit
+  \item Lokalisierung
+  \item Leistungsfähige Technologien
+\end{itemize}
+
+\paragraph{Wesentliche Herausforderungen für Energieunternehmen \citep[S. 21]{Doleski2016}}
+\begin{enumerate}
+  \item \textbf{Informationsflut}: zunehmendes Informationsangebot kann nicht oder nur bedingt aufgenommen werden
+  \item \textbf{Informationsverarbeitung}: zunehmendes Informationsangebot kann nicht zu Wissen verarbeitet werden
+  \item \textbf{Informationssysteme}: bestehende Informationssysteme liefern oftmals keine relevanten Informationen für die Unternehmensführung
+\end{enumerate}

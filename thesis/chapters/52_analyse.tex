@@ -1,17 +1,18 @@
-\subsection{Systementwurf und -analyse}
-Systementwurf: Hier mein angepasstes Architekturmodell -> konkretes Architekturmodell mit Sensoren, Edge Device (RPI), SCP (CF) mit Leo IoT Services; AWS SNS mit API-Schnittstellen
-\\Hier irgendwo auch anmerken in Bezug auf 2.3.3 SAP Leonardo und in der Evaluation ausführlicher vllt, dass zwar der Mehrwert in kombinierter Anwendung besteht, man hier aufgrund einer prototypischen Implementierung und es Bezugs auf IoT nur auf ein Leo-Produkt bezogen wird
+\subsection{Systemanalyse und -entwurf}
+
+Aufbauend auf die Anforderung, einen Prototypen mit den Technologien der SAP Leonardo IoT Foundation zu entwickeln, wird in diesem Kapitel die zugrundeliegende Systemarchitektur untersucht. Dabei erfüllt die Analyse mehrere Zwecke. Zum einen wird die Forschungsfrage FF-1.2 (s. \ref{problemstellung}), welche Möglichkeiten zur intelligenten Vernetzung die Architektur bietet, beantwortet. An die Beantwortung dieser Frage knüpft sich die Prüfung der Kompatibilität der Zielarchitektur mit der \ac{rami}. In der Anforderungsanalyse wurde hauptsächlich die Anwendung des cloud-basierten Ansatzes als Lösung (s. \ref{technischeraufbau}) spezifiziert. Aus diesem Grund wird auf Grundlage der Analyse die angepasste Architektur des Zielsystems als Lösung für den technischen Aufbau entworfen.
 
 \subsubsection{Systemarchitektur}
 
-hier generelle Architektur von SAP Leonardo mit SCP
+Wie in Abschnitt \ref{leo} beschrieben, bietet die SAP Leonardo IoT Foundation zahlreiche Dienste zur Integration von physischen Geräten in die SAP Cloud Platform. Die Abbildung \ref{saparch} zeigt den typischen Verlauf eines solchen Integrationsprozesses. Die realen Geräte senden ihre Daten über \textit{Gateways} an die \textit{SAP Cloud Platform Internet of Things Services} (1). Dort werden sie in einer PostgreSQL Datenbank gehalten \citep{Acharya2019}. Der Zugriff auf die Daten der \ac{cpss} erfolgt im Rahmen einer \acf{soa} über verschiedene \ac{api}. Um die Geräte in eine IoT-Anwendung zu integrieren, werden sie via \textit{Message Processing} and das \textit{IoT Application Enablement} gesendet (2). Dort können digitale Zwillinge und ihre Funktionen definiert werden. Für die Anwendungsentwicklung werden die Daten per OData oder REST-Schnittstellen von der Cloud Foundry Umgebung an die WebIDE in der Neo Umgebung übergeben (3). Anschließend wird die Anwendung in die Cloud Foundry deployed. Die einzelnen Komponenten und Konzepte werden im Folgenden näher im Detail erläutert.
 
-SOA - Service Orientierte Architektur
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=1.0\linewidth]{pictures/sap_architecture}
-    \caption[Referenzarchitektur von SAP]{Architektur von SAP \citep{Ganz2019}}
-    \label{fig:filename_without_extension}
+
+
+\begin{figure}[ht!]
+  \centering
+  \noindent\makebox[\textwidth]{\includegraphics[width=\paperwidth]{sap_architecture.png}}
+  \caption[Architektur von SAP]{Architektur von SAP \citep{Ganz2019}}
+  \label{saparch}
 \end{figure}
 
 \subsubsection{SCP Internet of Things Services}
@@ -23,7 +24,7 @@ SOA - Service Orientierte Architektur
   \label{fig:filename_without_extension}
 \end{figure}
 
-\subsubsection{REST API}
+\subsubsection{Einheitliche Kommunikation: REST API}
 
 \subsubsection{Edge-Processing}
 
@@ -37,6 +38,9 @@ Communication zwischen Cloud Services AWS SNS und SAP Leonardo
 \subsubsection{Message Processing}
 Leonardo IoT, SQL Kafka: Ich hab Leonardo IoT benutzt (in prototype erwähnen)
 
+\subsubsection{SAP Leonardo Application Enablement}
+Für die Integration der Geräte in Anwendungen werden hier digitale Zwllinge erstellt
+Thing Modeler und freestyle IoT Applications
 \subsubsection{Sicherheit}
 OAuth, SSL/TLS, SAML 2.0: erklären, was SAP und AWS auch eventuell haben
 
@@ -47,6 +51,13 @@ OAuth, SSL/TLS, SAML 2.0: erklären, was SAP und AWS auch eventuell haben
   \includegraphics[width=1.0\linewidth]{pictures/rami_custom1}
   \caption[Referenz zu den Schichten der RAMI 4.0]{Referenz zu den Schichten der RAMI 4.0}
   \label{ramicustom}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.5\linewidth]{Ebenen_I40_Kompo.png}
+  \caption[Ebenen der Industrie-4.0-Komponente]{Ebenen der Industrie-4.0-Komponente \citep[S. 52]{BITKOM2015}}
+  \label{ebenen_i40}
 \end{figure}
 
 \subsubsection{Systementwurf gemäß Architekturkonzept}
