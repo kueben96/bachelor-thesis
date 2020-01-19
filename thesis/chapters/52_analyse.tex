@@ -16,8 +16,6 @@ Wie in Abschnitt \ref{leo} beschrieben, bietet die SAP Leonardo IoT Foundation z
 \newpage
 \subsubsection{Datentransport: Internet of Things Gateway}
 
-
-
   Der erste Schritt von einem realen physischen Ding zu einem \ac{cpss} ist der Datentransport zu einem Datenobjekt im Netz (s. \ref{technologien}). Bezogen auf \ac{rami} und das Konzept der \acf{i40} ist dies der Prozess der Integration und Kommunikation. Das reale Objekt wird an ihre Verwaltungsschale angebunden, um virtuell repräsentiert werden zu können. Die Architektur von SAP bietet für diesen Vorgang zwei Möglichkeiten. Entweder den direkten Transport der Daten in die Cloud über die \textit{Gateway Cloud} oder über die \textit{Internet of Things Edge Platform}. Neben dem senden von Messwerten in die Cloud können außerdem aus der Cloud heraus Befehle an das Gerät gesendet werden. Welche Variante auszuwählen ist, hängt von individuellen Anwendungsfällen und benötigten Protokollen ab. Die \textit{Gateway Cloud} wird in dem \textit{SCP Internet of Things Service} standardmäßig für MQTT und REST mitgeliefert.
   \begin{wraptable}[16]{r}{0.4\textwidth}
     \caption{Gateway-Protokolle}\label{gateway}
@@ -69,40 +67,37 @@ Für die Registrierung bietet das System zwei Möglichkeiten. Man es kann entwed
 
 \subsubsection{Analyse: SAP Leonardo IoT}
 
-Über den Message Processing Service \textit{SAP Leonardo IoT Integration} werden die Daten der Geräte an SAP Leonardo IoT übergeben. Laut SAP bietet Leonardo IoT \glqq alle notwendigen Funktionen zum Einrichten von Thing- und Geschäftspartnerstrukturen als Repräsentation der Realen Welt\grqq{} \citep[S. 11]{SAP2019} Aber eigetnlich sind das Microservices zum Erstellen digitaler Zwillinge, Analysedaten und WebApps. Mithilfe der Microservices und Werkzeuge können einfach IoT-Anwendungen erstellt werden. Grundlage dafür ist zunächst der \textit{Thing Modeler}, mit dem digitale Zwillinge der registrierten Geräte erstellt werden.
-Neue Architektur Screenshot rein
-API Aggregatiwn blllla
-Für die Integration der Geräte in Anwendungen werden hier digitale Zwllinge erstellt
-Thing Modeler und freestyle IoT Applications
+Über den Message Processing Service \textit{SAP Leonardo IoT Integration} werden die Daten der Geräte an SAP Leonardo IoT übergeben. Laut SAP bietet Leonardo IoT \glqq alle notwendigen Funktionen zum Einrichten von Thing- und Geschäftspartnerstrukturen als Repräsentation der realen Welt\grqq{} \citep[S. 11]{SAP2019}. Mit allen notwendigen Funktionen sind in diesem Fall eine Sammlung von REST- und OData-basierten Microservices gememeint, die zum Speichern und Bereitstellen der Daten dienen. In erster Linie dienen sie dazu, einen digitalen Zwilling mit dem \textit{Thing Modeler} des Geräts zu erstellen. Die folgende Abbildung (\ref{leoae}) gibt eine Übersicht über die Softwarearchitektur und die Interaktion mit verschiedenen Komponenten.
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.0\linewidth]{pictures/leo_ae}
+  \caption[Architekturübersicht SAP Leonardo IoT]{Architekturübersicht SAP Leonardo IoT \citep[S. 12]{SAP2019}}
+  \label{leoae}
+\end{figure}
+ \noindent Mithilfe der API-Sammlung können zum Beispiel Geschäftspartner, Standorte, Berechtigungen oder Ereignisse zugeordnet werden. Dadurch wird dem \textit{Ding}, welches vorher rohe Daten erzeugt hat, eine Funktion und ein Zweck zugeordnet. Nach der \ac{rami} befände man sich somit in der Funktionsschicht. Eine weitere wichtige Funktion von SAP Leonardo IoT ist das \textit{Application Enablement}, welches die modellierten Zwillinge an die Web IDE der Neo Laufzeitumgebung sendet. Dort können mit Hilfe von Templates \textit{Freestyle IoT Applications} nach der UI5-Technologie von SAP erstellt werden. Außerdem dient SAP Leonardo IoT als Schnittstelle für weitere SaaS in unterschiedlichen Laufzeitumgebungen, für weitere Leonardo-Produkte mit Analysefunktionen oder für die Integration in Backend-Systeme. Allerdings handelt es sich bei SAP Leonardo um ein junges Projekt, welches die Funktionen zur Integration des Backend-Systems und die Einbindung der Analysefunktionen erst in Zukunft realisieren soll.
 
 \subsubsection{Destinations}
-Destinations: Warum braucht man Destinations und welche man benötigt (SNS),  wenn man kommunizieren will mit
-Externe Services wie AWS SNS
-Interne Kommunikation der SCP CF und NEO
-Communication zwischen Cloud Services AWS SNS und SAP Leonardo
 
-% Sicherheir
+Damit Systeme mit Systemen aus verschiedenen Laufzeitumgebungen kommunizieren können, werden in der SAP Cloud Platform Destinations erstellt. In der Abbildung \ref{saparch} kann man z.B. erkennen, dass zwischen der Cloud Foundry Umgebung und der Neo Umgebung eine Verbindung hergestellt wird (3), um Thing-Daten für die Anwendungsentwicklung zu transferieren. Damit die Neo Umgebung die Daten empfangen kann, muss dort eine HTTP-Destination erstellt werden. Diese muss aus einer Ziel-URL des Cloud Foundry Dienstes und kann aus Authentifizierungsmethoden sowie Anmeldeinformationen bestehen.
+
+% Sicherheit
 \subsubsection{Sicherheit}
-Security Documentation
-OAuth, SSL/TLS, SAML 2.0: erklären, was SAP und AWS auch eventuell haben
-Device certificate für Sichere Verbindung via REST und MQTT
+
+Wie in Abschnitt \ref{general} beschrieben, trägt die Sicherheit in der Kommunikation in IoT-Netzwerken eine Schlüsselrolle. Insbesondere mit Blick auf die Architekurmodelle der Systemlandschaft (s. Abbildung \ref{saparch} und \ref{leoae}) wird deutlich, dass die Datenkommunikation im Rahmen einer \ac{soa} über zahlreiche Schnittstellen stattfindet. Der Zugriff auf diese Schnittstellen erfordert sichere Authentifizierungs- und Autosierungsmaßnahmen. Die Infrastruktur von SAP stellt Standardmechanismen für die sichere Kommunikation zwischen den Komponenten zur Verfügung. Der Datentransport findet mit X509.1-Mechanismen asymmetrisch verschlüsselt über das \textit{\ac{tls}} Protokoll statt \citep{SAP2020a}. Um die Geräte im Internet of Things Service registrieren zu können, erhält jeder Tenant einen client-spezifischen \textit{private Key} im .pem- oder .p12-Format. Nur mit Angabe des Schlüssels können Edge Gateways so konfiguriert werden, dass über sie sicher mit dem Gerät kommuniziert werden kann. Auch der Zugriff auf die digitalen Zwillinge von SAP Leonardo IoT kann über das Berechtigungsmanagement eingeschränkt werden, sodass die Daten nach Verantwortlichkeiten getrennt werden. Der Zugriff auf die Ressourcen via API wird über die Autorisierung mit OAuth2.0 gesichert.
+
 \subsubsection{Kompatibiliät mit Referenzarchitektur}
+
+Eine Anforderung an den Prototypen ist,  Kompatibilität mit der \ac{rami} und dem Konzept der Industrie-4.0-Komponente aufzuweisen. Im Zuge der Systemanalyse wurden bereits für einzelne Komponenten Referenzen zu einzelnen Schichten der IT-Sicht des \ac{rami} erstellt. Abbildung \ref{ramicustom} veranschaulicht die Referenzen zwischen den Schichten und den Komponenten des Systems.
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=1.0\linewidth]{pictures/rami_custom1}
+  \includegraphics[width=1.0\linewidth]{pictures/ramicustom}
   \caption[Referenz zu den Schichten der RAMI 4.0]{Referenz zu den Schichten der RAMI 4.0}
   \label{ramicustom}
 \end{figure}
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=0.5\linewidth]{Ebenen_I40_Kompo.png}
-  \caption[Ebenen der Industrie-4.0-Komponente]{Ebenen der Industrie-4.0-Komponente \citep[S. 52]{BITKOM2015}}
-  \label{ebenen_i40}
-\end{figure}
+ \noindent Die Produktionsanlage wird an ihre Verwaltungsschale über das Gateway angebunden. Somit kann das Objekt als Industrie-4.0-Komponente bezeichnet werden. Über den Dienst SAP Cloud Platfrom Integration kann die horizontale Integration der Industrie-4.0-Komponente in das Backend und somit in die Organisation und Geschäftsprozesse erfolgen.
 
 \subsubsection{Systementwurf gemäß Architekturkonzept}
 
-eigene Architektur aufmalen
+eigene Architektur aufmalen, wenn fertig mit Implementierung!
 

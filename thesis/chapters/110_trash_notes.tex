@@ -267,3 +267,22 @@ alle 10 Minuten --> mit Leonardo schnellere Reaktion in Echtzeit
   \item \textbf{Informationsverarbeitung}: zunehmendes Informationsangebot kann nicht zu Wissen verarbeitet werden
   \item \textbf{Informationssysteme}: bestehende Informationssysteme liefern oftmals keine relevanten Informationen für die Unternehmensführung
 \end{enumerate}
+
+\begin{itemize}
+  \item Leonardo IoT: Berechtigungsservice
+  \item Gateway-Sicherheit: Device and Tenant certificates: Private Key für Gerätezertifikate zuerst Tenant certificate und dann Device certificate: Geräte zertifizieren sich für ein Gateway
+  \item externe Destinations
+  \item Message Processing BASIC Authentication über TLS, Transport Layer Security, früher ssl, damit Apps die Daten konsumieren können
+  \item Sicherheit bei Edge ist Protokollabhängi: bei REST über SSL Basic Auth für Authentifizierung aber für Autorisierung wird ein Client certificate für den Tenant des IoT Services generiert, wo das Gateway konfiguriert werden soll -> Private Key im Pem-Format und tenantcertificate
+  \item Zugriff auf API werden mit OAuth 2.0 autorisiert
+  \item SAML ist für Authentifizierung der User und Tenants für die Services: Single Sign on für IoT Services um Devices zu managen und Zertifkiate herunterzulagen--> Identity Provider für user credentials authorization server
+  \item währed OAuth Autorisierung, also Berechtigungen für Zugriff auf Ressourcen z.B. über API erteilt  und resource provider und service provider mit access tokens
+\end{itemize}
+
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.5\linewidth]{Ebenen_I40_Kompo.png}
+  \caption[Ebenen der Industrie-4.0-Komponente]{Ebenen der Industrie-4.0-Komponente \citep[S. 52]{BITKOM2015}}
+  \label{ebenen_i40}
+\end{figure}
