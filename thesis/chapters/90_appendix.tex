@@ -1,39 +1,6 @@
 \newpage
 \appendix
 
-\section{Anhang 1}
-
-\begin{table}[h]
-  \begin{tabular}{lll}
-    \toprule
-    Kategorie & Eigenschaft\\
-    \midrule
-    \multirow[t]{2}{*}{Languages/Buildpacks (SAP supported)} & Node.js  \\
-     & Java \\
-     \multirow[t]{5}{*}{Languages/Buildpacks (Community supported)} & Python \\
-     & PHP \\
-     & Ruby \\
-     & .NET Core \\
-     & viele weitere \\
-     \multirow[t]{6}{*}{Storage/Messaging Services} & SAP HANA, inkl. XSA Applications \\
-     & MongoDB \\
-     & PostgreSQL \\
-     & Redis \\
-     & RabbitMQ \\
-     & Object Store, Unstructured Storage \\
-     \multirow[t]{3}{*}{Integrated SSO Secrurity Cloud Connector} & Services für Authentifizierung,\\
-     & Single Sign-on \\
-     & und On-Premise Integrtion \\
-     \multirow[t]{3}{*}{Integrated SSO Secrurity Cloud Connector} & AWS - EU, US East\\
-     & Azure - US West  \\
-    \bottomrule
-    \end{tabular}
-    \label{cf_table}
-  \caption[Eigenschaften der Cloud-Foundry-Umgebung]{Eigenschaften der Cloud-Foundry-Umgebung \citep[S. 195]{Utecht2018}}
-\end{table}
-
-
-\newpage
 \section{Anforderungen}
 
 \subsection{Anforderungen aus Kontextebene} \label{anfkontext}
@@ -127,6 +94,196 @@
       \label{system_anforderungen}
   \end{tabularx}
 
+\section{API-Anfragen}
+
+\paragraph{EventPropertySetType}
+
+\begin{lstlisting}
+  POST : https://events-sap.cfapps.eu10.hana.ondemand.com/ES/v1/EventPropertySetTypes
+
+  {
+  "Name": "cf.devbeta.windmills:windBeaufortSet",
+  "PackageName": "cf.devbeta.windmills",
+  "DataCategory": "EventData",
+  "Properties": [
+    {
+      "Name": "windBeaufort",
+      "Type": "String",
+      "PropertyLength": "120",
+      "Descriptions": [
+        {
+          "LanguageCode": "de",
+          "Description": "Beaufort Bezeichnungen fuer Windstaerken"
+        },
+        {
+          "LanguageCode": "en",
+          "Description": "Beaufort Values for wind strength"
+        }
+      ]
+    }
+  ],
+  "Descriptions": [
+    {
+      "LanguageCode": "de",
+      "Description": "Set fuer Windstaerken"
+    }
+  ]
+}
+\end{lstlisting}
+
+\paragraph{EventTypeBeaufort}
+
+\begin{lstlisting}
+
+  POST: https://events-sap.cfapps.eu10.hana.ondemand.com/ES/v1/EventTypes
+
+  {
+	"Name": "cf.devbeta.windmills:windBeaufortEvent",
+	"EventTypeState": "Mutable",
+	"Descriptions": [{
+		"LanguageCode": "de",
+		"Description": "Event type for Beaufort Scale"
+	}, {
+		"LanguageCode": "de",
+		"Description": "Event Typ fuer Beaufort Skala"
+	}],
+	"PackageName": "cf.devbeta.windmills",
+	"PropertySetId": "windBeaufortSet",
+	"PropertySetType": "cf.devbeta.windmills:windBeaufortSet",
+	"PropertySetDescriptions": [{
+		"LanguageCode": "en",
+		"Description": "Beaufort Property Set Type"
+	}],
+	"Statuses": [{
+		"EventStatus": "Windstille",
+		"Descriptions": [{
+			"LanguageCode": "de",
+			"Description": "Windstille 1,85 kmh"
+		}]
+	}, {
+		"EventStatus": "leiser_Zug",
+		"Descriptions": [{
+			"LanguageCode": "de",
+			"Description": "- 7,41 km/h"
+		}]
+	}, {
+		"EventStatus": "leichte_Brise",
+		"Descriptions": [{
+			"LanguageCode": "de",
+			"Description": "- 12.96 km/h"
+		}]
+	}, {
+		"EventStatus": "schwache_Brise",
+		"Descriptions": [{
+			"LanguageCode": "de",
+			"Description": "- 20,37 km/h"
+		}]
+	}, {
+		"EventStatus": "maessige_Brise",
+		"Descriptions": [{
+			"LanguageCode": "de",
+			"Description": "- 29.63 km/h"
+		}]
+	}, {
+		"EventStatus": "frische_Brise",
+		"Descriptions": [{
+			"LanguageCode": "de",
+			"Description": "- 40.74 km/h"
+		}]
+	}, {
+		"EventStatus": "starker_Wind",
+		"Descriptions": [{
+			"LanguageCode": "de",
+			"Description": "- 51.86 km/h"
+		}]
+	},{
+		"EventStatus": "steifer_Wind",
+		"Descriptions": [{
+			"LanguageCode": "de",
+			"Description": "- 62.97 km/h"
+		}]
+	},
+	{
+		"EventStatus": "Sturm",
+		"Descriptions": [{
+			"LanguageCode": "de",
+			"Description": "- 88.90 km/h"
+		}]
+	},{
+		"EventStatus": "schwerer_Sturm",
+		"Descriptions": [{
+			"LanguageCode": "de",
+			"Description": "- 103.71 km/h"
+		}]
+	},{
+		"EventStatus": "Orkan",
+		"Descriptions": [{
+			"LanguageCode": "de",
+			"Description": "- 118.53 km/h"
+		}]
+	}],
+	"Severities": [{
+		"EventSeverity": 1,
+		"Descriptions": [{
+			"LanguageCode": "en",
+			"Description": "High"
+		}]
+	}, {
+		"EventSeverity": 2,
+		"Descriptions": [{
+			"LanguageCode": "en",
+			"Description": "Medium"
+		}]
+	}, {
+		"EventSeverity": 3,
+		"Descriptions": [{
+			"LanguageCode": "en",
+			"Description": "Low"
+		}]
+	}],
+	"Codes": [{
+		"EventCode": "EQ12",
+		"Descriptions": [{
+			"LanguageCode": "en",
+			"Description": "Event Code 12"
+		}]
+	}]
+}
+\end{lstlisting}
+
+  \section{Anhang 1}
+
+  \begin{table}[h]
+    \begin{tabular}{lll}
+      \toprule
+      Kategorie & Eigenschaft\\
+      \midrule
+      \multirow[t]{2}{*}{Languages/Buildpacks (SAP supported)} & Node.js  \\
+       & Java \\
+       \multirow[t]{5}{*}{Languages/Buildpacks (Community supported)} & Python \\
+       & PHP \\
+       & Ruby \\
+       & .NET Core \\
+       & viele weitere \\
+       \multirow[t]{6}{*}{Storage/Messaging Services} & SAP HANA, inkl. XSA Applications \\
+       & MongoDB \\
+       & PostgreSQL \\
+       & Redis \\
+       & RabbitMQ \\
+       & Object Store, Unstructured Storage \\
+       \multirow[t]{3}{*}{Integrated SSO Secrurity Cloud Connector} & Services für Authentifizierung,\\
+       & Single Sign-on \\
+       & und On-Premise Integrtion \\
+       \multirow[t]{3}{*}{Integrated SSO Secrurity Cloud Connector} & AWS - EU, US East\\
+       & Azure - US West  \\
+      \bottomrule
+      \end{tabular}
+      \label{cf_table}
+    \caption[Eigenschaften der Cloud-Foundry-Umgebung]{Eigenschaften der Cloud-Foundry-Umgebung \citep[S. 195]{Utecht2018}}
+  \end{table}
+
+
+  \newpage
 
 %\end{table}
 
