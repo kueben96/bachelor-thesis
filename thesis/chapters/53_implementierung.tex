@@ -20,7 +20,7 @@ Als hardwareseitige Basis für die Simulation wird ein \textit{Raspberry Pi 3 B}
 
 \subsubsection{Einrichtung der Gateway Edge}
 
-Damit die aufgenommenen Sensorwerte zur Datenhaltung an den \textit{Internet of Things Service} gesendet werden können, muss ein Gateway existieren. Doch anstatt die vordefinierten Cloud Gateways im \textit{IoT Service Cockpit} zu nutzen, wird für den Prototypen ein lokales Edge Gateway des \textit{REST}-Protokolls mit Hilfe der \textit{Internet of Things Edge Platform} konfiguriert. Zunächst wird aus dem SAP Software Center eine Konfigurationsdatei heruntergeladen, welche auf dem Raspberry Pi lokal gespeichert wird. Mit dem Befehl \textit{./build.sh REST} werden weitere Konfigurationsdateien erzeugt, um die Verbindung zu dem Host des Internet of Things Service herzustellen. In der Datei \textit{config\_gateway\_rest.xml} wird der Endpunkt für den Datentransfer in einem \textit{ConnectionString} definiert und eine \textit{GatewayAlternateId} definiert.
+Damit die aufgenommenen Sensorwerte zur Datenhaltung an den \textit{Internet of Things Service} gesendet werden können, muss ein Gateway existieren. Doch anstatt die vordefinierten Cloud Gateways im \textit{IoT Service Cockpit} zu nutzen, wird für den Prototypen ein lokales Edge Gateway des \textit{REST}-Protokolls mit Hilfe der \textit{Internet of Things Edge Platform} konfiguriert. Zunächst wird aus dem SAP Software Center eine Konfigurationsdatei heruntergeladen, welche auf dem Raspberry Pi lokal gespeichert wird. Mit dem Befehl \textit{./build.sh REST} werden weitere Konfigurationsdateien erzeugt, um die Verbindung zu dem Host des Internet of Things Service herzustellen. In der Datei \textit{config\_gateway\_rest.xml} wird der Endpunkt für den Datentransfer in einer \textit{ConnectionAddress} definiert und eine \textit{GatewayAlternateId} definiert.
 
 \begin{lstlisting}[caption= Gateway-Verbindung zur Cloud]
   <cnf:address>https://5075f8b9-866e-4a4b-82f8-74687b72f1ab.eu10.cp.iot.sap:443/5075f8b9-866e-4a4b-82f8-74687b72f1ab/iot/core/api/v1/tenant/988439498</cnf:address>
@@ -31,15 +31,14 @@ Als Serveradresse des Edge Gateways wird die IP-Adresse des Raspberry Pi angegeb
 \begin{lstlisting}[caption= Zieladresse für Sensorwerte]
   https://192.168.178.52:8699/measures/<deviceAlternateId>\end{lstlisting}
 
-Abschließend benötigt die Gateway-Registierung einen \textit{private Key im pem-Format}. Dieser wird über die API angefragt.
-\subsubsection{Registrierung der Geräte}
+\noindent Abschließend benötigt die Gateway-Registierung einen \textit{private Key im pem-Format}.
 
-Bevor die Daten von der SAP Cloud Platform aufgenommen werden können, muss eine Instanz eines Gerätetypen erstellt werden. Die Registrierung folgt dem vordefinierten Datenmodell aus Abbildung \ref{fig:devicemodel} und wird mit POST-Anfragen an die \textit{Device Management API} durchgeführt. Zunächst wird mit die \textit{Capability wind\_1} vom Typ \textit{measure} erstellt. Der Capability werden die \textit{Properties wind\_speed, temperature, humidity, pressure und airtight} zugeordnet. Damit das Gerät Befehle empfangen kann, wird außerdem die Capability \textit{commands\_test} vom Typ \textit{command} erstellt. Anschließend werden beide Capabilities einem Sensortypen zugeordnet. Um jedoch eine Geräteinstant erzeugen zu können, muss eine
-mit SAP Cloud Platform Internet of Things und Device Model hier erstellen und als Bild einfügen und außerdem zunächst auf Tenants und User eingehen und Einrichtungs des Services generell erklären mit eventuell den Message Processings
-und Gateways etc
-\subsubsection{Einrichtung der Gateway-Edge}
+\begin{lstlisting}[caption= GET-Anfrage für einen Client-Key]
+curl -X GET "https://5075f8b9-866e-4a4b-82f8-74687b72f1ab.eu10.cp.iot.sap/5075f8b9-866e-4a4b-82f8-74687b72f1ab/iot/core/api/v1/tenants/988439498/gatewayRegistrations/clientCertificate/pem\end{lstlisting}
 
-\begin{lstlisting}
+\noindent Nach dem Starten des Gateways auf dem Raspberry Pi mit dem Befehl \textit{./gateway.sh} wird folgendes Gateway initialisiert:
+
+\begin{lstlisting}[caption= Gateway-Eigenschaften]
   {
   "id": "2019161729",
   "alternateId": "1122334455667788",
@@ -50,9 +49,14 @@ und Gateways etc
   "status": "online",
   "version": "4.42.0",
   "operatingSystem": "Linux;4.19.75-v7+;arm"
-}
+}\end{lstlisting}
 
-\end{lstlisting}
+\subsubsection{Registrierung der Geräte}
+
+Bevor die Daten von der SAP Cloud Platform aufgenommen werden können, muss eine Instanz eines Gerätetypen erstellt werden. Die Registrierung folgt dem vordefinierten Datenmodell aus Abbildung \ref{fig:devicemodel} und wird mit POST-Anfragen an die \textit{Device Management API} durchgeführt. Zunächst wird mit die \textit{Capability wind\_1} vom Typ \textit{measure} erstellt. Der Capability werden die \textit{Properties wind\_speed, temperature, humidity, pressure und airtight} zugeordnet. Damit das Gerät Befehle empfangen kann, wird außerdem die Capability \textit{commands\_test} vom Typ \textit{command} erstellt. Anschließend werden beide Capabilities einem Sensortypen zugeordnet. Um jedoch eine Geräteinstant erzeugen zu können, muss eine
+mit SAP Cloud Platform Internet of Things und Device Model hier erstellen und als Bild einfügen und außerdem zunächst auf Tenants und User eingehen und Einrichtungs des Services generell erklären mit eventuell den Message Processings
+und Gateways etc
+
 
 
 \subsubsection{Senden der Daten an die Cloud}
@@ -66,13 +70,11 @@ Reading sensor data ...
 
 \subsubsection{Erstellen des digitalen Zwillings}
 
-\paragraph{Events}
+\paragraph{Regeln, Ereignisse, Aktionen}
 
+AWS, Events, LED Commands und Destinations
 \subsubsection{Visualisierung mit einer UI5-Applikation}
 
-\subsubsection{Benachrichtigung mit AWS SNS-Server}
-
-\subsubsection{Events generieren mit NodeJs}
 
 \subsubsection{Zusammenfassung Implementierung}
 
