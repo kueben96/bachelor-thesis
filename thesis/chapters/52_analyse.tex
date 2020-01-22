@@ -78,7 +78,7 @@ Für die Registrierung bietet das System zwei Möglichkeiten. Man es kann entwed
 
 \subsubsection{Destinations}
 
-Damit Systeme mit Systemen aus verschiedenen Laufzeitumgebungen kommunizieren können, werden in der SAP Cloud Platform Destinations erstellt. In der Abbildung \ref{saparch} kann man z.B. erkennen, dass zwischen der Cloud Foundry Umgebung und der Neo Umgebung eine Verbindung hergestellt wird (3), um Thing-Daten für die Anwendungsentwicklung zu transferieren. Damit die Neo Umgebung die Daten empfangen kann, muss dort eine HTTP-Destination erstellt werden. Diese muss aus einer Ziel-URL des Cloud Foundry Dienstes und kann aus Authentifizierungsmethoden sowie Anmeldeinformationen bestehen.
+Damit ein System mit Systemen aus verschiedenen Laufzeitumgebungen oder Endpunkten kommunizieren kann, werden in der SAP Cloud Platform Destinations erstellt. In der Abbildung \ref{saparch} kann man z.B. erkennen, dass zwischen der Cloud Foundry Umgebung und der Neo Umgebung eine Verbindung hergestellt wird (3), um Thing-Daten für die Anwendungsentwicklung zu transferieren. Damit die Neo Umgebung die Daten empfangen kann, muss dort eine HTTP-Destination erstellt werden. Diese muss aus einer Ziel-URL des Cloud Foundry Dienstes und kann aus Authentifizierungsmethoden sowie Anmeldeinformationen bestehen.
 
 % Sicherheit
 \subsubsection{Sicherheit}
@@ -99,5 +99,12 @@ Eine Anforderung an den Prototypen ist,  Kompatibilität mit der \ac{rami} und d
 
 \subsubsection{Systementwurf gemäß Architekturkonzept}
 
-Auf Basis der Anforderungen und der zugrundeliegenden Systemarchitektur wu
+Nach dem vorliegenden Architekturkonzept und den Anforderungen an das System ergibt sich die in Abbildung \ref{systemcustom} dargestellte Systemarchitektur.
+\begin{figure}[H]
+  \centering
+  \includegraphics[angle=90, scale=0.4]{pictures/systemcustom}
+  \caption[Systementwurf]{Systementwurf (eigene Darstellung)}
+  \label{systemcustom}
+\end{figure}
+
 
