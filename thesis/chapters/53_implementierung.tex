@@ -8,7 +8,8 @@ Zunächst wird die Erzeugung eines cyberphysischen Systems als Industrie-4.0-Kom
 \subsubsection{Erzeugung eines cyberphysischen Systems}
 
 Für die Simulation einer Windergieanlage wird ein System erzeugt, welches Daten aus der Umwelt aufnehmen und verarbeiten kann. Bei den Daten wurde sich für die \textit{Windgeschwindigkeit, Temperatur, Luftfeuchtigkeit, Luftdruck und Luftdichte} entschieden.
-Als hardwareseitige Basis für die Simulation wird ein \textit{Raspberry Pi 3 B} verwendet, welcher die erstellten \textit{Python} Skripte zur Verarbeitung der Daten nutzt. Der Pi wurde um die Zusatzplatine \textit{Grove Pi + Board} erweitert. Somit wird der \textit{DHT11}-Sensor zur Messung von Temperatur und Luftfeuchtigkeit über die 4-Pin-Schnittstelle \textit{D4} einfach ohne Löten und Breadboard angebunden. Für die Messung der Windgeschwindigkeit ist die Entscheidung auf den Anemometer \textit{Eltako Windsensor WS} gefallen. Im Gegensatz zum \textit{DHT11-Sensor} ist der Anenometer ein aktives Mechanisches Gerät, dessen Output Berechnungen erfordert, um die Windgeschwindigkeit zu erhalten. Bei den ausgegebenen Signalen handelt es sich um die Berührung zweier Metallkontakte, wobei zwei Signale eine Umdrehung ergeben. Ein Python Skript zählt die Signale über der GPIO-4-Schnittstelle und berechnet die Geschwindigkeit für ein Zeitintervall von 5 Sekunden. Aufgrund mangelhafter Sensorik wird der Luftdruck aus einem Array von realistischen Werten zufällig pro Zeitintervall ausgewählt. Gemeinsam mit der gemessenen Temperatur und dem Luftdruck wird die Luftdichte berechnet. Bevor die Daten an das Gateway gesendet werden, werden sie dem String-Dictionary \textit{sensorData} übergeben, um eine Anfrage im \textit{JSON-Format} senden zu können. Außerdem wurde eine rote Grove-LED über die digitale Schnittstelle D3 angebunden. Diese Komponente dient im Gegensatz zu den weiteren Komponenten dazu, bei kritischen Temperaturwerten Befehle zum Aufleuchten zu erhalten. Damit soll gezeigt werden, dass sich der Kreis in einem cyberphysischen System von Sensorik bis Aktorik über SAP Leoanardo als informationsverarbeitende Schicht schließt.
+Als hardwareseitige Basis für die Simulation wird ein \textit{Raspberry Pi 3 B} verwendet, welcher die erstellten \textit{Python} Skripte zur Verarbeitung der Daten nutzt. Der Pi wurde um die Zusatzplatine \textit{Grove Pi + Board} erweitert. Somit wird der \textit{DHT11}-Sensor zur Messung von Temperatur und Luftfeuchtigkeit über die 4-Pin-Schnittstelle \textit{D4} einfach ohne Löten und Breadboard angebunden. Für die Messung der Windgeschwindigkeit ist die Entscheidung auf den Anemometer \textit{Eltako Windsensor WS} gefallen. Im Gegensatz zum \textit{DHT11-Sensor} ist der Anenometer ein aktives Mechanisches Gerät, dessen Output Berechnungen erfordert, um die Windgeschwindigkeit zu erhalten. Bei den ausgegebenen Signalen handelt es sich um die Berührung zweier Metallkontakte, wobei zwei Signale eine Umdrehung ergeben. Ein Python Skript zählt die Signale über der GPIO-4-Schnittstelle und berechnet die Geschwindigkeit für ein Zeitintervall von 5 Sekunden. Aufgrund mangelhafter Sensorik wird der Luftdruck aus einem Array von realistischen Werten zufällig pro Zeitintervall ausgewählt. Gemeinsam mit der gemessenen Temperatur und dem Luftdruck wird die Luftdichte berechnet. Bevor die Daten an das Gateway gesendet werden, werden sie dem String-Dictionary \textit{sensorData} übergeben, um eine Anfrage im \textit{JSON-Format} senden zu können.
+ Außerdem wurde eine rote Grove-LED über die digitale Schnittstelle D3 angebunden. Diese Komponente dient im Gegensatz zu den weiteren Komponenten dazu, bei kritischen Temperaturwerten Befehle zum Aufleuchten zu erhalten. Damit soll gezeigt werden, dass sich der Kreis in einem cyberphysischen System von Sensorik bis Aktorik über SAP Leoanardo als informationsverarbeitende Schicht schließt.
 
 \begin{figure}[H]
   \centering
@@ -31,16 +32,15 @@ Als Serveradresse des Edge Gateways wird die IP-Adresse des Raspberry Pi angegeb
 \begin{lstlisting}[caption= Zieladresse für Sensorwerte]
   https://192.168.178.52:8699/measures/<deviceAlternateId>\end{lstlisting}
 
-\noindent Abschließend benötigt die Gateway-Registierung einen \textit{private Key im pem-Format}.
+\noindent Abschließend benötigt die Gateway-Registierung einen \textit{private Key im pem-Format}. Dafür wird eine GET-Anfrage an den Tenant des Internet of Things Service Hosts erstellt.
 
 \begin{lstlisting}[caption= GET-Anfrage für einen Client-Key]
 curl -X GET "https://5075f8b9-866e-4a4b-82f8-74687b72f1ab.eu10.cp.iot.sap/5075f8b9-866e-4a4b-82f8-74687b72f1ab/iot/core/api/v1/tenants/988439498/gatewayRegistrations/clientCertificate/pem\end{lstlisting}
 
 \noindent Nach dem Starten des Gateways auf dem Raspberry Pi mit dem Befehl \textit{./gateway.sh} wird folgendes Gateway initialisiert:
 
-\begin{lstlisting}[caption= Gateway-Eigenschaften]
-  {
-  "id": "2019161729",
+\begin{lstlisting}[caption= Gateway-Eigenschaften, label=gateway]
+  {"id": "2019161729",
   "alternateId": "1122334455667788",
   "protocolId": "rest",
   "name": "IoT Gateway REST",
@@ -48,31 +48,104 @@ curl -X GET "https://5075f8b9-866e-4a4b-82f8-74687b72f1ab.eu10.cp.iot.sap/5075f8
   "creationTimestamp": 1571741372988,
   "status": "online",
   "version": "4.42.0",
-  "operatingSystem": "Linux;4.19.75-v7+;arm"
-}\end{lstlisting}
+  "operatingSystem": "Linux;4.19.75-v7+;arm"}\end{lstlisting}
 
 \subsubsection{Registrierung der Geräte}
 
-Bevor die Daten von der SAP Cloud Platform aufgenommen werden können, muss eine Instanz eines Gerätetypen erstellt werden. Die Registrierung folgt dem vordefinierten Datenmodell aus Abbildung \ref{fig:devicemodel} und wird mit POST-Anfragen an die \textit{Device Management API} durchgeführt. Zunächst wird mit die \textit{Capability wind\_1} vom Typ \textit{measure} erstellt. Der Capability werden die \textit{Properties wind\_speed, temperature, humidity, pressure und airtight} zugeordnet. Damit das Gerät Befehle empfangen kann, wird außerdem die Capability \textit{commands\_test} vom Typ \textit{command} erstellt. Anschließend werden beide Capabilities einem Sensortypen zugeordnet. Um jedoch eine Geräteinstant erzeugen zu können, muss eine
-mit SAP Cloud Platform Internet of Things und Device Model hier erstellen und als Bild einfügen und außerdem zunächst auf Tenants und User eingehen und Einrichtungs des Services generell erklären mit eventuell den Message Processings
-und Gateways etc
+Bevor die Daten des Geräts von der SAP Cloud Platform gehalten werden können, muss eine Instanz eines Gerätetypen erstellt werden. Die Registrierung folgt dem vordefinierten Datenmodell aus Abbildung \ref{fig:devicemodel} und wird mit POST-Anfragen an die \textit{Device Management API} durchgeführt. Zunächst wird die \textit{Capability wind\_1} vom Typ \textit{measure} erstellt. Der Capability werden die \textit{Properties wind\_speed, temperature, humidity, pressure und airtight} zugeordnet. Damit das Gerät Befehle empfangen kann, wird außerdem die Capability \textit{commands\_test} vom Typ \textit{command} erstellt. Der Command hat eine \textit{Property led vom Typ Boolean}. Anschließend werden beide Capabilities einem Sensortypen zugeordnet. Somit kann eine Instanz des Geräten erstellt werden, welchem das aktive Gateway (s. Listing \ref{gateway}) und ein Sensor vom Typ \textit{test\_st\_com} hinzugefügt wird. Nachdem alle Entitäten hinzugefügt und zugeordnet wurden, hat das Gateway eine Zieladresse für den Datentransfer an die Cloud. Abbildung \ref{customdevicemodel} bildet das Datenmodell der erstellten Geräteinstanz ab.
+
+\begin{figure} [H]
+  \includegraphics[width=1\linewidth]{custom_devicemodel.png}
+  \caption[Gerätemodell der erstellten Instanz]{Gerätemodell der erstellten Instanz (eigene Darstellung)}
+  \label{customdevicemodel}
+\end{figure}
+\newpage
+
+\subsubsection{Datentransfer an die Cloud}
+
+Mit der Registrierung des Gateways sowie des Geräts sind alle Bedingungen erfüllt, um die Messwerte an den Internet of Things Service zu senden. Nun wird aus dem Skript \textit{test\_data.py} zur Erfassung der Sensorwerte die Methode \textit{send\_data(sensorData)} des Skripts \textit{send\_test\_data.py} aufgerufen. Somit kann ein \textit{POST-Request} an das Edge Gateway gesendet werden. Die Anfrage besteht aus drei Teilen:
+\begin{enumerate}
+  \item \textit{postAdress:} 'http://192.168.178.52:8699/measures/' + deviceAlternateId
+  \item \textit{data}: JSON-Body aus capabilityAlternateId, sensorAlternateId, measures
+  \item \textit{header}: 'content-type': 'application/json'
+\end{enumerate}
+
+\noindent Wie die gesendeten Daten im JSON-Body aussehen können, ist beispielhalft in Listing \ref{postdata} dargestellt. Dass der Datentransfer erfolgreich ist, kann auf der Seite des Sendemediums mit der Antwort des Servers mit dem HTTP Code 202 bestätigt werden.
+
+\begin{lstlisting}[caption= Das Data-Feld der POST-Anfrage, label=postdata]
+  Reading sensor data ...
+  {'capabilityAlternateId': '1234', 'measures': [{'temperature': '19.0'}, {'wind_speed': '1.12102078977'}, {'pressure': '1010'}, {'humidity': '70.0'}, {'airtight': '1.2'}], 'sensorAlternateId': '1234'}
+  ==> HTTP Response: 202 \end{lstlisting}
+
+\noindent Auf Empfängerseite kann der Empfang der Daten auf zweierlei Weisen bestätigt werden. Einerseits kann eine GET-Anfrage an die Zieladresse des Geräts im Internet of Things Service erstellt werden. Ergebnis der Anfrage sind die Messwerte im JSON-Format. Eine einfachere Möglichkeit bietet die Visualisierung der Daten im \textit{IoT Service Cockpit}. Hier werden die empfangenen Daten sowohl im Diagramm als auch in einer Tabelle präsentiert (s. Abbildung \ref{datavisual}). Mit Betrachtung der Zeitstempel für die empfangenen Daten lässt sich ebenfalls bestätigen, dass die Daten alle fünf Sekunden empfangen werden. Damit diese Daten in externe Dienste eingebunden werden können, wird anschließend das \textit{Message Processing} konfiguriert. Aus den verfügbaren Diensten wird entsprechend des Systementwurfs der Dienst \textit{\glqq Leonardo IOT\grqq{}} konfiguriert. Anschließend werden der Konfuguration Selektoren für die Messwerte und Metadaten der Geräte zugeordnet.
+
+\begin{figure}[H]
+  \includegraphics[width=1\linewidth]{data_visual.png}
+  \caption{Visualisierung der empfangenen Daten in Tabellenform}
+  \label{datavisual}
+\end{figure}
 
 
+\subsubsection{Erzeugung des digitalen Zwillings}
 
-\subsubsection{Senden der Daten an die Cloud}
+Die Tatsache, dass der Zustand der Anlage im \textit{IoT Service Cockpit} visualisiert wird, genügt für die Erfüllung der Anforderungen nicht. Der Grund dafür ist, dass die Daten lediglich für den Systemadministrator zugänglich sind. Um die Daten auch den Kunden bzw. dem Wartungspersonal zugänglich zu machen, wird eine UI5-Applikation erstellt. Diese bezieht die Daten aus der funktionalen Repräsentation des Geräts, dem digitalen Zwilling. Mit der Konfiguration des \textit{Message Processing} und den Selektoren können die Messwerte und Metadaten des Geräts an den digitalen Zwilling in \textit{SAP Leonardo IoT} übergeben werden. Dafür wird zunächst ein neues \textit{Thing Model} nach dem in Abbildung \ref{customdevicemodel} dargestellten Gerätemodell erstellt. Genau so, wie im Internet of Things Service die Geräte, Capabilities und Kofigurationen für einen Tenant erstellt werden, findet die Modellierung in Leonardo IoT in \textit{packages} statt. Die Modellierung wird vollständig über die in der grafischen Benutzerschnittstelle verfügbaren \textbf{Thing Engineering Funktionen} durchgeführt:
+\begin{enumerate}
+  \item \textbf{Packages:} Erstellung des Pakets \textit{windmills}
+  \item \textbf{Thing Properties Catalog:} Erstellung des \textit{Property Sets wind\_1} analog zur Capability wind\_1
+  \item \textbf{Thing Modeler:} Modellierung des digitalen Zwillings
+  \begin{enumerate}
+    \item Erstellung des Thing-Typen \textit{windenergieanlage} sowie Mapping zum Sensortypen \textit{test\_st\_com}
+    \item Erzeugung der Thing-Instanz \textit{Enercon\_E126} sowie Mapping \textit{test\_sensor\_com} (s. Abbildung \ref{mapping})
+  \end{enumerate}
+\end{enumerate}
 
-\begin{lstlisting}
-============================================
-Reading sensor data ...
-{'capabilityAlternateId': '1234', 'measures': [{'temperature': '19.0'}, {'wind_speed': '1.12102078977'}, {'pressure': '1010'}, {'humidity': '70.0'}, {'airtight': '1.2'}], 'sensorAlternateId': '1234'}
-==> HTTP Response: 202
-\end{lstlisting}
+\noindent Im Thing Modeler werden dem digitalen Zwilling außerdem Standortkoordinaten, ein Bild sowie die Beispielorganisation PowerSupply hinzugefügt. Mit den aktuellen Einstellungen besitzt der digitale Zwilling lediglich die Fähgikeit, die Messwerte ohne spezielle Funktionen abzubilden.
 
-\subsubsection{Erstellen des digitalen Zwillings}
+\begin{figure} [H]
+  \centering
+  \includegraphics[width=1\linewidth]{mapping.png}
+  \caption{Mapping zwischen Thing und Sensor}
+  \label{mapping}
+\end{figure}
 
-\paragraph{Regeln, Ereignisse, Aktionen}
+\subsubsection{Regeln, Ereignisse und Aktionen}
+Damit aus den eingehenden Messwerten Informationen gewonnen werden kann, werden im nächsten Schritt Regeln für die Daten und darauffolgende Aktionen definiert. Für dieses Vorhaben stellt SAP Leonardo IoT Funktionen über die Benutzeroberfläche bereit (s. Abbildung \ref{ruleaction}). Ziel ist es, bei Eingang von \textit{kritischen Temperaturwerten}, dem Wartungspersonal eine \textit{Benachrichtigungs-SMS} zu senden, dem Raspberry Pi einen \textit{Befehl zum Aufleuchten der LED} zu senden und ein \textit{Ereignis} für den Zwilling in der Anwendung anzuzeigen. Außerdem sollen Ereignisse generiert werden, wenn die \textit{Windgeschwindigkeit} die Eigenschaften \textit{stiller Wind, Sturm oder Orkan} aufweisen.
 
-AWS, Events, LED Commands und Destinations
+\begin{figure} [H]
+  \centering
+  \includegraphics[width=0.6\linewidth]{regelnaktionen.png}
+  \caption{Funktionen für Regel- und Aktionsdefinition}
+  \label{ruleaction}
+\end{figure}
+
+\paragraph{Regelkontext}
+Als Bezugspunkt für die Regeln wird der Regelkontext \textit{windea\_context\_} erstellt. Hier wird lediglich definiert, dass sich die Regeln auf das Property Set \textit{wind\_1} des Thing-Typen \textit{windenergieanlage} beziehen sollen.
+
+\paragraph{Regeln} Im Regeleditor werden anschließend die expliziten Regeln für eingehende Messwerte definiert. Als Regelkontext wird für jede Regel \textit{windea\_context\_} angegeben. Für diesen Anwendungsfall werden vier Regeln nach dem Schema in Abbildung \ref{rules} definiert:
+\begin{itemize}
+  \item windea\_regel\_temp: Wenn die Temperatur größer ist als 25, wird ein Event \textit{HighTemp} generiert
+  \item wind\_sturm: Wenn die Windgeschwindigeit 6 übersteigt, wird ein Event\textit{Sturm}
+  \item wind\_windstille: Wenn die Wingeschwindigkeit kleiner ist als 1.85, wird ein Event \textit{Windstille} generiert
+  \item wind\_orkan: Wenn die Windgeschwindigkeit 8 übersteigt, wird ein Event \textit{Orkan} generiert
+\end{itemize}
+
+\begin{figure} [H]
+  \centering
+  \includegraphics[width=1\linewidth]{regeltemp.png}
+  \caption{Definition einer Regel}
+  \label{rules}
+\end{figure}
+
+\paragraph{Aktionen}
+
+Die oben definierten Regeln dienen zunächst nur der Konditionsüberpürfung und lösen bisher keine Aktionen aus. Mit Aktionen sind in diesem Fall HTTP-POST-Anfragen an bestimmte Server oder Endpunkte gemeint, welche in der Cloud Foundry Umgebung als Destination hinzugefügt werden. In den Fällen der Ereigniserzeugung und dem Befehl zum Blinken der LED sind bereits vordefinierte Schnittstellen vorhanden. Für dies Auslösung der Benachrichtigungs-SMS wird jedoch eine eigene \textit{API mit Python} erstellt. Im Folgenden werden die einzelnen Schritte detaillierter erläutert.
+
+\paragraph{Aktion: AWS\_Notification}
+\paragraph{Aktion: Led\_Blink}
+\paragraph{Aktion: Event\_Temperatur}
+\paragraph{Aktion: Event\_Windstille}
+
+
 \subsubsection{Visualisierung mit einer UI5-Applikation}
 
 
