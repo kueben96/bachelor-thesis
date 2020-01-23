@@ -138,12 +138,74 @@ Als Bezugspunkt für die Regeln wird der Regelkontext \textit{windea\_context\_}
 
 \paragraph{Aktionen}
 
-Die oben definierten Regeln dienen zunächst nur der Konditionsüberpürfung und lösen bisher keine Aktionen aus. Mit Aktionen sind in diesem Fall HTTP-POST-Anfragen an bestimmte Server oder Endpunkte gemeint, welche in der Cloud Foundry Umgebung als Destination hinzugefügt werden. In den Fällen der Ereigniserzeugung und dem Befehl zum Blinken der LED sind bereits vordefinierte Schnittstellen vorhanden. Für dies Auslösung der Benachrichtigungs-SMS wird jedoch eine eigene \textit{API mit Python} erstellt. Im Folgenden werden die einzelnen Schritte detaillierter erläutert.
+Die oben definierten Regeln dienen zunächst nur der Konditionsüberprüfung und lösen bisher keine Aktionen aus. Mit Aktionen sind in diesem Fall HTTP-POST-Anfragen an bestimmte Server oder Endpunkte gemeint, welche in der Cloud Foundry Umgebung als Destination hinzugefügt werden. In den Fällen der Ereigniserzeugung und dem Befehl zum Blinken der LED sind bereits vordefinierte Schnittstellen vorhanden. Für die Auslösung der Benachrichtigungs-SMS wird jedoch eine eigene \textit{API mit Python} erstellt. Im Folgenden werden die einzelnen Schritte detaillierter erläutert.
 
 \paragraph{Aktion: AWS\_Notification}
+
+Wie in dem Datenflussdiagramm (Abbildung \ref{dataflow}) dargestellt, interagiert ein externer Benachrichtigungsdienst mit dem System in der SAP Cloud Platform. Als Nachrichtendienst wurde der \textit{Simple Notification Service} von Amazon Web Services gewählt. \ac{aws} bietet ein Software Development Kit für Python, welches sich \textit{Boto 3} nennt. Mit Nutzung der \textit{boto3}- sowie der \textit{Flask}-Bibliothek wurde eine API für den Client der \ac{aws} entwickelt. Die API hat unter der Route \textit{/postjson} eine POST-Methode für eine Telefonnummer und eine dazugehörige Nachricht:
+\begin{lstlisting}[caption= Flask-API für AWS SNS]
+  client = boto3.client("sns",
+  aws_access_key_id="AKIAI44Y3WVEWIZYG4DA",
+  aws_secret_access_key="EXKQJR2D***************",
+  region_name="eu-west-1")
+
+  logger.info('sending sms ...')
+  client.publish(
+  PhoneNumber="{}".format(phone),
+  Message="{}".format(message)
+  )
+\end{lstlisting}
+
+Anschließend wurde eine \textit{manifest.yml}-Datei erstellt, um der der App für das Deployen in die Cloud Founry Umgebung die notwendigen Ressourcen zuzuweisen. Anschließend wurde die Applikation einfach über das \ac{cli} von Cloud Foundry in die SAP Cloud Platform deployed:
+\begin{lstlisting}[caption= Deployment in die SAP Cloud Platform]
+  cf api https://api.cf.eu10.hana.ondemand.com
+  cf login
+  cf push AWS_SMS
+\end{lstlisting}
+
+\noindent Schließlich wurde diese App mit der URL https://awssms-agile-lizard.cfapps.eu10.hana.ondemand.com/postjsonals Destination in die Cloud Foundry Umgebung integriert. Um die Auslösung der SMS zu implementieren, wurde zum Schluss in SAP Leonardo IoT die Aktion \textit{AWS\_Notification} definiert. Die Aktion wird durch die Regel \textit{windea\_regel\_temp} ausgelöst und sendet die in Listing \ref{postsms} dargestellte POST-Anfrage.
+
+\begin{lstlisting}[caption=JSON Payload, label=postsms]
+  {
+    "phone": "004915772661219" ,
+    "message": "Temperatur uebersteigt 25 Grad. Massnahmen einleiten"
+}
+\end{lstlisting}
+
 \paragraph{Aktion: Led\_Blink}
-\paragraph{Aktion: Event\_Temperatur}
-\paragraph{Aktion: Event\_Windstille}
+
+Das Senden des Befehls zum Aufleuchten der roten LED am Raspberry Pi folgt der selben Regel wie
+
+\begin{lstlisting}
+POST to Destinatio Led_Blink_Command
+https://5075f8b9-866e-4a4b-82f8-74687b72f1ab.eu10.cp.iot.sap/5075f8b9-866e-4a4b-82f8-74687b72f1ab/iot/core/api/v1/tenant/988439498/devices/60b373db-d6dc-4696-b916-aefec6d95cd0/commands
+  {
+   "sensorId":"52a78d29-0527-42bc-9683-827832dae242",
+   "capabilityId":"90175e2c-c4ae-4d61-813b-a60846aad12b",
+   "command":{
+      "led": true
+   }
+}
+\end{lstlisting}
+
+
+\paragraph{Aktion: Events generieren}
+Alle Aktionen zur Eventgenerierung haben die gleiche API zum Ziel: Standard EventType nur der JSON Payload ändert sich je nach Regel
+
+\begin{lstlisting}
+  {
+    "BusinessTimestamp": "${event.time}",
+    "Type": "Alert",
+    "EventInfo": "Alert on Wind_Speed",
+    "EventStatus": "Open",
+    "EventSeverity": 3,
+    "EventCode": null,
+    "EventSource": null,
+    "ThingId": "${thing.id}",
+    "ThingProperty": "wind_speed",
+    "ExternalId": "Windstille"
+  }
+\end{lstlisting}
 
 
 \subsubsection{Visualisierung mit einer UI5-Applikation}
