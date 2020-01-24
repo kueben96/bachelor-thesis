@@ -110,7 +110,7 @@ Die Tatsache, dass der Zustand der Anlage im \textit{IoT Service Cockpit} visual
 
 \subsubsection{Visualisierung in einer UI5-Anwendung}
 
-Das Erstellen eines Thing Models und einer Thing-Instanz genügt zunächst, um den Anlagenzustand in einer Webapplikation zu visualisieren. Für die Visualisierung steht in der Web IDE eine Leonardo-IoT-Erweiterung mit Vorlagen zur Erstellung von IoT-Anwendungen zur Verfügung. Vor der Nutzung der Vorlagen muss der Zugriff auf  die modellierten Zwillinge und deren Daten gewährleistet werden. Weil die Web IDE sich in der Neo Umgebung der \ac{scp} und die digitalen Zwillinge sich in der Cloud Foundry Umgebung befinden, werden Vetrauensbeziehungen zwischen den Umgebungen hergestellt. Nachdem in der Neo Umgebung die Destinationen der Leonardo IoT Funktionen angelegt wurden, können die Daten übergeben werden. Im Wizard zum Erstellen der Anwendung wird als Datenquelle der Service \texttt{IOTAS-ADVANCEDLIST-THING-ODATA} und das Property Set \texttt{cf.devbeta.\-windmills:wind\_1} gewählt. Anschließend wird die Erstellung folgender Seiten eingestellt:
+Das Erstellen eines Thing Models und einer Thing-Instanz genügt zunächst, um den Anlagenzustand in einer Webapplikation zu visualisieren. Für die Visualisierung steht in der Web IDE eine Leonardo-IoT-Erweiterung mit Vorlagen zur Erstellung von IoT-Anwendungen zur Verfügung. Vor der Nutzung der Vorlagen muss der Zugriff auf  die modellierten Zwillinge und deren Daten gewährleistet werden. Weil die Web IDE sich in der Neo Umgebung der \ac{scp} und die digitalen Zwillinge sich in der Cloud Foundry Umgebung befinden, werden Vetrauensbeziehungen zwischen den Umgebungen hergestellt. Nachdem in der Neo Umgebung die Destinationen der Leonardo IoT Funktionen angelegt wurden, können die Daten übergeben werden. Im Wizard zum Erstellen der Anwendung wird als Datenquelle der Service \texttt{IOTAS-ADVANCEDLIST-THING-ODATA} und das Property Set \texttt{cf.devbeta.\-windmills:wind\_1} gewählt. Anschließend wird die Erstellung folgender Seiten konfiguriert:
 
 \begin{itemize}
   \item Startseite mit einer Landkarte zur Verortung der Anlagen und Liste der Anlagen (s.Abbildung \ref{landing})
@@ -119,37 +119,32 @@ Das Erstellen eines Thing Models und einer Thing-Instanz genügt zunächst, um d
   \item Analyseseite für die Visualisierung der Messwerte (s. Abbildung \ref{analyse})
 \end{itemize}
 
-\begin{figure}[ht]
+\begin{figure}[H]
   \centering
   \includegraphics[width=1.0\linewidth]{landing_page.png}
   \caption{Startseite der Anwendung}
   \label{landing}
 \end{figure}
 
-
-\begin{figure}[ht]
+\begin{figure}[H]
   \centering
   \includegraphics[width=1.0\linewidth]{Thing_Messwerte.png}
   \caption{Details zur Anlage}
   \label{thingpage}
 \end{figure}
 
-\begin{figure}[ht]
+\noindent Neben den allgemeinen Daten und den Messwerten zu der Anlage bietet die Seite eine Übersicht über die Ereignisse, die für bestimmte Messwerte generiert werden. Nach der Erstellung der Anwendung in der Web IDE können in SAP Leonardo IoT weiterhin neue Funktionen erstellt werden, die zur Laufzeit in die Anwendung integriert werden. Im nächsten Kapitel wird die Erzeugung von Ereignissen näher behandelt. 
+
+\begin{figure}[H]
   \centering
   \includegraphics[width=1.0\linewidth]{analyseseite.png}
   \caption{Analyseseite}
   \label{analyse}
 \end{figure}
 
-\subsubsection{Regeln, Ereignisse und Aktionen}
-Damit aus den eingehenden Messwerten Informationen gewonnen werden kann, werden im nächsten Schritt Regeln für die Daten und darauffolgende Aktionen definiert. Für dieses Vorhaben stellt SAP Leonardo IoT Funktionen über die Benutzeroberfläche bereit (s. Abbildung \ref{ruleaction}). Ziel ist es, bei Eingang von \textit{kritischen Temperaturwerten}, dem Wartungspersonal eine \textit{Benachrichtigungs-SMS} zu senden, dem Raspberry Pi einen \textit{Befehl zum Aufleuchten der LED} zu senden und ein \textit{Ereignis} für den Zwilling in der Anwendung anzuzeigen. Außerdem sollen Ereignisse generiert werden, wenn die \textit{Windgeschwindigkeit} die Eigenschaften \textit{stiller Wind, Sturm oder Orkan} aufweisen. 
 
-\begin{figure} [H]
-  \centering
-  \includegraphics[width=0.6\linewidth]{regelnaktionen.png}
-  \caption{Funktionen für Regel- und Aktionsdefinition}
-  \label{ruleaction}
-\end{figure}
+\subsubsection{Regeln, Ereignisse und Aktionen}
+Damit aus den eingehenden Messwerten Informationen gewonnen werden kann, werden im nächsten Schritt Regeln für die Daten und darauffolgende Aktionen definiert. Für dieses Vorhaben stellt SAP Leonardo IoT Funktionen über die Benutzeroberfläche bereit. Ziel ist es, bei Eingang von \textit{kritischen Temperaturwerten}, dem Wartungspersonal eine \textit{Benachrichtigungs-SMS} zu senden, dem Raspberry Pi einen \textit{Befehl zum Aufleuchten der LED} zu senden und ein \textit{Ereignis} für den Zwilling in der Anwendung anzuzeigen. Außerdem sollen Ereignisse generiert werden, wenn die \textit{Windgeschwindigkeit} die Eigenschaften \textit{stiller Wind, Sturm oder Orkan} aufweisen. 
 
 \paragraph{Regelkontext}
 Als Bezugspunkt für die Regeln wird der Regelkontext \textit{windea\_context\_} erstellt. Hier wird lediglich definiert, dass sich die Regeln auf das Property Set \textit{wind\_1} des Thing-Typen \textit{windenergieanlage} beziehen sollen.
@@ -165,17 +160,18 @@ Als Bezugspunkt für die Regeln wird der Regelkontext \textit{windea\_context\_}
 \begin{figure} [H]
   \centering
   \includegraphics[width=1\linewidth]{regeltemp.png}
-  \caption{Definition einer Regel}
+  \caption[Definition einer Regel]{Definition der Regel windea\_regel\_temp}
   \label{rules}
 \end{figure}
 
 \paragraph{Aktionen}
 
-Die oben definierten Regeln dienen zunächst nur der Konditionsüberprüfung und lösen bisher keine Aktionen aus. Mit Aktionen sind in diesem Fall HTTP-POST-Anfragen an bestimmte Server oder Endpunkte gemeint, welche in der Cloud Foundry Umgebung als Destination hinzugefügt werden. In den Fällen der Ereigniserzeugung und dem Befehl zum Blinken der LED sind bereits vordefinierte Schnittstellen vorhanden. Für die Auslösung der Benachrichtigungs-SMS wird jedoch eine eigene \textit{API mit Python} erstellt. Im Folgenden werden die einzelnen Schritte detaillierter erläutert.
+Die oben definierten Regeln dienen zunächst nur der Konditionsüberprüfung und lösen bisher keine Aktionen aus. Mit Aktionen sind in diesem Fall HTTP-POST-Anfragen an bestimmte Server oder Endpunkte gemeint, welche der Cloud Foundry Umgebung als Destination hinzugefügt werden. In den Fällen der Ereigniserzeugung und dem Befehl zum Blinken der LED sind bereits vordefinierte Schnittstellen vorhanden. Für die Auslösung der Benachrichtigungs-SMS wird jedoch eine eigene \textit{API mit Python} erstellt. Im Folgenden werden die einzelnen Schritte detaillierter erläutert.
 
 \paragraph{Aktion: AWS\_Notification}
 
-Wie in dem Datenflussdiagramm (Abbildung \ref{dataflow}) dargestellt, interagiert ein externer Benachrichtigungsdienst mit dem System in der SAP Cloud Platform. Als Nachrichtendienst wurde der \textit{Simple Notification Service} von Amazon Web Services gewählt. \ac{aws} bietet ein Software Development Kit für Python, welches sich \textit{Boto 3} nennt. Mit Nutzung der \textit{boto3}- sowie der \textit{Flask}-Bibliothek wurde eine API für den Client der \ac{aws} entwickelt. Die API hat unter der Route \textit{/postjson} eine POST-Methode für eine Telefonnummer und eine dazugehörige Nachricht:
+Wie in dem Datenflussdiagramm (Abbildung \ref{dataflow}) dargestellt, interagiert ein externer Benachrichtigungsdienst mit dem System in der SAP Cloud Platform. Als Nachrichtendienst wurde der \textit{Simple Notification Service} von Amazon Web Services gewählt. \ac{aws} bietet ein Software Development Kit für Python, welches sich \textit{Boto 3} nennt. Mit Nutzung der \texttt{boto3}- sowie der \texttt{Flask}-Bibliothek wurde eine API für den Client der \ac{aws} entwickelt. Die API hat unter der Route \texttt{/postjson} eine POST-Methode für eine Telefonnummer und eine dazugehörige Nachricht:
+\newline
 \begin{lstlisting}[caption= Flask-API für AWS SNS]
   client = boto3.client("sns",
   aws_access_key_id="AKIAI44Y3WVEWIZYG4DA",
@@ -188,7 +184,7 @@ Wie in dem Datenflussdiagramm (Abbildung \ref{dataflow}) dargestellt, interagier
   Message="{}".format(message)
   )
 \end{lstlisting}
-
+\vspace{5mm}
 \noindent Anschließend wurde eine \textit{manifest.yml}-Datei erstellt, um der der App für das Deployen in die Cloud Founry Umgebung die notwendigen Ressourcen zuzuweisen. Daraufhin wurde die Applikation einfach über das \ac{cli} von Cloud Foundry in die SAP Cloud Platform deployed:
 \begin{lstlisting}[caption= Deployment in die SAP Cloud Platform]
   cf api https://api.cf.eu10.hana.ondemand.com
@@ -197,9 +193,10 @@ Wie in dem Datenflussdiagramm (Abbildung \ref{dataflow}) dargestellt, interagier
 \end{lstlisting}
 
 \noindent Schließlich wurde diese App mit der zugewiesenen URL (s. Listing \ref{postsms}) als Destination in die Cloud Foundry Umgebung integriert. Um die Auslösung der SMS zu implementieren, wurde zum Schluss in SAP Leonardo IoT die Aktion \textit{AWS\_Notification} definiert. Die Aktion wird durch die Regel \textit{windea\_regel\_temp} ausgelöst und sendet die in Listing \ref{postsms} dargestellte POST-Anfrage.
-
+\newline
 \begin{lstlisting}[caption=JSON Payload an Destination, label=postsms]
   POST to Destinattion AWS_Notification: https://awssms-agile-lizard.cfapps.eu10.hana.ondemand.com/postjsonals
+
   Payload:
   {
     "phone": "004915772661219" ,
@@ -210,8 +207,8 @@ Wie in dem Datenflussdiagramm (Abbildung \ref{dataflow}) dargestellt, interagier
 \paragraph{Aktion: Led\_Blink}
 
 Das Senden des Befehls zum Aufleuchten der roten LED am Raspberry Pi folgt der selben Regel wie die Aktion zum Auslösen der SMS. Der Unterschied besteht in dem Endpunkt für die Anfrage. Der Befehl zum wird an die Zieladresse des Geräts für \textit{commands} im Internet of Things Service gesendet. In der Anfrage-Payload werden die explizit der Sensor und die Capability des Geräts adressiert. 
-
-\begin{lstlisting}
+\newline
+\begin{lstlisting}[caption= POST-Anfrage zum Senden den Befehls]
 POST to Destination Led_Blink_Command: https://5075f8b9-866e-4a4b-82f8-74687b72f1ab.eu10.cp.iot.sap/5075f8b9-866e-4a4b-82f8-74687b72f1ab/iot/core/api/v1/tenant/988439498/devices/60b373db-d6dc-4696-b916-aefec6d95cd0/commands
 Payload:
   {
@@ -223,17 +220,18 @@ Payload:
 }
 \end{lstlisting}
 
-\noindent Als Folge der Anfrage wird unter der Capability \texttt{comamnds\_test} der Wert der Property \texttt{led=true} gesetzt. Da die Anweisung bisher nur an die virtuelle Instanz des Geräts gesendet wurde, muss der Raspberry Pi eine \texttt{GET-Anfrage} an den Endpunkt des Geräts im IoT Service senden. Um die Befehle so schnell wie möglich zu erhalten, wird dem Skript zum Senden der Messwerte zur Laufzeit die Methode \texttt{get\_commands} hinzugefügt. Wenn der Antwort-String den Werte \texttt{true} enthält, wird ein Befehl zum Aufleuchten an die Schnittstelle des Sensors gesendet.  
-
+\noindent Als Folge der Anfrage wird unter der Capability \texttt{comamnds\_test} der Wert der Property \texttt{led=true} gesetzt. Da die Anweisung bisher nur an die virtuelle Instanz des Geräts gesendet wurde, muss der Raspberry Pi eine \texttt{GET-Anfrage} an das Gateway des Geräts im IoT Service senden. Um die Befehle so schnell wie möglich zu erhalten, wird dem Skript zum Senden der Messwerte zur Laufzeit die Methode \texttt{get\_commands} hinzugefügt. Wenn der Antwort-String den Werte \texttt{true} enthält, wird ein Befehl zum Aufleuchten an die Schnittstelle des Sensors gesendet.  
+\newline
 \begin{lstlisting}[caption= GET-Anfrage für Commands an das Gateway ]
   r = requests.get('http://192.168.178.52:8699/commands/60b373db-d6dc-4696-b916-aefec6d95cd0)
 \end{lstlisting}
 
 \paragraph{Aktion: Events generieren}
 
-Alle Aktionen zur Eventgenerierung haben die gleiche API zum Ziel: Standard EventType nur der JSON Payload ändert sich je nach Regel
-
-\begin{lstlisting}
+Alle Aktionen zur Eventgenerierung haben die gleiche API als Zieldestination. Für jede Regel wird jeweils eine eigene Aktion generiert, welche eine POST-Anfrage an die API des von SAP vordefinierten Ereignistypen \texttt{StandardEventType} auslöst. Es unterscheiden sich lediglich die Werte im Payload je nach auslösender Regel. Variiert wird zwischen der \texttt{EventSeverity} (1 = High, 2 = Medium, 3 = Low), der \texttt{EventInfo} und der \texttt{ExternalId}. Im folgenden Listing ist beispielhaft am Fall der Regel \textit{wind\_windstille} eine Anfrage dargestellt. Die weiteren Anfragen sind im Detail im Anhang gelistet.
+\newline
+\begin{lstlisting}[caption= Beispielanfrage für die Generierung eines Ereignisses]
+  POST to Destination Standard_EventType: https://events-sap.cfapps.eu10.hana.ondemand.com/ES/EventType/com.sap.appiot.eventtypes:StandardEventType/v1/Events
   {
     "BusinessTimestamp": "${event.time}",
     "Type": "Alert",
@@ -249,9 +247,9 @@ Alle Aktionen zur Eventgenerierung haben die gleiche API zum Ziel: Standard Even
 \end{lstlisting}
 
 
-\subsubsection{Visualisierung mit einer UI5-Applikation}
 
 
 \subsubsection{Zusammenfassung Implementierung}
 
-\newpage
+Im Endeffekt wurde die ganze Zeit Microservices der SAP Leonardo IoT Foundation genutzt, um ein Gesamtes System zu erzeugen. 
+

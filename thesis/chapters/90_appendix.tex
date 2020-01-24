@@ -96,162 +96,290 @@
 
 \section{Quelltext und API-Anfragen}
 
-\paragraph{EventPropertySetType}
+\subsection{Python Skript: test\_data.py}
 
 \begin{lstlisting}
-  POST : https://events-sap.cfapps.eu10.hana.ondemand.com/ES/v1/EventPropertySetTypes
 
-  {
-  "Name": "cf.devbeta.windmills:windBeaufortSet",
-  "PackageName": "cf.devbeta.windmills",
-  "DataCategory": "EventData",
-  "Properties": [
-    {
-      "Name": "windBeaufort",
-      "Type": "String",
-      "PropertyLength": "120",
-      "Descriptions": [
-        {
-          "LanguageCode": "de",
-          "Description": "Beaufort Bezeichnungen fuer Windstaerken"
-        },
-        {
-          "LanguageCode": "en",
-          "Description": "Beaufort Values for wind strength"
+# Skript zum Erzeugen und Lesen von Sensordaten
+
+import grovepi
+from grovepi import *
+import math
+import random
+import sys
+from gpiozero import DigitalInputDevice
+from time import sleep
+from send_test_data import send_data
+import send_test_data as send
+import json
+
+# Wind/Anemometer
+count = 0
+radius_cm = 2.0        # Radius of the anemometer
+interval = 5        # How often to report speed
+ADJUSTMENT = 1.18    # Adjustment for weight of cups
+CM_IN_A_KM = 100000.0
+CM_IN_METER = 1000.0
+SECS_IN_AN_HOUR = 3600
+
+# Luftdichte
+airtight = 0
+
+#Temperatur und Luftfeuchtigkeit
+
+temp_hum_sensor = 4  # digital port 4.
+
+blue = 0    # The Blue colored sensor.
+white = 1   # The White colored sensor.
+
+# Collection fuer Luftdruckwerte
+pressureCollection = [1002, 1004, 1005, 1006, 1008, 1010, 1011, 1012, 1013]
+ 
+def simulatePressure():
+    global pressureCollection
+    pressure = random.choice(pressureCollection)
+    print("Pressure: ", pressure, "hpa")
+    return pressure
+
+def calculate_speed_kmh(time_sec):
+    global count
+    circumference_cm = (2 * math.pi) * radius_cm
+    rotations = count / 2.0
+
+    dist_km = (circumference_cm * rotations) / CM_IN_A_KM
+
+    km_per_sec = dist_km / time_sec
+    km_per_hour = km_per_sec * SECS_IN_AN_HOUR
+
+    speed = km_per_hour * ADJUSTMENT
+
+    return speed
+
+def spin():
+    global count
+    count = count + 1
+    print(count)
+
+# Gpio4 auf dem GrovePi+
+wind_speed_sensor = DigitalInputDevice(4)
+wind_speed_sensor.when_activated = spin
+
+def readSensors():
+    global count
+    print("Method Started")
+    while True:
+        count = 0
+        sleep(interval)
+        [temperature, humidity] = grovepi.dht(temp_hum_sensor, blue)
+        pressure = simulatePressure()
+        wind_speed = calculate_speed_kmh(interval)
+        airtight = calculateAirtight(temperature, pressure)
+
+# Konvertiere sensorData zu String fuer Sending request
+        sensorData = {
+            "temperature": str(temperature),
+            "wind_speed": str(wind_speed),
+            "pressure": str(pressure),
+            "humidity": str(humidity),
+            "airtight": str(airtight)
         }
-      ]
-    }
-  ],
-  "Descriptions": [
-    {
-      "LanguageCode": "de",
-      "Description": "Set fuer Windstaerken"
-    }
-  ]
-}
+        print("SensorData", sensorData)
+        print("SensorDataTypebeforesending", type(sensorData))
+
+        send.send_data(sensorData)
+        return sensorData
+
+# Luftdichte berechnen
+def calculateAirtight(temp_cel, pressure):
+
+    temp_cel = temp_cel
+    temp_kel = (temp_cel + 273.15)
+    p = pressure
+    r = 287.05
+
+    print("pressure", p)
+    print("r", r)
+    print("temp_kel", temp_kel)
+    print("temp_cel", temp_cel)
+
+    airtight = (p * 100) / (r * temp_kel)
+    airtight = round(airtight, 2)
+
+    print("Die Luftdichte bei ", temp_cel, "Grad Celcius und ", p, "hpA betraegt ", airtight, "kg/m**3")
+
+    return airtight
+while True:
+    readSensors()
 \end{lstlisting}
 
-\paragraph{EventTypeBeaufort}
+\subsection{Python Skript: send\_test\_data.py}
 
 \begin{lstlisting}
+# Daten senden via REST Edge Gateway
+# CURL-Command
+# curl -v -H "Content-Type: application/json" -d "{ \"capabilityAlternateId\": \"1\", \"sensorTypeAlternateId\": \"0\", \"measures\": [{\"temperature\": \"25\"}] }"
+# http://<IP_GW_EDGE>:<PORT_GW_EDGE>/measures/<DEVICE_ALTERNATE_ID>
 
-  POST: https://events-sap.cfapps.eu10.hana.ondemand.com/ES/v1/EventTypes
+from grovepi import *
+import sys
+import requests
+import json
+import time
+import math
+from datetime import datetime
 
-  {
-	"Name": "cf.devbeta.windmills:windBeaufortEvent",
-	"EventTypeState": "Mutable",
-	"Descriptions": [{
-		"LanguageCode": "de",
-		"Description": "Event type for Beaufort Scale"
-	}, {
-		"LanguageCode": "de",
-		"Description": "Event Typ fuer Beaufort Skala"
-	}],
-	"PackageName": "cf.devbeta.windmills",
-	"PropertySetId": "windBeaufortSet",
-	"PropertySetType": "cf.devbeta.windmills:windBeaufortSet",
-	"PropertySetDescriptions": [{
-		"LanguageCode": "en",
-		"Description": "Beaufort Property Set Type"
-	}],
-	"Statuses": [{
-		"EventStatus": "Windstille",
-		"Descriptions": [{
-			"LanguageCode": "de",
-			"Description": "Windstille 1,85 kmh"
-		}]
-	}, {
-		"EventStatus": "leiser_Zug",
-		"Descriptions": [{
-			"LanguageCode": "de",
-			"Description": "- 7,41 km/h"
-		}]
-	}, {
-		"EventStatus": "leichte_Brise",
-		"Descriptions": [{
-			"LanguageCode": "de",
-			"Description": "- 12.96 km/h"
-		}]
-	}, {
-		"EventStatus": "schwache_Brise",
-		"Descriptions": [{
-			"LanguageCode": "de",
-			"Description": "- 20,37 km/h"
-		}]
-	}, {
-		"EventStatus": "maessige_Brise",
-		"Descriptions": [{
-			"LanguageCode": "de",
-			"Description": "- 29.63 km/h"
-		}]
-	}, {
-		"EventStatus": "frische_Brise",
-		"Descriptions": [{
-			"LanguageCode": "de",
-			"Description": "- 40.74 km/h"
-		}]
-	}, {
-		"EventStatus": "starker_Wind",
-		"Descriptions": [{
-			"LanguageCode": "de",
-			"Description": "- 51.86 km/h"
-		}]
-	},{
-		"EventStatus": "steifer_Wind",
-		"Descriptions": [{
-			"LanguageCode": "de",
-			"Description": "- 62.97 km/h"
-		}]
-	},
-	{
-		"EventStatus": "Sturm",
-		"Descriptions": [{
-			"LanguageCode": "de",
-			"Description": "- 88.90 km/h"
-		}]
-	},{
-		"EventStatus": "schwerer_Sturm",
-		"Descriptions": [{
-			"LanguageCode": "de",
-			"Description": "- 103.71 km/h"
-		}]
-	},{
-		"EventStatus": "Orkan",
-		"Descriptions": [{
-			"LanguageCode": "de",
-			"Description": "- 118.53 km/h"
-		}]
-	}],
-	"Severities": [{
-		"EventSeverity": 1,
-		"Descriptions": [{
-			"LanguageCode": "en",
-			"Description": "High"
-		}]
-	}, {
-		"EventSeverity": 2,
-		"Descriptions": [{
-			"LanguageCode": "en",
-			"Description": "Medium"
-		}]
-	}, {
-		"EventSeverity": 3,
-		"Descriptions": [{
-			"LanguageCode": "en",
-			"Description": "Low"
-		}]
-	}],
-	"Codes": [{
-		"EventCode": "EQ12",
-		"Descriptions": [{
-			"LanguageCode": "en",
-			"Description": "Event Code 12"
-		}]
-	}]
-}
+# Variablen fur Verbindung mit IOT-Services
+
+deviceAlternateId = '60b373db-d6dc-4696-b916-aefec6d95cd0'  
+sensorAlternateId = 'root'  
+capabilityAlternateId = '1234'  # wind_1
+tenant = 'https://5075f8b9-866e-4a4b-82f8-74687b72f1ab.eu10.cp.iot.sap/iot/gateway/rest/measures/'  # the IoT Service Host Name
+
+postAddress = ('http://192.168.178.52:8699/measures/' + deviceAlternateId)
+postAddressCommand = ('http://192.168.178.52:8699/commands/' + deviceAlternateId)
+print('Posting to:', postAddress)
+
+led = 3 # Digital Port 3 
+pinMode(led, "OUTPUT")
+time.sleep(1)
+
+# Methode zum Erhalten von Commands
+
+def get_command():
+    print("Sending Command Started")
+
+    try:
+
+        headers = {'content-type': 'application/json'}
+        r = requests.get(postAddressCommand, deviceAlternateId)
+
+        responseCode = r.status_code
+
+        print("==> HTTP Response: %d" % responseCode)
+
+        result = r.text
+        print(result)
+
+        print(type(result))
+        result = result.encode('utf8')
+        print(type(result))
+        print(result)
+
+    except IOError:
+        print("Error")
+
+    ledtrue = "true"
+
+    if ledtrue in result:
+        digitalWrite(led, 1)     # Send HIGH to switch on LED
+        print("LED True!")
+        time.sleep(4)
+        digitalWrite(led, 0)     # Send HIGH to switch on LED
+        print("LED Off")
+        time.sleep(1)
+
+# Methode zum Senden von Sensordaten an die Cloud
+def send_data(sensorData):
+    print("Sending Method Started")
+    print("SensorDataType", type(sensorData))
+    try:
+        print("")
+        print("============================================")
+        print("Reading sensor data ...")
+
+        bodyJson = {
+            "capabilityAlternateId": capabilityAlternateId,
+            "sensorAlternateId": sensorAlternateId,
+            # "measures": [{"temperature": sensorData[0]}, {"wind_speed": sensorData[1]}, {"pressure": sensorData[2]}, {"humidity": sensorData[3]}]
+            "measures": [{"temperature": sensorData["temperature"]}, {"wind_speed": sensorData["wind_speed"]}, {"pressure": sensorData["pressure"]}, {"humidity": sensorData["humidity"]}, {"airtight": sensorData["airtight"]}]
+        }
+
+        data = json.dumps(bodyJson)
+        headers = {'content-type': 'application/json'}
+        r = requests.post(postAddress, data=data, headers=headers)
+        responseCode = r.status_code
+        print(str(bodyJson))
+        print("==> HTTP Response: %d" % responseCode)
+
+    except IOError:
+        print("Error")
+
+    get_command()
 \end{lstlisting}
 
-  \section{Anhang 1}
+\subsection{Python Skript: AWS\_Flask.py}
+\begin{lstlisting}
+import boto3
+from flask import Flask
+from flask import request
+import os
+import time
+from sap.cf_logging import flask_logging
+import logging
+
+app = Flask(__name__)
+flask_logging.init(app, logging.INFO)
+logger = logging.getLogger('cf.dev.beta.bla.aws_sms')
+
+cf_port = os.getenv("PORT")
+
+time_last_sms = 0
+time_curr = 0
+diff_min = 0
+
+@app.route('/')
+def input():
+    logger.info('MOIN')
+    return("Ok..")
+
+@app.route('/postjson', methods=['POST'])
+def postJsonHandler():
+    global time_curr
+    global time_last_sms
+    global diff_min
+
+    time_curr = int(time.time()) # aktuelle zeit in unix epoch timestamp
+    diff_min = round(((time_curr - time_last_sms) / 100), 0) # letzter sendezeitpunkt minus aktuelle zeit
+
+    logger.info("last sms sent: " + str(time_last_sms))
+    logger.info("time_curr: " + str(time_curr))
+    logger.info("diff_min: " + str(diff_min))
+
+    if diff_min < 0 or diff_min > 2:
+      #print(request.is_json)
+      content = request.get_json()
+
+      #print(content)
+      phone = content['phone']
+      message = content['message']
+      #print("{}".format(phone))  # you can comment it out
+      #print("{}".format(message))  # you can comment it out
+
+      # Create an SNS client
+      client = boto3.client("sns",
+                            aws_access_key_id="AKIAI44Y3WVEWIZYG4DA",
+                            aws_secret_access_key="EXKQJR2D91D8LXaaJrPd8qM4Eg0rU63l0L/TruJM",
+                            region_name="eu-west-1"
+                            )
+
+      # Send your sms message.
+      logger.info('sending sms ...')
+      client.publish(
+          PhoneNumber="{}".format(phone),
+          Message="{}".format(message)
+      )
+      time_last_sms = time_curr # zeitpunkt zuletzt gesendet auf aktuellen sendezeitpunkt setzen
+      return 'SMS alert sent :)'
+    return 'Last SMS sent before 2min intervall.'
+
+if __name__ == '__main__':
+    if cf_port is None:
+        app.run(host='0.0.0.0', port=5000, debug=True)
+    else:
+        app.run(host='0.0.0.0', port=int(cf_port), debug=True)
+\end{lstlisting}
+
+\section{Anhang 1}
 
   \begin{table}[h]
     \begin{tabular}{lll}
