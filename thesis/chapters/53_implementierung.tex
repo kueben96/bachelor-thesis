@@ -246,7 +246,22 @@ Alle Aktionen zur Eventgenerierung haben die gleiche API als Zieldestination. F�
   }
 \end{lstlisting}
 
+\noindent In der UI5-Anwendung machen sich die generierten Ereignisse auf zweierlei Weisen sichtbar. Erstens kann auf der Startseite eine Karte zur Übersicht über den Anlagenzustand geöffnet werden (s. Abbildung \ref{detailoverview}). Jeweils nach \texttt{EventSeverity} werden die Ereigniss als \textit{Error, Warning oder Information} eingestuft. 
 
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.5\linewidth]{thindetail.png}
+  \caption{Übersicht über den Zustand der Anlage}
+  \label{detailoverview}
+\end{figure}
+\vspace{2mm}
+\noindent Die in der Übersicht grob klassifizierten Ereignisse werden in der Detailansicht der Anlage mit den dazugehörigen Werten und Informationen aufgelistet (s. Abbildung \ref{thingdetail}).
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=1.0\linewidth]{events.png}
+  \caption{Detaillierte Auflistung der Ereignisse}
+  \label{thingdetail}
+\end{figure}
 
 
 \subsubsection{Zusammenfassung Implementierung}
