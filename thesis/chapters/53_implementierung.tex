@@ -85,7 +85,7 @@ Mit der Registrierung des Gateways sowie des Geräts sind alle Bedingungen erfü
   \label{datavisual}
 \end{figure}
 
-
+% digital twin
 \subsubsection{Erzeugung des digitalen Zwillings}
 
 Die Tatsache, dass der Zustand der Anlage im \textit{IoT Service Cockpit} visualisiert wird, genügt für die Erfüllung der Anforderungen nicht. Der Grund dafür ist, dass die Daten lediglich für den Systemadministrator zugänglich sind. Um die Daten auch den Kunden bzw. dem Wartungspersonal zugänglich zu machen, wird eine UI5-Applikation erstellt. Diese bezieht die Daten aus der funktionalen Repräsentation des Geräts, dem digitalen Zwilling. Mit der Konfiguration des \textit{Message Processing} und den Selektoren können die Messwerte und Metadaten des Geräts an den digitalen Zwilling in \textit{SAP Leonardo IoT} übergeben werden. Dafür wird zunächst ein neues \textit{Thing Model} nach dem in Abbildung \ref{customdevicemodel} dargestellten Gerätemodell erstellt. Genau so, wie im Internet of Things Service die Geräte, Capabilities und Kofigurationen für einen Tenant erstellt werden, findet die Modellierung in Leonardo IoT in \textit{packages} statt. Die Modellierung wird vollständig über die in der grafischen Benutzerschnittstelle verfügbaren \textbf{Thing Engineering Funktionen} durchgeführt:
@@ -156,16 +156,18 @@ Wie in dem Datenflussdiagramm (Abbildung \ref{dataflow}) dargestellt, interagier
   )
 \end{lstlisting}
 
-Anschließend wurde eine \textit{manifest.yml}-Datei erstellt, um der der App für das Deployen in die Cloud Founry Umgebung die notwendigen Ressourcen zuzuweisen. Anschließend wurde die Applikation einfach über das \ac{cli} von Cloud Foundry in die SAP Cloud Platform deployed:
+\noindent Anschließend wurde eine \textit{manifest.yml}-Datei erstellt, um der der App für das Deployen in die Cloud Founry Umgebung die notwendigen Ressourcen zuzuweisen. Daraufhin wurde die Applikation einfach über das \ac{cli} von Cloud Foundry in die SAP Cloud Platform deployed:
 \begin{lstlisting}[caption= Deployment in die SAP Cloud Platform]
   cf api https://api.cf.eu10.hana.ondemand.com
   cf login
   cf push AWS_SMS
 \end{lstlisting}
 
-\noindent Schließlich wurde diese App mit der URL https://awssms-agile-lizard.cfapps.eu10.hana.ondemand.com/postjsonals Destination in die Cloud Foundry Umgebung integriert. Um die Auslösung der SMS zu implementieren, wurde zum Schluss in SAP Leonardo IoT die Aktion \textit{AWS\_Notification} definiert. Die Aktion wird durch die Regel \textit{windea\_regel\_temp} ausgelöst und sendet die in Listing \ref{postsms} dargestellte POST-Anfrage.
+\noindent Schließlich wurde diese App mit der zugewiesenen URL (s. Listing \ref{postsms}) als Destination in die Cloud Foundry Umgebung integriert. Um die Auslösung der SMS zu implementieren, wurde zum Schluss in SAP Leonardo IoT die Aktion \textit{AWS\_Notification} definiert. Die Aktion wird durch die Regel \textit{windea\_regel\_temp} ausgelöst und sendet die in Listing \ref{postsms} dargestellte POST-Anfrage.
 
-\begin{lstlisting}[caption=JSON Payload, label=postsms]
+\begin{lstlisting}[caption=JSON Payload an Destination, label=postsms]
+  POST to Destinattion AWS_Notification: https://awssms-agile-lizard.cfapps.eu10.hana.ondemand.com/postjsonals
+  Payload:
   {
     "phone": "004915772661219" ,
     "message": "Temperatur uebersteigt 25 Grad. Massnahmen einleiten"
@@ -174,11 +176,11 @@ Anschließend wurde eine \textit{manifest.yml}-Datei erstellt, um der der App f�
 
 \paragraph{Aktion: Led\_Blink}
 
-Das Senden des Befehls zum Aufleuchten der roten LED am Raspberry Pi folgt der selben Regel wie
+Das Senden des Befehls zum Aufleuchten der roten LED am Raspberry Pi folgt der selben Regel wie die Aktion zum Auslösen der SMS. Der Unternschied besteht in dem Endpunkt für die Anfrage. Der Befehl zum wird an die Zieladresse des Geräts für \textit{commands} im Internet of Things Service gesendet. In der Anfrage-Payload werden die explizit der Sensor und die Capability des Geräts adressiert. 
 
 \begin{lstlisting}
-POST to Destinatio Led_Blink_Command
-https://5075f8b9-866e-4a4b-82f8-74687b72f1ab.eu10.cp.iot.sap/5075f8b9-866e-4a4b-82f8-74687b72f1ab/iot/core/api/v1/tenant/988439498/devices/60b373db-d6dc-4696-b916-aefec6d95cd0/commands
+POST to Destination Led_Blink_Command: https://5075f8b9-866e-4a4b-82f8-74687b72f1ab.eu10.cp.iot.sap/5075f8b9-866e-4a4b-82f8-74687b72f1ab/iot/core/api/v1/tenant/988439498/devices/60b373db-d6dc-4696-b916-aefec6d95cd0/commands
+Payload:
   {
    "sensorId":"52a78d29-0527-42bc-9683-827832dae242",
    "capabilityId":"90175e2c-c4ae-4d61-813b-a60846aad12b",
@@ -188,8 +190,14 @@ https://5075f8b9-866e-4a4b-82f8-74687b72f1ab.eu10.cp.iot.sap/5075f8b9-866e-4a4b-
 }
 \end{lstlisting}
 
+\noindent Als Folge der Anfrage wird unter der Capability \texttt{comamnds\_test} der Wert der Property \texttt{led=true} gesetzt. Da die Anweisung bisher nur an die virtuelle Instanz des Geräts gesendet wurde, muss der Raspberry Pi eine ˜\texttt{GET-Anfrage} an den Endpunkt des Geräts im IoT Service senden. Um die Befehle so schnell wie möglich zu erhalten, wird dem Skript zum Senden der Messwerte zur Laufzeit die Methode \texttt{get\_commands} hinzugefügt. 
+
+\begin{lstlisting}
+  r = requests.get('http://192.168.178.52:8699/commands/60b373db-d6dc-4696-b916-aefec6d95cd0)
+\end{lstlisting}
 
 \paragraph{Aktion: Events generieren}
+
 Alle Aktionen zur Eventgenerierung haben die gleiche API zum Ziel: Standard EventType nur der JSON Payload ändert sich je nach Regel
 
 \begin{lstlisting}
