@@ -5,30 +5,19 @@
 \subsection{Motivation}
 
 \begin{displayquote}
-  \glqq Wenn Technologien und Gesellschaft sich schneller ändern, als Unternehmen in der Lage sind sich anzupassen, dann kommt es ganz nach den Regeln der Evolution zum Austerben bestimmter Unternehmenstypen.\grqq{}
+  \glqq Wenn Technologien und Gesellschaft sich schneller ändern, als Unternehmen in der Lage sind sich anzupassen, dann kommt es ganz nach den Regeln der Evolution zum Aussterben bestimmter Unternehmenstypen.\grqq{}
 \end{displayquote}
 
 \begin{flushright}
   \citet[S. 3, zitiert nach Land, K.-H. 2015]{Roth2016}
 \end{flushright}
 
-\noindent Die vierte Industrielle Revolution durchläuft zahlreiche Branchen und bringt das Potenzial, sie grundlegend zu verändern. Während einige Branchen und Unternehmenstypen durch die Unterstüzung von \ac{ikt} ihre Effizienz steigern können, sind andere vollständig abhängig von ihnen. Vor allem die Energiewirtschaft ist im Zuge der Energiewende einem grundlgenden Transformationsprozess unterworfen. Durch den Umstieg von Energieproduktionsmethoden wie Kernkraft oder Kohlekraft zu erneuerbaren Energien verlagert sich die Sicht von zentraler Produktion zu dezentraler Produktion. Der Paradigmenwechsel in der Produktion geht in diesem Fall parallel mit dem Pradigmenwechsel in den \ac{ikt} einher. Ohne die technologischen Treiber der Industrie 4.0 wäre die Koordination der dezentralen Anlagen schlichtweg nicht möglich. Im Zeitalter der Digitalisierung nimmt die Geschwindigkeit, in der neue Technologien entwickelt werden rasant zu. Die Technologien als gegeben und ausreichend hinzunehmen, kann sich in Anbetracht des obigen Zitats aus der Sicht aller Branchen als fehlerhaft erweisen. Die Welt wird in ihren kleinsten Komponenten immer mehr vernetzt und nimmt in Entscheidungs- und Steuerungsprozessen ein immer höheres Tempo an. Gleichzeitig steigt mit der Entwicklung der Technologien und der Gesellschaft der Bedarf an Energie. Das Tempo, in dem Entscheidungen getroffen und Steuerungsbefehle gesendet werden, ist besonders in der dezentralen Energieproduktion von existenzieller Bedeutung. Doch die Transformation findet nicht nur von automatisierter zu intelligenter Produktion statt. Der Bedarf an digitalen Dienstleistungen steigt ebenfalls an.  
+\noindent Die vierte industrielle Revolution durchläuft zahlreiche Branchen und bringt das Potenzial, sie grundlegend zu verändern. Vielen Branchen und Unternehmenstypen eröffnen sich Chancen, durch die Unterstüzung von \ac{ikt} ihre Produktivität zu steigern. Gleichzeitig wird beobachtet, wie andere etablierte Geschäftsstrukturen von digitalen Geschäftsmodellen vertrieben werden \citep{Lauenroth2016}. Andere Branchen wiederum sind vollständig abhängig von den Technologien der Industrie 4.0. Vor allem die Energiewirtschaft ist im Zuge der Energiewende einem grundlegenden Transformationsprozess unterworfen. Durch den Umstieg von Energieproduktionsmethoden wie Kernkraft oder Kohlekraft zu erneuerbaren Energien verlagert sich die Sicht von zentraler Produktion auf dezentrale Produktion \citep{Doleski2015}. Der Paradigmenwechsel in der Produktion geht in diesem Fall parallel mit Entwicklungen in den \ac{ikt} einher. Ohne die technologischen Treiber der Industrie 4.0 wäre die Koordination der dezentralen Anlagen sowie die Einspeisung der Energie in das Netz nicht möglich \citep{Utecht2018}. Dabei nimmt die Geschwindigkeit, in der neue Technologien entwickelt werden, rasant zu. Die industrielle Welt wird in ihren kleinsten Komponenten immer mehr vernetzt und nimmt auch in Entscheidungs- und Steuerungsprozessen ein immer höheres Tempo an. Physische Objekte migrieren in die virtuelle Welt und bringen das Potenzial, ihren Wert zu steigern, indem sie Daten über ihren Zustand melden. Produktionsanlagen werden zu \textit{cyberphysischen Systemen}, die sich intelligent mit Teilnehmern der gesamten Wertschöpfungskette vernetzen können \citep{Lauenroth2016}. Es entsteht ein \textit{Internet der Dinge und Dienste}. 
 
 % Problemstellung
 \subsection{Problemstellung} \label{problemstellung}
-Monitoring der Sensorwerte einer Windenergieanlage mit SAP-Technologien mit geschlossenem Kreis -> Sensorwerte lösen Aktion wie SMS aus
-\newline
-Da in der Energiewirtschaft langfristige und teure Investitionsgüter bestehen, können Sie nicht einfach durch neue
-digitalisierte Güter ersetzt werden. Umso mehr besteht die Herausforderung, alte Techniken mit neuen Technologien
-auf die Digitalisierung vorzubereiten. Wir haben zum Beispiel eine alte Windenergieanlage, die nicht mit den
-notwendigen Sensoren ausgestattet sind. Es soll trotzdem ermöglicht werden, Konditionen der Anlage und dessen Umgebung
-zu überwachen, um z.B. Wartungsmaßnahmen auszulösen. -> Predictive Maintenance
 
-\begin{itemize}
-  \item Technologien zwar bereits im Einsatz aber sind gekapselt -> Insellösungen
-  \item Mehrwert durch integrierte Nutzung mit Stammdaten (liegen im SAP System)
-  \item SCADA z.B. bereits vorhanden aber Daten nicht intelligent vernetzt
-\end{itemize}
+Im Kontext dieser Arbeit bildet die Motivation gleichzeitig das Problem. Um in der digitalisierten Welt als Unternehmen überleben zu können und nicht von der Geschwindigkeit überholt zu werden, muss ein Umdenkungsprozess stattfinden \citep{Lauenroth2016}. Besonders rund um die Energiewirtschaft darf nicht gefragt werden, ob man dem Trend der Digitalisierung folgen sollte. Stattdessen muss gefragt werden, mit welchen Mitteln der Transformationsprozess am besten gelöst werden kann und welche Chancen sich daraus ergeben können \citep{Utecht2018}. Das Prinzip \glqq every budget is an IT-budget\grqq{} \citep[S. 5]{Lauenroth2016} beschreibt das Phänomen der Verschmelzung von Mechanik und Informationstechnik, von Maschinenbau und Software. Vor allem aufrgrund der Veränderungen der Rahmenbedingungen in der Energiewirtschaft ist dieser Gedanke weiterzuführen. Auch wenn bereits Technologien zur automatisierten Steuerung und Überwachung der dezentralen Anlagen zur erneuerbaren Energieproduktion existieren, bilden diese oft nur Insellösungen. Die Möglichkeiten zur Erschließung neuer Geschäftsfelder durch die Erstellung von IT-Dienstleistungen, oder zur Gewährleistung der Produktqualität benötigen eine integrierte zentrale Datenplattform für den gesamten Wertschöpfungsprozess \citep{Utecht2018}. Vor allem durch die Nutzung von cloudbasierten Innovationsplattformen können Chancen entstehen, in Echtzeit auf Probleme zu reagieren und intelligente Dienste für Kunden und Geschäftspartner bereitzustellen. Als Innovationsplattform soll im Rahmen dieser Arbeit die Eignung von SAP Leonardo geprüft werden. Aus diesem Grund ergeben sich für diese Arbeit folgende Forschungsfragen: 
 
 
 \begin{itemize}
@@ -36,28 +25,18 @@ zu überwachen, um z.B. Wartungsmaßnahmen auszulösen. -> Predictive Maintenanc
   \begin{itemize}
     \item[FF1.1] Welche Anforderungen an ein System ergeben sich aus Sicht der dezentralen Ernergieerzeugung?
     \item[FF1.2] Welche Möglichkeiten zur intelligenten Vernetzung bietet die zugrundeliegende Systemarchitektur?
-    \item[FF1.2] Mit welcher Systemarchitektur können die Anforderungen aus FF1.1 erfüllt werden?
+    \item[FF1.3] Mit welcher Systemarchitektur können die Anforderungen aus FF1.1 erfüllt werden?
   \end{itemize}
 \end{itemize}
 
 \subsection{Lösungsansatz}
 
-Da Energiebranche ausschließlich mit \acf{sapisu} ihre Geschäftsprozesse verwaltet, liegt eine digitale Transformation
-mit SAP-Produkten nahe. Dazu wurde ein Raspberry Pi 3 mit entsprechender Sensorik für die Simulation einer Windenergieanlage
-ausgestattet. Die gemessenen Werte wurden an den Internet of Things Service der SAP Cloud Platform gesendet und anschlißend
-einem digitalen Zwilling übergeben. Um den Zwilling mit entsprechenden Messwerten und Grenzüberschreitungen
-sichtbar zu machen, wurde eine SAP UI5-Anwendung entwickelt. Um aus den gemessenen Werten einen Mehrwert zu gewinnen,
-wurde ein \acf{aws} \acf{sns} angebunden, der bei Grenzüberschreitung bestimmter Messwerte eine
-SMS-Benachrichtigung versendet. All diese Maßnahmen werden prototypisch implementiert
 
-\begin{figure}[ht]
-  \centering
-  \includegraphics[width=\linewidth]{design_thinking}
-  \caption[Phasen des Design-Thinking-Prozesses]{Phasen des Design-Thinking-Prozesses \citep[S. 69]{Elsner2018}}
-  \label{}
-\end{figure}
+Für die Beantwortung der Forschungsfragen wird ein Prototyp - hardwareseitig mit einem Raspberry Pi und softwareseitig mit SAP Leonardo IoT - entwickelt und evaluiert. Es wird ein cyberphysisches System als Simulation für eine Produktionsanlage erzeugt, welches durch den \textit{digitalen Zwilling} in ein \textit{IoT-Netzwerk} integriert wird. In dem Netzwerk soll das CPS mit weiteren Teilnehmern des Systems kommunizieren und interagieren. Die Kommunikation beläuft sich unter anderem auf das Senden von Zustandsdaten, welche analysiert und visuell bereitgestellt werden. Ziel des Prototypen ist, neben der Behandlung der Forschungsfragen, aufzuzeigen, wie man durch die Innovationsplattform SAP Leonardo die Produktqualität gewährleisten und IT-Dienstleistung erzeugen kann. 
+Als Basis für die Prototypentwicklung wird ein repräsentativer Anwendungsfall aus Sicht der Energiewirtschaft entwickelt. Für den Anwendungsfall werden nach dem PAL-Modell (nach \citep{Lauenroth2016}) auf verschiedenen Abstraktionsebenen Problemräume definiert, Anforderungen erhoben und Lösungen entwickelt. Die Anforderungserhebung für das Gesamtsystem basiert auf der Eingrenzung durch die Beantwortung der FF1.1. Da die Vernetzung in \textit{IoT-Netzwerken} oft über verschiedene Wertschöpfungstufen und Unternehmenstypen hinweg stattfindet, wurde in der Anforderungserhebung die Referenzarchitektur der Bundesregierung, Wirtschaft und Wissenschaft als Anforderungsquelle einbezogen. Weil sich eine prototypische Entwicklung aber nur auf wesentliche Konzepte beschränkt, wird die Forschungsfrage FF1.2 in einer ausführlichen Analyse der SAP Leonardo Systemlandschaft behandelt. Schließlich wird mit dem Systementwurf und der Implementierung der Forschungsfrage FF1.3 begegnet. 
 
 \subsection{Aufbau der Arbeit}
+
 
 
 

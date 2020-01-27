@@ -94,7 +94,7 @@
       \label{system_anforderungen}
   \end{tabularx}
 
-\section{Quelltext und API-Anfragen}
+\section{Quelltext}
 
 \subsection{Python Skript: test\_data.py}
 
@@ -379,64 +379,50 @@ if __name__ == '__main__':
         app.run(host='0.0.0.0', port=int(cf_port), debug=True)
 \end{lstlisting}
 
-\section{Anhang 1}
+\subsection{API-Anfragen für Aktionen}
 
-  \begin{table}[h]
-    \begin{tabular}{lll}
-      \toprule
-      Kategorie & Eigenschaft\\
-      \midrule
-      \multirow[t]{2}{*}{Languages/Buildpacks (SAP supported)} & Node.js  \\
-       & Java \\
-       \multirow[t]{5}{*}{Languages/Buildpacks (Community supported)} & Python \\
-       & PHP \\
-       & Ruby \\
-       & .NET Core \\
-       & viele weitere \\
-       \multirow[t]{6}{*}{Storage/Messaging Services} & SAP HANA, inkl. XSA Applications \\
-       & MongoDB \\
-       & PostgreSQL \\
-       & Redis \\
-       & RabbitMQ \\
-       & Object Store, Unstructured Storage \\
-       \multirow[t]{3}{*}{Integrated SSO Secrurity Cloud Connector} & Services für Authentifizierung,\\
-       & Single Sign-on \\
-       & und On-Premise Integrtion \\
-       \multirow[t]{3}{*}{Integrated SSO Secrurity Cloud Connector} & AWS - EU, US East\\
-       & Azure - US West  \\
-      \bottomrule
-      \end{tabular}
-      \label{cf_table}
-    \caption[Eigenschaften der Cloud-Foundry-Umgebung]{Eigenschaften der Cloud-Foundry-Umgebung \citep[S. 195]{Utecht2018}}
-  \end{table}
-
-
-  \newpage
-
-%\end{table}
-
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=1.1\linewidth]{Bsp_I40_Kompo.png}
-  \caption[Beispiele für Industrie-4.0-Komponenten]{Beispiele für Industrie-4.0-Komponenten \citep[S. 54]{BITKOM2015}}
-  \label{i40kompo}
-\end{figure}
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=1.1\linewidth]{I40_Lebenszyklus.png}
-  \caption[Industrie-4.0-Komponenten im Lebensyklus der Fabrik]{Industrie-4.0-Komponenten im Lebensyklus der Fabrik \citep[S. 56]{BITKOM2015}}
-  \label{lifecycle}
-\end{figure}
-
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=1.1\linewidth]{Struktur_Verwaltungsschale.png}
-  \caption[Struktur der Verwaltungsschale]{Struktur der Verwaltungsschale}
-  \label{verwaltungsschale}
-\end{figure}
-
-\newpage
-
+\begin{lstlisting}
+    # Aktion Event_Orkan
+    POST to Destination Standard_EventType: https://events-sap.cfapps.eu10.hana.ondemand.com/ES/EventType/com.sap.appiot.eventtypes:StandardEventType/v1/Events
+    {
+	"BusinessTimestamp": "${event.time}",
+	"Type": "Alert",
+	"EventInfo": "Alert on Wind_Speed",
+	"EventStatus": "Open",
+	"EventSeverity": 1,
+	"EventCode": null,
+	"EventSource": null,
+	"ThingId": "${thing.id}",
+	"ThingProperty": "wind_speed",
+	"ExternalId": "Orkan"
+    }
+    # Aktion Event_Sturm
+    POST to Destination Standard_EventType: https://events-sap.cfapps.eu10.hana.ondemand.com/ES/EventType/com.sap.appiot.eventtypes:StandardEventType/v1/Events
+    {
+	"BusinessTimestamp": "${event.time}",
+	"Type": "Alert",
+	"EventInfo": "Alert on Wind_Speed",
+	"EventStatus": "Open",
+	"EventSeverity": 2,
+	"EventCode": null,
+	"EventSource": null,
+	"ThingId": "${thing.id}",
+	"ThingProperty": "wind_speed",
+	"ExternalId": "Sturm"
+    }
+    # Aktion Event_Temperature
+    POST to Destination Standard_EventType: https://events-sap.cfapps.eu10.hana.ondemand.com/ES/EventType/com.sap.appiot.eventtypes:StandardEventType/v1/Events
+    {
+	"BusinessTimestamp": "${event.time}",
+	"Type": "Alert",
+	"EventInfo": "Alert on engine temperature",
+	"EventStatus": "Open",
+	"EventSeverity": 1,
+	"EventCode": null,
+	"EventSource": null,
+	"ThingId": "${thing.id}",
+	"ThingProperty": "temperature",
+	"ExternalId": "Kritische Temperatur"
+    }
+\end{lstlisting}
 
