@@ -4,11 +4,11 @@ Aufbauend auf die Anforderung, einen Prototypen mit den Technologien der SAP Leo
 
 \subsubsection{Systemarchitektur}
 
-Wie in Abschnitt \ref{leo} beschrieben, bietet die SAP Leonardo IoT Foundation zahlreiche Dienste zur Integration von physischen Geräten in die SAP Cloud Platform und somit in die Geschäftswelt. Somit entstehen \ac{cpss}, welche im Rahmen eines \ac{iot}-Projektes typischerweise drei Phasen durchlaufen: \textit{Datentransport, Datenhaltung und Analyse} (s. Abschnitt \ref{technologien}). Wie die Architektur der SAP Leonardo IoT Foundation diesen Integrationsprozess bewerkstelligt, ist in Abbildung \ref{saparch} zu sehen. Die realen Geräte senden ihre Daten über \textit{Gateways} mit verschiedenen Netzwerkprotokollen an die \textit{SAP Cloud Platform Internet of Things Services} (1). Dort werden sie in einer PostgreSQL Datenbank gehalten \citep{Acharya2019}. Der Zugriff auf die Daten der \ac{cpss} erfolgt im Rahmen einer service-orientierten Architektur (SOA) über verschiedene \ac{api}. Um die Geräte in eine IoT-Anwendung zu integrieren, werden sie via \textit{Message Processing} and das \textit{IoT Application Enablement} gesendet (2). Dort können digitale Zwillinge erstellt, funktionalisiert und analysiert werden. Für die Anwendungsentwicklung werden die Daten per OData- oder REST-Schnittstellen von der Cloud Foundry Umgebung an die WebIDE in der Neo Umgebung übergeben (3). Anschließend wird die Anwendung in die Cloud Foundry deployed. Die einzelnen Komponenten und Konzepte werden im Folgenden näher im Detail erläutert.
+Wie in Abschnitt \ref{leo} beschrieben, bietet die SAP Leonardo IoT Foundation zahlreiche Dienste zur Integration von physischen Geräten in die SAP Cloud Platform und somit in die Geschäftswelt. Somit entstehen \ac{cpss}, welche im Rahmen eines \ac{iot}-Projektes typischerweise drei Phasen durchlaufen: \textit{Datentransport, Datenhaltung und Analyse} (s. Abschnitt \ref{technologien}). Wie die Architektur der SAP Leonardo IoT Foundation diesen Integrationsprozess bewerkstelligt, ist in Abbildung \ref{saparch} zu sehen. Die realen Geräte senden ihre Daten über \textit{Gateways} mit verschiedenen Netzwerkprotokollen an die \textit{SAP Cloud Platform Internet of Things Services} (1). Dort werden sie in einer PostgreSQL Datenbank gehalten \citep{Acharya2019}. Der Zugriff auf die Daten der \ac{cpss} erfolgt im Rahmen einer service-orientierten Architektur (SOA) über verschiedene \ac{api}. Um die Geräte in eine IoT-Anwendung zu integrieren, werden sie via \textit{Message Processing} and das \textit{IoT Application Enablement}\footnote{heute: \textit{SAP Leonardo IoT}} gesendet (2). Dort können digitale Zwillinge erstellt, funktionalisiert und analysiert werden. Für die Anwendungsentwicklung werden die Daten per OData- oder REST-Schnittstellen von der Cloud Foundry Umgebung an die WebIDE in der Neo Umgebung übergeben (3). Anschließend wird die Anwendung in die Cloud Foundry deployed. Die einzelnen Komponenten und Konzepte werden im Folgenden näher im Detail erläutert.
 
 \begin{figure}[ht!]
   \centering
-  \noindent\makebox[\textwidth]{\includegraphics[width=\paperwidth]{sap_architecture.png}}
+ \includegraphics[width=1.2\linewidth]{sap_architecture.png}
   \caption[Architektur von SAP]{Architektur von SAP \citep{Ganz2019}}
   \label{saparch}
 \end{figure}
@@ -16,7 +16,8 @@ Wie in Abschnitt \ref{leo} beschrieben, bietet die SAP Leonardo IoT Foundation z
 \newpage
 \subsubsection{Datentransport: Internet of Things Gateway}
 
-  Der erste Schritt von einem realen physischen Ding zu einem \ac{cpss} ist der Datentransport zu einem Datenobjekt im Netz (s. \ref{technologien}). Bezogen auf \ac{rami} und das Konzept der \acf{i40} ist dies der Prozess der Integration und Kommunikation. Das reale Objekt wird an ihre Verwaltungsschale angebunden, um virtuell repräsentiert werden zu können. Die Architektur von SAP bietet für diesen Vorgang zwei Möglichkeiten. Entweder den direkten Transport der Daten in die Cloud über die \textit{Gateway Cloud} oder über die \textit{Internet of Things Edge Platform}. Neben dem senden von Messwerten in die Cloud können außerdem aus der Cloud heraus Befehle an das Gerät gesendet werden. Welche Variante auszuwählen ist, hängt von individuellen Anwendungsfällen und benötigten Protokollen ab. Die \textit{Gateway Cloud} wird in dem \textit{SCP Internet of Things Service} standardmäßig für MQTT und REST mitgeliefert.
+  Der erste Schritt von einem realen physischen Ding zu einem \ac{cpss} ist der Datentransport zu einem Datenobjekt im Netz (s. \ref{technologien}). Bezogen auf \ac{rami} und das Konzept der \acf{i40} ist dies der Prozess der Integration und Kommunikation. Das reale Objekt wird an ihre Verwaltungsschale angebunden, um virtuell repräsentiert werden zu können. Die Architektur von SAP bietet für diesen Vorgang zwei Möglichkeiten. Entweder den direkten Transport der Daten in die Cloud über die \textit{Gateway Cloud} oder über die \textit{Internet of Things Edge Platform}. Neben dem Senden von Messwerten in die Cloud können außerdem aus der Cloud heraus Befehle an das Gerät gesendet werden. Welche Variante auszuwählen ist, hängt von individuellen Anwendungsfällen und benötigten Protokollen ab. Die \textit{Gateway Cloud} wird in dem \textit{SCP Internet of Things Service} standardmäßig für MQTT und REST mitgeliefert.
+  
   \begin{wraptable}[16]{r}{0.4\textwidth}
     \caption{Gateway-Protokolle}\label{gateway}
     \begin{tabular}{ccc}\\\toprule
@@ -32,9 +33,9 @@ Wie in Abschnitt \ref{leo} beschrieben, bietet die SAP Leonardo IoT Foundation z
     \end{tabular}
     \label{protocol}
   \end{wraptable}
-  \newline
-  Die \textit{Internet of Things Edge Platform} wird von den Entwicklern lokal auf dem Gerät nach dem ausgewählten Kommunikationsprotokoll (s. Tabelle \ref{protocol}) selbst konfiguriert. Sie dient dazu, Messwerte von Geräten mit mangelnder Internetverbindung zu verarbeiten und bei verfügbarerer Verbindung an die Cloud zu senden. In beiden Fällen werden die Nachrichten mit den Messwerten im \ac{json}- oder im \ac{protobuf}-Format mit POST-Anfragen an die API-Endpunkte der registrierten Geräte gesendet \citep{SAP2020}. Das Registrieren der Geräte wird im nächsten Kapitel näher behandelt. SAP bietet außerdem die Möglichkeit, das \textit{Internet of Things Service} mit dem \textit{Internet of Things Edge Platform SDK} zu erweitern. Das SDK bietet Tools auf Eclipse, das Gateway mit \textit{Interceptors} zu erweitern. Die Messwerte können vor dem Senden an die Cloud vom Gateway abgefangen, modiziert oder gefiltert werden.
-
+ 
+  \noindent Die \textit{Internet of Things Edge Platform} wird von den Entwicklern lokal auf dem Gerät nach dem ausgewählten Kommunikationsprotokoll (s. Tabelle \ref{protocol}\footnote{Quelle: \citet{SAP2020}}) selbst konfiguriert. Sie dient dazu, Messwerte von Geräten mit mangelnder Internetverbindung zu verarbeiten und bei verfügbarerer Verbindung an die Cloud zu senden. In beiden Fällen werden die Nachrichten mit den Messwerten im \ac{json}- oder im \ac{protobuf}-Format mit POST-Anfragen an die API-Endpunkte der registrierten Geräte gesendet \citep{SAP2020}. Das Registrieren der Geräte wird im nächsten Kapitel näher behandelt. SAP bietet außerdem die Möglichkeit, das \textit{Internet of Things Service} mit dem \textit{Internet of Things Edge Platform SDK} zu erweitern. Das SDK bietet Tools auf Eclipse, das Gateway mit \textit{Interceptors} zu erweitern. Die Messwerte können vor dem Senden an die Cloud vom Gateway abgefangen, modiziert oder gefiltert werden.
+\newline
   \begin{lstlisting} [label=lst:endpunkt, caption=API-Endpunkte der Gateways]
     // Endpunkt der Gateway Cloud
     https://<HOST_NAME>:443/iot/gateway/rest/measures/<deviceAlternateId>
@@ -47,10 +48,10 @@ Wie in Abschnitt \ref{leo} beschrieben, bietet die SAP Leonardo IoT Foundation z
 
 \subsubsection{Datenhaltung: SCP Internet of Things Service} \label{iotcp}
 
-Wie in Listing \ref{lst:endpunkt} zu sehen ist, haben die Gateways, welche die Daten der Geräte an die Cloud übermitteln, eine \textit{deviceAlternateId} zum Ziel. Damit die Daten in der Cloud ankommen können,müssen die Geräte und Sensoren für die Messwerte im \textit{Internet of Things Service} der SAP Cloud Platform registriert werden. Für diesen Zweck liefert SAP ein Datenmodell für die Geräte, nach dem eine Entität des Geräts erstellt werden muss (s. Abbildung \ref{fig:devicemodel}). Nach dem Modell muss ein Gerät mindestens aus einem Sensor bestehen und eindeutig einem Gateway zugeordnet sein. Die Sensoren sind immer Instanzen von bestimmten Sensortypen, denen Fähigkeiten und Eigenschaften zugeordnet werden.
-Für die Registrierung bietet das System zwei Möglichkeiten. Man es kann entweder über die grafische Benutzeroberfläch des \textit{IoT Services Cockpit} durch das Ausfüllen von Formularen erstellen oder über die \textit{IoT Core Service API} (s. Abbildung \ref{saparch}). In beiden Fällen werden POST-Anfragen im \ac{json}-Format an den API-Endpunkt des Tenants im \textit{Internet of Things Service} gesendet. Für diesen Zweck stellt SAP eine Sammlung von \textit{Device Management API} zur Verfügung. Nachdem die Geräte registiert wurden, kann die SAP Cloud Platform das Datenobjekt des \acf{cpss}halten. Somit befindet sich das physische Ding in der Informationsschicht nach \ac{rami}.
+Wie in Listing \ref{lst:endpunkt} zu sehen ist, haben die Gateways, welche die Daten der Geräte an die Cloud übermitteln, eine \textit{deviceAlternateId} zum Ziel. Damit die Daten in der Cloud ankommen können, müssen die Geräte und Sensoren für die Messwerte im \textit{Internet of Things Service} der SAP Cloud Platform registriert werden. Für diesen Zweck liefert SAP ein Datenmodell für die Geräte, nach dem eine Entität des Geräts erstellt werden muss (s. Abbildung \ref{fig:devicemodel}). Nach dem Modell muss ein Gerät mindestens aus einem Sensor bestehen und eindeutig einem Gateway zugeordnet sein. Die Sensoren sind immer Instanzen von bestimmten Sensortypen, denen Fähigkeiten und Eigenschaften zugeordnet werden.
+Für die Registrierung bietet das System zwei Möglichkeiten. Man es kann entweder über die grafische Benutzeroberfläch des \textit{IoT Services Cockpit} durch das Ausfüllen von Formularen erstellen oder über die \textit{IoT Core Service API} (s. Abbildung \ref{saparch}). In beiden Fällen werden POST-Anfragen im \ac{json}-Format an den API-Endpunkt des Tenants im \textit{Internet of Things Service} gesendet. Für diesen Zweck stellt SAP eine Sammlung von \textit{Device Management API} zur Verfügung. Nachdem die Geräte registiert wurden, kann die SAP Cloud Platform das Datenobjekt des \ac{cpss} halten. Somit befindet sich das physische Ding in der Informationsschicht nach \ac{rami}.
 
-\begin{figure}[ht!]
+\begin{figure}[h]
   \centering
   \includegraphics[width=1.0\linewidth]{pictures/device_model}
   \caption[Gerätemodell]{Gerätemodell}
@@ -68,7 +69,7 @@ Für die Registrierung bietet das System zwei Möglichkeiten. Man es kann entwed
 \subsubsection{Analyse: SAP Leonardo IoT}
 
 Über den Message Processing Service \textit{SAP Leonardo IoT Integration} werden die Daten der Geräte an SAP Leonardo IoT übergeben. Laut SAP bietet Leonardo IoT \glqq alle notwendigen Funktionen zum Einrichten von Thing- und Geschäftspartnerstrukturen als Repräsentation der realen Welt\grqq{} \citep[S. 11]{SAP2019}. Mit allen notwendigen Funktionen sind in diesem Fall eine Sammlung von REST- und OData-basierten Microservices gememeint, die zum Speichern und Bereitstellen der Daten dienen. In erster Linie dienen sie dazu, einen digitalen Zwilling mit dem \textit{Thing Modeler} des Geräts zu erstellen. Die folgende Abbildung (\ref{leoae}) gibt eine Übersicht über die Softwarearchitektur und die Interaktion mit verschiedenen Komponenten.
-\begin{figure}[H]
+\begin{figure}[ht]
   \centering
   \includegraphics[width=1.0\linewidth]{pictures/leo_ae}
   \caption[Architekturübersicht SAP Leonardo IoT]{Architekturübersicht SAP Leonardo IoT \citep[S. 12]{SAP2019}}
@@ -99,12 +100,14 @@ Eine Anforderung an den Prototypen ist,  Kompatibilität mit der \ac{rami} und d
 
 \subsubsection{Systementwurf gemäß Architekturkonzept} \label{systementwurf}
 
-Nach dem vorliegenden Architekturkonzept und den Anforderungen an das System ergibt sich die in Abbildung \ref{systemcustom} dargestellte Systemarchitektur. Sie spezifiziert sowohl die Komponenten des Systems als auch den Datenfluss.
+Nach dem vorliegenden Architekturkonzept und den Anforderungen an das System ergibt sich die in Abbildung \ref{systemcustom} dargestellte Systemarchitektur. Sie spezifiziert sowohl die Komponenten des Systems als auch den Datenfluss. Für die Simulation einer Windenergieanlage wird ein Raspberry Pi über die IoT Edge Platform REST in die SAP Cloud Platform integriert. Die Daten des Geräts werden unter der deviceId der Entität in dem Internet of Things Service gehalten. Die grünen Pfeile visualisieren den Datenfluss von der Hardware über die SAP Cloud Plaform zu den Nutzern der IoT-Anwendung. Datenflüsse, die durch Anbindung von speziellen Microservices entstehen, werden durch die roten Pfeile repräsentiert. Dabei fließen die Daten durch die HTTP-Destinationen \textit{SMS\_Gateway, Led\_Blink\_Command und Standard\_EventType}. Ausgelöst werden die Funktionen der Destinationen von Regeln, die für bestimmte Messwerte definiert werden. Zum Beispiel kann der Eingang von kritischen Werten das Senden von Befehlen zum Aufleuchten der LED oder das Senden einer Benachrichtigungs-SMS auslösen. Im folgenden Kapitel wird die Umsetzung detailliert beschrieben.
+
 \begin{figure}[H]
   \centering
-  \includegraphics[angle=90, scale=0.4]{pictures/systemcustom}
+  \includegraphics[angle=90, scale=0.5]{pictures/systemcustom}
   \caption[Systementwurf]{Systementwurf (eigene Darstellung)}
   \label{systemcustom}
 \end{figure}
 
 
+\newpage

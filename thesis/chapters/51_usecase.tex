@@ -16,7 +16,7 @@ Der Windenergieanlagenhersteller Enercon GmbH aus Aurich verzeichnet 29000 Anlag
 
 \subsubsection{Anforderungserhebung}
 
-Um die Anforderungen für die Umsetzung einer repräsentativen Lösung zu bestimmen, muss zunächst ermittelt werden, welche Einflussfaktoren sich im Kontext des Zielsystems befinden und wo sich die Grenze des Systems befindet. Mit der Evaluation der Ausgangssituation (s. \ref{usecase}) können Anforderungsquellen identifiziert werden, welche sich auf das Zielsystem beziehen und sich im Systemkontext befinden (s. Abbildung \ref{kontext}). Auf Grundlage der Evaluation werden zunächst Probleme, Anforderungen und Lösungen für das System definiert. Für eine bessere Strukturierung des Systems werden die einzelnen \ac{pal} auf die Ebenen System und Systemkontext, sowie auch auf die technische Ebene abstrahiert. Die Dokumentation von Anforderungen auf verschiedenen Abstraktionsebenen ist vor allem für die nachträgliche Verwaltung der Anforderungen für zukünftige Softwareprojekte von großem Wert \citep{Lauenroth2016}. Nach \citet{IREB2017} unterscheidet man typischerweise zwischen drei Arten von Anforderungen: funktionale Anforderungen, Qualitätsanforderungen sowie Randbedingungen.
+Um die Anforderungen für die Umsetzung einer repräsentativen Lösung zu bestimmen, muss zunächst ermittelt werden, welche Einflussfaktoren sich im Kontext des Zielsystems befinden und wo sich die Grenze des Systems befindet. Mit der Evaluation der Ausgangssituation (s. \ref{usecase}) können Anforderungsquellen identifiziert werden, welche sich auf das Zielsystem beziehen und sich im Systemkontext befinden. Auf Grundlage der Evaluation werden zunächst Probleme, Anforderungen und Lösungen für das System definiert. Für eine bessere Strukturierung des Systems werden die einzelnen \ac{pal} auf die Ebenen System und Systemkontext, sowie auch auf die technische Ebene abstrahiert. Die Dokumentation von Anforderungen auf verschiedenen Abstraktionsebenen ist vor allem für die nachträgliche Verwaltung der Anforderungen für zukünftige Softwareprojekte von großem Wert \citep{Lauenroth2016}. Nach \citet{IREB2017} unterscheidet man typischerweise zwischen drei Arten von Anforderungen: funktionale Anforderungen, Qualitätsanforderungen sowie Randbedingungen.
 Die Formulierung von Anforderungen setzt das Vorhandensein einer Lösung voraus, weshalb auch der Prototyp bereits als Anforderungsquelle gelten kann.
 \\\\Aus der Evaluation der Ausgangssituation ergibt sich die in Abbildung \ref{kontext} dargestellte Systemabgrenzung. Die Anforderungsanalyse berücktsichtigt die Stakeholder, welche sowohl mit dem System interagieren als auch direkten Einfluss auf die Anforderungen haben. Als Nutzer des Systems kristallisieren sich die Kunden Enercons (z.B. die \ac{evu}) sowie das Servicepersonal in der Wartung. Stakeholder mit qualitativen Anforderungen an das System sind die Softwareentwickler/innen und -architekt(inn)en, für welche der Prototyp als Architekturvorlage dienen soll. Die Auftraggeber stellen die direkte Anforderung, eine Lösung und Analyse für SAP Leonardo zu entwickeln, die die Eignung SAP Leonardos als Verwaltungsschale für die \ac{i40} beurteilt. Dies impliziert, dass sich an der IT-Sicht (s. Abbildung \ref{it_layer}) der Referenzarchitektur RAMI 4.0 und an dem Konzept der Industrie-4.0-Komponente (s. Abschnitt \ref{rami}) orientiert werden soll. Berücksichtigt werden sollen außerdem die Anforderungen, die sich aus der Beschaffenheit der Branche der Energiewirtschaft ergeben. Bereits existierende Systeme können ebenfalls Einfluss auf das System haben, was jedoch für die Prototypentwicklung nicht relevant ist.
 
@@ -69,7 +69,7 @@ Als ein weiteres Problem kann die hohe Abhängigkeit der Branche von gesetzliche
       \toprule
       ID                & Problem & Quelle \\
       \midrule
-      \textbf{K-P-1}              &       Anstieg der Steuerungskomplexität der Anlagen wegen der dezentrale Energieerzeugung               & \textit{Branche}                \\
+      \textbf{K-P-1}              &       Anstieg der Steuerungskomplexität der Anlagen wegen der dezentralen Energieerzeugung               & \textit{Branche}                \\
       \multicolumn{1}{r}{K-P-1.1} &  Koordination großer Datenmengen     \\
       \multicolumn{1}{r}{K-P-1.2} &  Die Gewährleistung der Leistungsqualität und Leistungsverfügbarkeit \\
       \multicolumn{1}{r}{K-P-1.3} &  Verzögerung der Reaktion auf Probleme aufgrund des 10-Minuten-Takts der SCADA-Systeme & \textit{Auftraggeber} \\\addlinespace
@@ -90,14 +90,16 @@ Als ein weiteres Problem kann die hohe Abhängigkeit der Branche von gesetzliche
 Die oben definierten Probleme schaffen eine Struktur für ihre Lösung (vgl. \ac{pal}-Modell Lösungssäule). Mit dem  Kontextmodell wird eine erste statische Struktur des Zielsystems auf Grundlage der identifizierten Anwendungsfälle und Lösungsmöglichkeiten geschaffen \citep{Lauenroth2016}. Als Nutzer des Systems bestimmen die Anwendungsfälle des Kunden und des Wartungspersonals die erste grobe Struktur des Systems, doch sie wird genau so durch die Rahmenbedingungen im Systemkontext geformt.
 Mit dem in Abbildung \ref{usecase_basic} dargestellten Use Case Diagramm werden zusammenhängende Anwendungsfälle zur Lösung der Probleme in K-P-1 aufgeführt. In dem Diagramm wird der gewünschte Geschäftsprozess des Auftraggebers für die Nutzer in Elemente aufgeteilt, die durch das System aufgegriffen werden.
 
-\begin{figure}[ht!]
+\begin{figure}[ht]
   \centering
-  \noindent\makebox[\textwidth]{\includegraphics[width=\paperwidth]{use_case_basic.png}}
+  \includegraphics[width=1.0\linewidth]{use_case_basic.png}
   \caption[Use Case Diagramm der Kontextebene]{Use Case Diagramm der Kontextebene}
   \label{usecase_basic}
 \end{figure}
+
+
 \noindent Gelöst werden die Probleme jedoch in erster Linie durch die Verfügbarkeit einer intelligenten Verwaltungsschale über der physischen Anlage nach dem Konzept der Industrie-4.0-Komponente (s. Abschnitt \ref{rami}).
-Ein wesentliches Merkmal von Industrie-4.0-Projekten ist die Interdisziplinarität und Komplexität (K-P-3). Für den Aufbau einer Strategie und die Bewältigung der Herausforderungen, die ein komplexes System stellt, wird eine von Politik und Wirtschaft entwickelte Referenzarchitektur als Hilfe herangezogen. Das \ac{rami} bildet (s. Abschnitt \ref{rami}) eine wichtige Entscheidungsgrundlage für die Beurteilung der Eignung (K-P-4) der prototypischen Architektur eines solchen Systems. Da die Umsetzungsstrategie der Plattform Industrie 4.0 \citep{BITKOM2015} erneuerbare Energien nicht berücksichtigt, aber die Abhängigkeit von fluktuierenden Regularien (K-P-2) besteht, soll eine unternehmensspezifische Architekturvorlage entwickelt werden.
+Ein wesentliches Merkmal von Industrie"=4.0"=Projekten ist die Interdisziplinarität und Komplexität (K-P-3). Für den Aufbau einer Strategie und die Bewältigung der Herausforderungen, die ein komplexes System stellt, wird eine von Politik und Wirtschaft entwickelte Referenzarchitektur als Hilfe herangezogen. Das \ac{rami} bildet (s. Abschnitt \ref{rami}) eine wichtige Entscheidungsgrundlage für die Beurteilung der Eignung (K-P-4) der prototypischen Architektur eines solchen Systems. Da die Umsetzungsstrategie der Plattform Industrie 4.0 \citep{BITKOM2015} erneuerbare Energien nicht berücksichtigt, aber die Abhängigkeit von fluktuierenden Regularien (K-P-2) besteht, soll eine unternehmensspezifische Architekturvorlage entwickelt werden.
 
 
 \paragraph{Anforderungen}
@@ -115,16 +117,16 @@ Um den inneren logischen Aufbau Prototypen zu spezifizieren, müssen die Lösung
       \toprule
       ID                & Problem & Quelle \\
       \midrule
-      \textbf{S-P-1}              &       Übergabe des pyhsischen Assets in die digitale Welt               &  K-FA-1               \\
-      \multicolumn{1}{r}{S-P1.1} &  Empfang aller Zustandsdaten der Anlage     \\
-      \multicolumn{1}{r}{S-P1.2} &  Identifikation der Anlage     \\
-      \multicolumn{1}{r}{S-P1.3} &  Erkennung der Bedeutung eines Messwerts  & K-FA.13\\
-      \multicolumn{1}{r}{S-P1.4} &  Orts- und zeitunabhängige Anzeige der Zustandsdaten einer Anlage     \\
-      \multicolumn{1}{r}{S-P1.5} &  Verortung einer Anlage & K-FA.1.2\\
-      \multicolumn{1}{r}{S-P1.6} &  Erkennung der Grenzüberschreitung eines Messwerts & K-FA-1.4\\
+      \textbf{S-P-1}              &       Übergabe des pyhsischen Assets in die digitale Welt               & \textit{K-FA-1}                \\
+      \multicolumn{1}{r}{S-P-1.1} &  Empfang aller Zustandsdaten der Anlage     \\
+      \multicolumn{1}{r}{S-P-1.2} &  Identifikation der Anlage     \\
+      \multicolumn{1}{r}{S-P-1.3} &  Erkennung der Bedeutung eines Messwerts  & \textit{K-FA-1.3}\\
+      \multicolumn{1}{r}{S-P-1.4} &  Orts- und zeitunabhängige Anzeige der Zustandsdaten einer Anlage     \\
+      \multicolumn{1}{r}{S-P-1.5} &  Verortung einer Anlage & \textit{K-FA.1.2}\\
+      \multicolumn{1}{r}{S-P-1.6} &  Erkennung der Grenzüberschreitung eines Messwerts & \textit{K-FA-1.4}\\
       \multicolumn{1}{r}{S-P1.7} &  Erkennung der Notwendigkeit einer erneuten Benachrichtigung\\
-      \textbf{S-P-2}              &  Bereitstellung einer flexiblen Systemarchitektur  & K-QA \\
-      \textbf{S-P-3}              &  Bereitstellung einer standard-konformen Systemarchitektur K-RA \\
+      \textbf{S-P-2}              &  Bereitstellung einer flexiblen Systemarchitektur  & \textit{K-QA} \\
+      \textbf{S-P-3}              &  Bereitstellung einer standard-konformen Systemarchitektur & \textit{K-RA} \\
       \addlinespace
       \bottomrule
   \end{tabularx}
@@ -136,16 +138,16 @@ Um den inneren logischen Aufbau Prototypen zu spezifizieren, müssen die Lösung
 
 \paragraph{Systemmodell}
 
-Damit der Prototyp die Anwendungsfälle aus Abbildung \ref{usecase_basic} ermöglichen kann, enthält es im Inneren bestimmte Funktionen, Schnittstellen und Datenstrukturen. Von der Virtualisierung der Anlage bis zur Präsentation für den Nutzer fließen viele Daten. Der Fluss der Daten über die Funktionen und Schnittstellen ergibt ein erstes grobes Systemmodell (s.Abbildung \ref{dataflow}). Die gelben Objekte repräsentieren sind Schnittstellen, die die Verbindung des Systems mit der Umwelt beschreiben. Über die Funktionen (grün) fließen die Daten an die Datenspeicher (rot), bis sie schließlich bei den Nutzern ankommen. Dieses Diagramm dient nicht dazu, den Datenfluss zu kontrollieren, d.h. Bedingungen zu setzen. Es soll lediglich einen Überblick über den Aufbau des Systems geben.
+Damit der Prototyp die Anwendungsfälle aus Abbildung \ref{usecase_basic} ermöglichen kann, enthält es im Inneren bestimmte Funktionen, Schnittstellen und Datenstrukturen. Von der Virtualisierung der Anlage bis zur Präsentation für den Nutzer fließen viele Daten. Der Fluss der Daten über die Funktionen und Schnittstellen ergibt ein erstes grobes Systemmodell (s. Abbildung \ref{dataflow}). Die gelben Objekte repräsentieren sind Schnittstellen\footnote{Die Notation ist an das Datenflussdiagramm angelehnt, wobei die Darstellung leicht verändert wurde.}, die die Verbindung des Systems mit der Umwelt beschreiben. Über die Funktionen (grün) fließen die Daten an die Datenspeicher (rot), bis sie schließlich bei den Nutzern ankommen. Dieses Diagramm dient nicht dazu, den Datenfluss zu kontrollieren, d.h. Bedingungen zu setzen. Es soll lediglich einen Überblick über den Aufbau des Systems geben.
 
 \begin{figure}[ht!]
   \centering
-  \noindent\makebox[\textwidth]{\includegraphics[width=\paperwidth]{data_flow.png}}
+  \includegraphics[width=1.0 \linewidth]{data_flow.png}
   \caption[Datenflussdiagramm]{Datenflussdiagramm}
   \label{dataflow}
 \end{figure}
 
-\noindent Aus dem Diagramm sind die \textbf{Schnittstellen} Anlage, Systemadmin, die Nutzer und der Benachrichtigungsdienst zu entnehmen. Technisch gesehen existieren noch andere Schnittstellen, über die Daten verarbeitet und ausgetauscht werden.
+\noindent Aus dem Diagramm sind die \textbf{Schnittstellen} Anlage, Systemadmin, die Nutzer und der Benachrichtigungsdienst zu entnehmen. Technisch gesehen existieren noch weitere Schnittstellen, über die Daten verarbeitet und ausgetauscht werden.
 
 \begin{enumerate}
   \item \textit{Systemadmin} zur \textit{Cloud}: Der Systemadmin soll über Benutzerschnittstellen zur Geräteverwaltung Typen und Instanzen der Anlage definieren. Eine Anlage soll aus aus n Sensoren und einem Gateway bestehen.
@@ -155,16 +157,17 @@ Damit der Prototyp die Anwendungsfälle aus Abbildung \ref{usecase_basic} ermög
   \item \textit{Anlageninstanz} zum \textit{digitalen Zwilling}: Die Messwerte der Anlage sollen dem digitalen Zwilling übergeben werden.
   \item \textit{Benachrichtigungsdienst} zum \textit{digitalen Zwilling}: Der Benachrichtigungsdienst soll über die definierten Regeln für die Anlage aktiviert werden.
   \item \textit{Nutzer} zur \textit{Anwendung}: Die Nutzer sollen die Anlagen über eine grafische Benutzerschnittstelle einsehen können.
+  \item \textit{optional: Digitaler Zwilling} zur \textit{Anlage}: Der digitale Zwilling soll Befehle an die Anlage senden.
 \end{enumerate}
 
 % Use Cases
 \paragraph{Anwendungsfälle}
 
-Damit die Anwendungsfälle der Nutzer erfüllt werden können, müssen innerhalb des Systems neue Anwendungsfälle behandelt werden. Die neuen Fälle betreffen die Funktionen, die der Systemadministrator ausführen muss, damit die physische Anlage und dessen Daten virtuell repräsentiert werden können. In Abbildung \ref{usecasediagram} werden die neu ermittelten Anwendungsfälle in einem erweiterten Use Case Diagramm dargestellt.
+Damit die Anwendungsfälle der Nutzer erfüllt werden können, müssen innerhalb des Systems neue Anwendungsfälle behandelt werden. Die neuen Fälle betreffen die Funktionen, die der Systemadministrator ausführen muss, damit die physische Anlage und dessen Daten virtuell repräsentiert werden können. In Abbildung \ref{usecasediagram} werden die neu ermittelten Anwendungsfälle in einem neuen Use Case Diagramm dargestellt.
 
 \begin{figure}[ht!]
   \centering
-  \noindent\makebox[\textwidth]{\includegraphics[width=\paperwidth]{usecase_iot_prototype.png}}
+  \includegraphics[width=1.0\linewidth]{usecase_iot_prototype.png}
   \caption[Erweitertes Use Case Diagramm auf Systemebene]{Erweitertes Use Case Diagramm auf Systemebene}
   \label{usecasediagram}
 \end{figure}
@@ -218,7 +221,7 @@ Damit das System nach dem vorgestellten Aufbau realisiert werden kann, muss das 
 % Lösung aus technischer Ebene
 \paragraph{Technischer Aufbau des Systems} \label{technischeraufbau}
 
-Für die Simulation einer Windenergieanlage wird ein kommunikationsfähiges System benötigt, welches Schnittstellen für Sensoren als Messmittel aufweist (T-P-1). Durch die Nutzung eines \textit{Raspberry Pi 3 Model B} können durch die lokale Nutzung von Python-Skripten die Messwerte verarbeitet werden. Anschließend können die Messwerte durch die Anwendung des REST-Paradigmas über ein Gateway an die SAP Cloud Platform gesendet werden. Die weiteren Probleme werden durch die Nutzung der SAP-Leonardo-Technologien gelöst. Diese werden im nachfolgenden Kapitel detaillierter analysiert. Daher wird der technische Aufbau im Detail in dem nachfolgenden Kapitel vorgestellt. Technisch soll das System dem Paradigma des Cloud-Computing, also der Nutzung von Microservices, folgen.
+Für die Simulation einer Windenergieanlage wird ein kommunikationsfähiges System benötigt, welches Schnittstellen für Sensoren als Messmittel aufweist (T-P-1). Mit der Nutzung eines \textit{Raspberry Pi 3 Model B} können durch die lokale Nutzung von Python-Skripten die Messwerte verarbeitet werden. Anschließend können die Messwerte durch die Anwendung des REST-Paradigmas über ein Gateway an die SAP Cloud Platform gesendet werden. Die weiteren Probleme werden durch die Nutzung der SAP"=Leonardo"=Technologien gelöst. Diese werden im nachfolgenden Kapitel detaillierter analysiert. Daher wird der technische Aufbau im Detail in dem nachfolgenden Kapitel vorgestellt. Technisch soll das System dem Paradigma des Cloud-Computing, also der Nutzung von Microservices, folgen.
 
 \paragraph{Anforderungen} Die technische Umsetzung des Prototypen muss folgenden Anforderungen folgen:
 
@@ -227,24 +230,23 @@ Für die Simulation einer Windenergieanlage wird ein kommunikationsfähiges Syst
       ID                & Anforderung & Quelle \\
       \midrule
       \endhead
-      \textbf{T-FA-1}              &    Die Simulation muss hardwareseitig rechnergestützt sein       & \textit{T-P-1}                \\
-      \multicolumn{1}{r}{T-FA-1.1} &   Die Hardware muss Schnittstellen zur Sensoreinbindung aufweisen \\
-      \multicolumn{1}{r}{T-FA-1.1} &   Die Software muss fähig sein, Berechnungen mit den empfangenen Sensorwerten zu durchzuführen \\
-      \multicolumn{1}{r}{T-FA-1.1} &   Die Software muss fähig sein, Messwerte über eine REST-API an ein Gateway zu versenden \\
-      \textbf{T-FA-2}              &   Das Gateway muss fähig sein, die Messwerte offline zu empfangen   \\
-      \multicolumn{1}{r}{T-FA-2.1}     &   Das Gateway muss fähig sein, die empfangenen Daten über eine REST-API zu versenden   \\
-      \multicolumn{1}{r}{T-FA-2.2} & Das Gateway kann fähig sein, die erfassten Daten vor dem Versenden zu verarbeiten \\
-      \textbf{T-FA-3}            &      Der Prototyp muss fähig sein, die Messwerte vom Gateway zu empfangen &    \textit{T-P-2}    \\
-      \multicolumn{1}{r}{T-FA-3.1}    &  Der Prototyp muss fähig sein, die Messwerte einer eindeutigen \textit{DeviceId} zuzuordnen \\
-      \multicolumn{1}{r}{T-FA-3.2}    &  Der Prototyp muss fähig sein, der \textit{DeviceId} eine eindeutige \textit{GatewayId} zuzuordnen \\
-      \multicolumn{1}{r}{T-FA-3.3}    &  Der Prototyp muss fähig sein, die Messwerte einer \textit{DeviceId} an einen digitalen Zwilling zu übergeben\\
-      \multicolumn{1}{r}{T-FA-3.4}    &  Der Prototyp muss fähig sein, die Metadaten einer \textit{DeviceId} an einen digitalen Zwilling zu übergeben \\
-
-      \multicolumn{1}{r}{T-FA-3.5}  &  Der Prototyp muss fähig sein, Messwerte als \textit{High, Medium, Low} zu kategorisieren \\
-      \multicolumn{1}{r}{T-FA-3.6}  &  Der Prototyp muss fähig sein, automatisch POST-Anfragen die Web-API eines \ac{sns} zu senden  \\
-
+      \textbf{T-FA-1}              &    Die Simulation muss hardwareseitig rechnergestützt sein.       & \textit{T-P-1}                \\
+      \multicolumn{1}{r}{T-FA-1.1} &   Die Hardware muss Schnittstellen zur Sensoreinbindung aufweisen. \\
+      \multicolumn{1}{r}{T-FA-1.1} &   Die Software muss fähig sein, Berechnungen mit den empfangenen Sensorwerten zu durchzuführen. \\
+      \multicolumn{1}{r}{T-FA-1.1} &   Die Software muss fähig sein, Messwerte über eine REST-API an ein Gateway zu versenden. \\
+      \textbf{T-FA-2}              &   Das Gateway muss fähig sein, die Messwerte zu empfangen.   \\
+      \multicolumn{1}{r}{T-FA-2.1}     &   Das Gateway muss fähig sein, die empfangenen Daten über eine REST-API zu versenden.   \\
+      \multicolumn{1}{r}{T-FA-2.2} & Das Gateway kann fähig sein, die erfassten Daten vor dem Versenden zu verarbeiten. \\
+      \multicolumn{1}{r}{T-FA-2.3} & Das Gateway muss fähig sein, Befehle aus der SAP Cloud Platform zu empfangen. \\
+      \textbf{T-FA-3}            &      Der Prototyp muss fähig sein, die Messwerte vom Gateway zu empfangen. &    \textit{T-P-2}    \\
+      \multicolumn{1}{r}{T-FA-3.1}    &  Der Prototyp muss fähig sein, die Messwerte einer eindeutigen \textit{DeviceId} zuzuordnen. \\
+      \multicolumn{1}{r}{T-FA-3.2}    &  Der Prototyp muss fähig sein, der \textit{DeviceId} eine eindeutige \textit{GatewayId} zuzuordnen. \\
+      \multicolumn{1}{r}{T-FA-3.3}    &  Der Prototyp muss fähig sein, die Messwerte einer \textit{DeviceId} an einen digitalen Zwilling zu übergeben.\\
+      \multicolumn{1}{r}{T-FA-3.4}    &  Der Prototyp muss fähig sein, die Metadaten einer \textit{DeviceId} an einen digitalen Zwilling zu übergeben. \\
+      \multicolumn{1}{r}{T-FA-3.5}  &  Der Prototyp muss fähig sein, Messwerte als \textit{High, Medium, Low} zu kategorisieren. \\
+      \multicolumn{1}{r}{T-FA-3.6}  &  Der Prototyp muss fähig sein, automatisch POST-Anfragen die Web-API eines \ac{sns} zu senden.  \\
       \textbf{T-R-1} & Der Prototyp muss die digitalen Zwillinge in einer UI5-Web-Applikation visualisieren \\
-      \textbf{T-R-2} & Der Prototyp und zugehörige Daten müssen in der SAP Cloud Platform gehosted sein  \\
+      \textbf{T-R-2} & Der Prototyp und zugehörige Daten müssen in der SAP Cloud Platform gehosted sein.  \\
       \addlinespace
       \bottomrule
       \caption{Anforderungen aus technischer Ebene}
