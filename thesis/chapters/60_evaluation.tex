@@ -27,6 +27,13 @@ Schwachstellen zeigen sich eher aus qualitativer Sicht als aus funktionaler Sich
 Dass die technischen Anforderungen (s. Kapitel \ref{anftechnik}) an den Prototypen größtenteils erfüllt sind, kann damit bestätigt werden, dass der Prototyp auf Systemebene nahezu alle erforderlichen Eigenschaften aufweist. Die funktionalen Anforderungen lassen sich grob in drei Teile aufteilen. Der erste Teil betrifft die Erzeugung eines \ac{cpss} (T-FA-1). Mit der Nutzung eines mit dem Internet verbundenen Raspberry Pi und der Anbindung entsprechender Sensorik wurde ein kommunikationsfähiges und rechnergestütztes System entworfen. Als nächstes wurden Anforderungen an das Gateway definiert  (T-FA-2. Durch die lokale Konfiguration einer Gateway Edge auf Basis des REST-Protokolls wurde eine Industrie-4.0-Komponente erzeugt, indem das physische Medium an ihre Verwaltungsschale angebunden wurde. Das zuverlässige Senden der Messwerte über das Gateway kann bestätigt werden. Auch die Verzögerungen im Empfang der Befehle aus SAP Leonardo IoT sind nicht mit der Unzuverlässigkeit des Gateways, sondern der des Message Processing zu begründen. Als letztes wurden funktionale Anforderungen für die Virtualisierung des \ac{cpss} definiert (T-FA-3). Auch diese Anforderungen erfüllt der Prototyp. Die Messwerte werden zuverlässig vom einem eindeutigen Gateway empfangen, einer \textit{deviceId} zugeordnet und über das Message Processing an den digitalen Zwilling übergeben. Dort werden für die Messwerte, durch die Definition von Regeln und Aktionen, Ereignisse mit den Schweren \textit{High, Medium, Low} (s. Listing \ref{eventex}) generiert. Zudem werden automatische POST-Anfragen an die Web-API des \ac{aws} \ac{sns} gesendet. Das Verhalten der SNS-App wird über ein Kibana Dashboard beobachtet.  
 
 \subsection{Handlungsempfehlung}
+
+
+Architekturvorlage nehmen aber mit dem OPC UA Gateway die SCADA System über OPC Schnittstellen verbinden.
+Anbindung Machine Learning
+und SAP Cloud Platform Integration für horizontale Integration in Geschäftsprozesse
+Auf jeden Fall weiterhin an RAMI orientieren, da man eine offene Architekturvorlage für sich ändernde Bedigungen benötigt -> Vernetzung über mehrere Ebenen hinweg
+-> Auf jeden Fall von Anlagenbau zu IT-Dienstleistung das Geschäftsfeld erweitern 
 Anbindung der realen Anlagen über das OPC-UA Protokoll mit der Gateway Edge
 Anbindung an HANA Datenbank, da schnellere In-Memrory Verarbeitung als PostGreSQL
 Forschungsfragen
