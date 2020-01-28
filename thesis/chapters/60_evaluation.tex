@@ -28,27 +28,7 @@ Dass die technischen Anforderungen (s. Kapitel \ref{anftechnik}) an den Prototyp
 
 \subsection{Handlungsempfehlung}
 
+Die Evaluation des Prototypen ergibt, dass das erzeugte System den Anforderungen des Anwendungsfalls gerecht werden. Da der Prototyp allerdings nur eine Simulation einer Windenergieanlage darstellt, sollte er auf den Fall einer echten Windenergieanlage angewandt werden. Das bedeutet, dass der Auftraggeber Enercon bei einer praktischen Anwendung von SAP Leonardo als Innovationsplattform Anpassungen an der entworfenen Systemarchitektur vornehmen sollte. In der Praxis hat eine Windenergieanlage einen längeren Produktlebenszyklus als in der Simulation dargestellt. Es sollte sichergestellt werden, dass jede Phase, von der Produktion der Einzelteile, über die Installation, bis hin zum Verkauf an den Kunden und dem anschließenden Betrieb, digital abgebildet wird. Dadurch entstehen Herausforderungen, Mechanik und Informationstechnik zusammenzuführen und die Gegenstände sowie alle betroffenen Stakeholder im Lebenszyklus in die Geschäftslogik integrieren. Um dieses mehrdimensionale Netzwerk bewältigen zu können, ist die Orientierung an der \ac{rami} dringend empfohlen. Vor allem, weil die Energiebranche stark von gesetzlichen Regularien abhängt, kann eine Referenz seitens der Regierung die notwendige Flexibilität bieten. Um der Referenzarchitektur gerecht zu werden, sollten die Windenergieanlagen allerdings über OPC-Schnittstellen der \ac{scada}-Systeme in das Industrie"=4.0"=Netzwerk integriert werden. Dies kann durch die Nutzung der \textit{IoT Edge Platform OPC UA} umgesetzt werden (s. Kapitel \ref{datentransport}). Für die horizontale Integration der Anlagen in die Geschäftslogik und Stammdaten sollte die \textit{SAP Cloud Platfrom Integration} genutzt werden. Wie aus der Ausgangssituation zu entnehmen ist, wird der Auftraggeber auf das ERP-System S/4 HANA umsteigen. Die Nutzung der HANA DB ist dabei dringend empfohlen, damit mit der In-Memory-Technologie die Echtzeitfähigkeit des IoT-Systems gewährleistet werden kann. Mit diesen Maßnahmen können ideale Voraussetzungen entstehen, das Geschäftsfeld von Anlagenbau und -verkauf um digitale Dienstleistungen zu erweitern. Den Kunden können intelligente Anwendungen rund um das Monitoring der Anlagen angeboten werden. Außerdem können durch eine Anbindung der SAP Leonardo Machine Learning Foundation die Wartungs- und Instandhaltungsdienste für die Kunden im Sinne des \textit{Predictive Maintenance} optimiert werden. 
+ 
 
-Architekturvorlage nehmen aber mit dem OPC UA Gateway die SCADA System über OPC Schnittstellen verbinden.
-Anbindung Machine Learning
-und SAP Cloud Platform Integration für horizontale Integration in Geschäftsprozesse
-Auf jeden Fall weiterhin an RAMI orientieren, da man eine offene Architekturvorlage für sich ändernde Bedigungen benötigt -> Vernetzung über mehrere Ebenen hinweg
--> Auf jeden Fall von Anlagenbau zu IT-Dienstleistung das Geschäftsfeld erweitern 
-Anbindung der realen Anlagen über das OPC-UA Protokoll mit der Gateway Edge
-Anbindung an HANA Datenbank, da schnellere In-Memrory Verarbeitung als PostGreSQL
-Forschungsfragen
-Anforderungen
-Warten bis der Scheiß ausgereift ist aber auf jeden Fall an RAMI orientieren
-
-
-Komplett Anforderungsanalyse abgleichen
-Unflexible UI-Entwicklung weil Module und Packages nicht dokumentiert
-OPC UA in Edge Möglich aber im Prototypen nicht implementiert
-
-Abbildung \ref{datavisual} kann entnommen werden, dass die Daten zuverlässlig im 5-Sekunden-Takt empfangen werden. Problematisch ist die Verarbeitung in der Leo-Umgebung.
-API Reaktionszeit schlecht und fehleranfällig und unzuverlässige Datenverarbeitung im SAP Leonardo IoT Regelwerk,
-Regeln werden manchmal einfach nicht ausgelöst.
-
-
-Das System bietet sicherlich mehr Möglichkeiten und ist bestimmt stabiler. Trotz umfassender API-Dokumentation ist der Nutzer des Systems nicht ausreichend mit Anwenderdokumentaion versorgt. Hilfreich sind die Blog-Beiträge der SAP-Community, welche jedoch nur anwendunfsfallbasierte Informationen liefern.
 \newpage
