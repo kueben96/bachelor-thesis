@@ -185,7 +185,7 @@ Die Evaluation des Lösungsmodells mit dem Anwendungsfalldiagramm und dem Datenf
 
 % Technische Ebene
 \subsubsection{Technische Ebene}
-Im Kapitel der Systemebene wurde logisch beschrieben, was der Prototyp können soll und über welche Schnittstellen diese Ziele erreicht werden sollen. Allerdings wurde noch nicht beschrieben, wie diese Ziele technisch realisiert werden sollen.
+Im Kapitel der Systemebene wurde logisch beschrieben, was der Prototyp können soll und über welche Schnittstellen diese Ziele erreicht werden sollen. Allerdings wurde noch nicht beschrieben, welche technischen Anforderungen sich für die Erreichung der Ziele ergeben.
 
 \paragraph{Problemstellungen}
 
@@ -223,7 +223,7 @@ Damit das System nach dem vorgestellten Aufbau realisiert werden kann, muss das 
 
 Für die Simulation einer Windenergieanlage wird ein kommunikationsfähiges System benötigt, welches Schnittstellen für Sensoren als Messmittel aufweist (T-P-1). Mit der Nutzung eines \textit{Raspberry Pi 3 Model B} können durch die lokale Nutzung von Python-Skripten die Messwerte verarbeitet werden. Anschließend können die Messwerte durch die Anwendung des REST-Paradigmas über ein Gateway an die SAP Cloud Platform gesendet werden. Die weiteren Probleme werden durch die Nutzung der SAP"=Leonardo"=Technologien gelöst. Diese werden im nachfolgenden Kapitel detaillierter analysiert. Daher wird der technische Aufbau im Detail in dem nachfolgenden Kapitel vorgestellt. Technisch soll das System dem Paradigma des Cloud-Computing, also der Nutzung von Microservices, folgen.
 
-\paragraph{Anforderungen} Die technische Umsetzung des Prototypen muss folgenden Anforderungen folgen:
+\paragraph{Anforderungen}\label{anftechnik} Die technische Umsetzung des Prototypen muss folgenden Anforderungen folgen:
 
   \begin{tabularx}{\textwidth}{@{}lXp{1.5cm}@{}}
       \toprule
@@ -244,8 +244,8 @@ Für die Simulation einer Windenergieanlage wird ein kommunikationsfähiges Syst
       \multicolumn{1}{r}{T-FA-3.3}    &  Der Prototyp muss fähig sein, die Messwerte einer \textit{DeviceId} an einen digitalen Zwilling zu übergeben.\\
       \multicolumn{1}{r}{T-FA-3.4}    &  Der Prototyp muss fähig sein, die Metadaten einer \textit{DeviceId} an einen digitalen Zwilling zu übergeben. \\
       \multicolumn{1}{r}{T-FA-3.5}  &  Der Prototyp muss fähig sein, Messwerte als \textit{High, Medium, Low} zu kategorisieren. \\
-      \multicolumn{1}{r}{T-FA-3.6}  &  Der Prototyp muss fähig sein, automatisch POST-Anfragen die Web-API eines \ac{sns} zu senden.  \\
-      \textbf{T-R-1} & Der Prototyp muss die digitalen Zwillinge in einer UI5-Web-Applikation visualisieren \\
+      \multicolumn{1}{r}{T-FA-3.6}  &  Der Prototyp muss fähig sein, automatisch POST-Anfragen an die Web-API eines \ac{sns} zu senden.  \\
+      \textbf{T-R-1} & Der Prototyp muss die digitalen Zwillinge in einer UI5-Web-Applikation visualisieren. \\
       \textbf{T-R-2} & Der Prototyp und zugehörige Daten müssen in der SAP Cloud Platform gehosted sein.  \\
       \addlinespace
       \bottomrule
