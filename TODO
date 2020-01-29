@@ -1,42 +1,6 @@
-
-Todo:
-  ☐ Überschriften auf Länge kontrollieren @2h
-  ☐ Silbenstrennung beachten, z.B. 2.1.2 Historische Entwicklung Thomas Newcomon
-  ☐ Grundlagen maximal 25 Seiten! optimal 21
-  ✔  Abbildungsreferenz von Figure zu Abbildung ändern @done(19-11-27 10:02)
-
-  Grundlagen:
-  ☐ Buch anschaffen: Cyberphysische Systeme für die prädiktive Instandhaltung
-  ☐ Redundanzen in der Einleitung rüberschauen
-  ✔ Bild für Industrielle Revolutionen einfügen @done(19-11-27 13:19)
-  ✔ historischer Kontext letzte Zeile -> zwei Quellen als Stütze @done(19-11-27 10:02)
-  ✔ Cloud Computing in Technoligischen Treiber versuchen ganz kurz zu erklären mit dem Fokus, dass es die anderen Technologien miteinander vereint @done(19-11-27 13:19)
-  ✔ Textbezug Abbildung 1 (CPS in Industrie 4.0) @done(19-11-27 09:59)
-  ☐  Kommunikationssysteme: System definieren in RE S.30
-  ☐  Einleitung von 2.2 anpassen
-  ☐  RAMI Kapitel Sätze fangen alle mit "Die" an.. korrigieren
-  ☐  Rami eventuell horizontale Achsen genauer beschreiben
-  ☐  Digitaler Zwilling in virtuelles Abbild
-  ☐  Cloud-Modelle wie private, public, hybrid beschreiben!!!!!!!
-  ☐  Modellierung von Industrie 4.0-Komponenten und RAMI
-  ☐  Industrie 4.0 Komponente Typdaten und Instanzdaten s. Notizbuch erläutern
-  ☐ Sicherheit in IoT oder treibende Technologien etc einbinden
-  ☐ predictive Maintenance irgendwo rein (bei big data!)
-  ✔ evtl. Rami und Industrie 4.0 Komponente als eigenes unterKapitel @done(19-12-09 13:58)
-    ☐ Grundlagen kann ruhig 20 Seiten, also kann hinsichtlich Energiesektor evtl noch was hinzugefügt werden
-  ☐  Doleski Quellen checken
-
-
-  Hauptteil:
-
   Anhang:
     ☐ evtl Glossar (z.B: von Fraunhofer hinzufügen)
     ☐ Begriffliche Konsistenzen/Inkonsistenzen checken: Messinstrument, Asset, Produktionsanlage, Anlage..Registrieren/definieren/onboarding devices, Schicht/Sicht
-  Prototyp:
-    ☐  Coding hübsch machen -> Python @30m
-    ☐  Prototyparchitektur modellieren @4h
-    ☐  Codes in Anhang
-    ☐  POST-Requests als Listing
     ☐ KPI in SAP Leonardo?? --> Im Application Enablement bei Events etc. -> S. Forschung Instandhaltung Windparks -_> Smart-Business-Modeler -> Create KPI möglich, vielleicht in Systemanalyse erwähnen
     https://blogs.sap.com/2018/04/19/how-to-use-sap-smart-business-service-cf-env.-with-sap-cloud-platform-iot-application-enablement-the-setup/
 

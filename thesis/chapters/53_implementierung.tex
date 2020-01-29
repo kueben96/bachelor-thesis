@@ -2,7 +2,7 @@
 
 \subsection{Prototypische Implementierung des Anwendungsfalls}
 
-In diesem Kapitel wird die Umsetzung des entwickelten Prototypen im Detail beschrieben.
+In diesem Kapitel wird die Umsetzung des entwickelten Prototyps im Detail beschrieben.
 Zunächst wird die Erzeugung eines cyberphysischen Systems als Industrie-4.0-Komponente beschrieben. Im Anschluss wird dargestellt, wie Daten des Messinstruments über die \textit{Internet of Things Edge Platform} an die SAP Cloud Platform übergeben werden. Daraufhin wird die Erzeugung eines digitalen Zwillings und die Zuordnung von Funktionen beschrieben. Abschließend wird dargestellt, wie der Zustand der Anlage den Nutzern in einer UI5-Applikation präsentiert wird.
 
 \subsubsection{Erzeugung eines cyberphysischen Systems}
@@ -21,7 +21,7 @@ Als hardwareseitige Basis für die Simulation wird ein \textit{Raspberry Pi 3 B}
 
 \subsubsection{Einrichtung der Gateway Edge}
 
-Damit die aufgenommenen Sensorwerte zur Datenhaltung an den \textit{Internet of Things Service} gesendet werden können, muss ein Gateway existieren. Doch anstatt die vordefinierten Cloud Gateways im \textit{IoT Service Cockpit} zu nutzen, wird für den Prototypen ein lokales Edge Gateway des \textit{REST}-Protokolls mit Hilfe der \textit{Internet of Things Edge Platform} konfiguriert. Zunächst wird aus dem SAP Software Center eine Konfigurationsdatei heruntergeladen, welche auf dem Raspberry Pi lokal gespeichert wird. Mit dem Befehl \textit{./build.sh REST} werden weitere Konfigurationsdateien erzeugt, um die Verbindung zu dem Host des Internet of Things Service herzustellen. In der Datei \textit{config\_gateway\_rest.xml} wird der Endpunkt für den Datentransfer in einer \textit{ConnectionAddress} definiert und eine \textit{GatewayAlternateId} definiert.
+Damit die aufgenommenen Sensorwerte zur Datenhaltung an den \textit{Internet of Things Service} gesendet werden können, muss ein Gateway existieren. Doch anstatt die vordefinierten Cloud Gateways im \textit{IoT Service Cockpit} zu nutzen, wird für den Prototyp ein lokales Edge Gateway des \textit{REST}-Protokolls mit Hilfe der \textit{Internet of Things Edge Platform} konfiguriert. Zunächst wird aus dem SAP Software Center eine Konfigurationsdatei heruntergeladen, welche auf dem Raspberry Pi lokal gespeichert wird. Mit dem Befehl \textit{./build.sh REST} werden weitere Konfigurationsdateien erzeugt, um die Verbindung zu dem Host des Internet of Things Service herzustellen. In der Datei \textit{config\_gateway\_rest.xml} wird der Endpunkt für den Datentransfer in einer \textit{ConnectionAddress} definiert und eine \textit{GatewayAlternateId} definiert.
 
 \begin{lstlisting}[caption= Gateway-Verbindung zur Cloud]
   <cnf:address>https://5075f8b9-866e-4a4b-82f8-74687b72f1ab.eu10.cp.iot.sap:443/5075f8b9-866e-4a4b-82f8-74687b72f1ab/iot/core/api/v1/tenant/988439498</cnf:address>
@@ -133,7 +133,7 @@ Das Erstellen eines Thing Models und einer Thing-Instanz genügt zunächst, um d
   \label{thingpage}
 \end{figure}
 
-\noindent Neben den allgemeinen Daten und den Messwerten zu der Anlage bietet die Seite eine Übersicht über die Ereignisse, die für bestimmte Messwerte generiert werden. Nach der Erstellung der Anwendung in der Web IDE können in SAP Leonardo IoT weiterhin neue Funktionen erstellt werden, die zur Laufzeit in die Anwendung integriert werden. Im nächsten Kapitel wird die Erzeugung von Ereignissen näher behandelt. 
+\noindent Neben den allgemeinen Daten und den Messwerten zu der Anlage bietet die Seite eine Übersicht über die Ereignisse, die für bestimmte Messwerte generiert werden. Nach der Erstellung der Anwendung in der Web IDE können in SAP Leonardo IoT weiterhin neue Funktionen erstellt werden, die zur Laufzeit in die Anwendung integriert werden. 
 
 \begin{figure}[H]
   \centering
@@ -206,7 +206,7 @@ Wie in dem Datenflussdiagramm (Abbildung \ref{dataflow}) dargestellt, interagier
 
 \paragraph{Aktion: Led\_Blink}
 
-Das Senden des Befehls zum Aufleuchten der roten LED am Raspberry Pi folgt der selben Regel wie die Aktion zum Auslösen der SMS. Der Unterschied besteht in dem Endpunkt für die Anfrage. Der Befehl zum wird an die Zieladresse des Geräts für \textit{commands} im Internet of Things Service gesendet. In der Anfrage-Payload werden die explizit der Sensor und die Capability des Geräts adressiert. 
+Das Senden des Befehls zum Aufleuchten der roten LED am Raspberry Pi folgt derselben Regel wie die Aktion zum Auslösen der SMS. Der Unterschied besteht in dem Endpunkt für die Anfrage. Der Befe wird an die Zieladresse des Geräts für \textit{commands} im Internet of Things Service gesendet. In der Anfrage-Payload werden die explizit der Sensor und die Capability des Geräts adressiert. 
 \newline
 \begin{lstlisting}[caption= POST-Anfrage zum Senden den Befehls]
 POST to Destination Led_Blink_Command: https://5075f8b9-866e-4a4b-82f8-74687b72f1ab.eu10.cp.iot.sap/5075f8b9-866e-4a4b-82f8-74687b72f1ab/iot/core/api/v1/tenant/988439498/devices/60b373db-d6dc-4696-b916-aefec6d95cd0/commands

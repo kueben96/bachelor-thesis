@@ -95,24 +95,7 @@
       \label{system_anforderungen}
   \end{tabularx}
 
-  \section{RAMI 4.0 und Industrie-4.0-Komponente} \label{referenzen}
 
-
-  \begin{figure}[ht!]
-      \includegraphics[width=1.0\linewidth]{RAMI.png}
-      \caption[Das Referenzarchitekturmodell Industrie 4.0]{Das Referenzarchitekturmodell Industrie 4.0 \citep[S. 42]{BITKOM2015}}
-      \label{fig:rami}
-    \end{figure}
-    
-    
-    \begin{figure}[ht!]
-      \centering
-      \includegraphics[width=0.7\linewidth]{Ebenen_I40_Kompo.png}
-      \caption[Ebenen der Industrie-4.0-Komponente]{Ebenen der Industrie-4.0-Komponente \citep[S. 52]{BITKOM2015}}
-      \label{ebenen_i40}
-    \end{figure}
-  
-   \clearpage
    
 \section{Quelltext}
 
@@ -163,10 +146,8 @@ def calculate_speed_kmh(time_sec):
     rotations = count / 2.0
 
     dist_km = (circumference_cm * rotations) / CM_IN_A_KM
-
     km_per_sec = dist_km / time_sec
     km_per_hour = km_per_sec * SECS_IN_AN_HOUR
-
     speed = km_per_hour * ADJUSTMENT
 
     return speed
@@ -212,7 +193,6 @@ def calculateAirtight(temp_cel, pressure):
     temp_kel = (temp_cel + 273.15)
     p = pressure
     r = 287.05
-
     print("pressure", p)
     print("r", r)
     print("temp_kel", temp_kel)
@@ -222,7 +202,6 @@ def calculateAirtight(temp_cel, pressure):
     airtight = round(airtight, 2)
 
     print("Die Luftdichte bei ", temp_cel, "Grad Celcius und ", p, "hpA betraegt ", airtight, "kg/m**3")
-
     return airtight
 while True:
     readSensors()
