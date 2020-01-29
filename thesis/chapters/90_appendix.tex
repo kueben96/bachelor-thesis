@@ -1,6 +1,8 @@
 \newpage
 \appendix
 
+
+\newpage
 \section{Anforderungen}
 
 \subsection{Anforderungen aus Kontextebene} \label{anfkontext}
@@ -93,12 +95,30 @@
       \label{system_anforderungen}
   \end{tabularx}
 
+  \section{RAMI 4.0 und Industrie-4.0-Komponente} \label{referenzen}
+
+
+  \begin{figure}[ht!]
+      \includegraphics[width=1.0\linewidth]{RAMI.png}
+      \caption[Das Referenzarchitekturmodell Industrie 4.0]{Das Referenzarchitekturmodell Industrie 4.0 \citep[S. 42]{BITKOM2015}}
+      \label{fig:rami}
+    \end{figure}
+    
+    
+    \begin{figure}[ht!]
+      \centering
+      \includegraphics[width=0.7\linewidth]{Ebenen_I40_Kompo.png}
+      \caption[Ebenen der Industrie-4.0-Komponente]{Ebenen der Industrie-4.0-Komponente \citep[S. 52]{BITKOM2015}}
+      \label{ebenen_i40}
+    \end{figure}
+  
+   \clearpage
+   
 \section{Quelltext}
 
 \subsection{Python Skript: test\_data.py}
 
 \begin{lstlisting}
-
 # Skript zum Erzeugen und Lesen von Sensordaten
 
 import grovepi
@@ -111,7 +131,6 @@ from time import sleep
 from send_test_data import send_data
 import send_test_data as send
 import json
-
 # Wind/Anemometer
 count = 0
 radius_cm = 2.0        # Radius of the anemometer
@@ -120,10 +139,8 @@ ADJUSTMENT = 1.18    # Adjustment for weight of cups
 CM_IN_A_KM = 100000.0
 CM_IN_METER = 1000.0
 SECS_IN_AN_HOUR = 3600
-
 # Luftdichte
 airtight = 0
-
 #Temperatur und Luftfeuchtigkeit
 
 temp_hum_sensor = 4  # digital port 4.
@@ -305,7 +322,7 @@ def send_data(sensorData):
 
     get_command()
 \end{lstlisting}
-
+\clearpage
 \subsection{Python Skript: AWS\_Flask.py}
 \begin{lstlisting}
 import boto3
@@ -378,12 +395,13 @@ if __name__ == '__main__':
         app.run(host='0.0.0.0', port=int(cf_port), debug=True)
 \end{lstlisting}
 
+\clearpage
 \subsection{API-Anfragen für Aktionen}
 
 \begin{lstlisting}
-    # Aktion Event_Orkan
-    POST to Destination Standard_EventType: https://events-sap.cfapps.eu10.hana.ondemand.com/ES/EventType/com.sap.appiot.eventtypes:StandardEventType/v1/Events
-    {
+# Aktion Event_Orkan
+POST to Destination Standard_EventType: https://events-sap.cfapps.eu10.hana.ondemand.com/ES/EventType/com.sap.appiot.eventtypes:StandardEventType/v1/Events
+{
 	"BusinessTimestamp": "${event.time}",
 	"Type": "Alert",
 	"EventInfo": "Alert on Wind_Speed",
@@ -394,10 +412,10 @@ if __name__ == '__main__':
 	"ThingId": "${thing.id}",
 	"ThingProperty": "wind_speed",
 	"ExternalId": "Orkan"
-    }
-    # Aktion Event_Sturm
-    POST to Destination Standard_EventType: https://events-sap.cfapps.eu10.hana.ondemand.com/ES/EventType/com.sap.appiot.eventtypes:StandardEventType/v1/Events
-    {
+}
+# Aktion Event_Sturm
+ POST to Destination Standard_EventType: https://events-sap.cfapps.eu10.hana.ondemand.com/ES/EventType/com.sap.appiot.eventtypes:StandardEventType/v1/Events
+{
 	"BusinessTimestamp": "${event.time}",
 	"Type": "Alert",
 	"EventInfo": "Alert on Wind_Speed",
@@ -408,10 +426,10 @@ if __name__ == '__main__':
 	"ThingId": "${thing.id}",
 	"ThingProperty": "wind_speed",
 	"ExternalId": "Sturm"
-    }
-    # Aktion Event_Temperature
-    POST to Destination Standard_EventType: https://events-sap.cfapps.eu10.hana.ondemand.com/ES/EventType/com.sap.appiot.eventtypes:StandardEventType/v1/Events
-    {
+}
+# Aktion Event_Temperature
+POST to Destination Standard_EventType: https://events-sap.cfapps.eu10.hana.ondemand.com/ES/EventType/com.sap.appiot.eventtypes:StandardEventType/v1/Events
+{
 	"BusinessTimestamp": "${event.time}",
 	"Type": "Alert",
 	"EventInfo": "Alert on engine temperature",
@@ -422,6 +440,6 @@ if __name__ == '__main__':
 	"ThingId": "${thing.id}",
 	"ThingProperty": "temperature",
 	"ExternalId": "Kritische Temperatur"
-    }
+}
 \end{lstlisting}
 

@@ -8,7 +8,7 @@ Wie in Abschnitt \ref{leo} beschrieben, bietet die SAP Leonardo IoT Foundation z
 
 \begin{figure}[ht!]
   \centering
- \includegraphics[width=1.2\linewidth]{sap_architecture.png}
+ \includegraphics[width=1.05 \linewidth]{sap_architecture.png}
   \caption[Architektur von SAP]{Architektur von SAP \citep{Ganz2019}}
   \label{saparch}
 \end{figure}
@@ -18,8 +18,8 @@ Wie in Abschnitt \ref{leo} beschrieben, bietet die SAP Leonardo IoT Foundation z
 
   Der erste Schritt von einem realen physischen Ding zu einem \ac{cpss} ist der Datentransport zu einem Datenobjekt im Netz (s. \ref{technologien}). Bezogen auf \ac{rami} und das Konzept der \acf{i40} ist dies der Prozess der Integration und Kommunikation. Das reale Objekt wird an ihre Verwaltungsschale angebunden, um virtuell repräsentiert werden zu können. Die Architektur von SAP bietet für diesen Vorgang zwei Möglichkeiten. Entweder den direkten Transport der Daten in die Cloud über die \textit{Gateway Cloud} oder über die \textit{Internet of Things Edge Platform}. Neben dem Senden von Messwerten in die Cloud können außerdem aus der Cloud heraus Befehle an das Gerät gesendet werden. Welche Variante auszuwählen ist, hängt von individuellen Anwendungsfällen und benötigten Protokollen ab. Die \textit{Gateway Cloud} wird in dem \textit{SCP Internet of Things Service} standardmäßig für MQTT und REST mitgeliefert.
   
-  \begin{wraptable}[16]{r}{0.4\textwidth}
-    \caption{Gateway-Protokolle}\label{gateway}
+  \begin{table}
+    \centering
     \begin{tabular}{ccc}\\\toprule
     Protokoll & Cloud & Edge \\\midrule
     MQTT &x & x\\  \midrule
@@ -32,7 +32,8 @@ Wie in Abschnitt \ref{leo} beschrieben, bietet die SAP Leonardo IoT Foundation z
     SNMP & & x\\  \bottomrule
     \end{tabular}
     \label{protocol}
-  \end{wraptable}
+    \caption{Gateway-Protokolle}\label{gateway}
+  \end{table}
  
   \noindent Die \textit{Internet of Things Edge Platform} wird von den Entwicklern lokal auf dem Gerät nach dem ausgewählten Kommunikationsprotokoll (s. Tabelle \ref{protocol}\footnote{Quelle: \citet{SAP2020}}) selbst konfiguriert. Sie dient dazu, Messwerte von Geräten mit mangelnder Internetverbindung zu verarbeiten und bei verfügbarerer Verbindung an die Cloud zu senden. In beiden Fällen werden die Nachrichten mit den Messwerten im \ac{json}- oder im \ac{protobuf}-Format mit POST-Anfragen an die API-Endpunkte der registrierten Geräte gesendet \citep{SAP2020}. Das Registrieren der Geräte wird im nächsten Kapitel näher behandelt. SAP bietet außerdem die Möglichkeit, das \textit{Internet of Things Service} mit dem \textit{Internet of Things Edge Platform SDK} zu erweitern. Das SDK bietet Tools auf Eclipse, das Gateway mit \textit{Interceptors} zu erweitern. Die Messwerte können vor dem Senden an die Cloud vom Gateway abgefangen, modiziert oder gefiltert werden.
 \newline
