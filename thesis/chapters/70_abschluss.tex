@@ -5,57 +5,11 @@ Mithilfe der Entwicklung eines Prototypen zur Virtualisierung einer simulierten 
 \\Motiviert wurde die Problemstellung von der dezentralen Struktur Energieversorgungsmarktes in Anbetracht der Energiewende. Durch eine umfassende Analyse des Branchenkontextes wurden zur Beantwortung der Forschungsfrage FF1.1 Anforderungen an ein System aus Sicht der dezentralen Energieerzeugung definiert. Als Grundlage für die Anforderungserhebung an das System wurde ein repräsentativer Anwendungsfall für einen Windenergieanlagenhersteller entwickelt. Diese ergab unter anderem, dass die Anlagen und dessen Komponenten eine echtzeitfähige Integration in ein IoT-Netzwerk erfordern, denn:
 \\Im Kontext der vierten industriellen Revolution, der \textit{Industrie 4.0}, entsteht eine neuartiges Konzept für Wertschöpfung. Durch die Vernetzung von allen an der Wertschöpfungskette des Produkts beteiligten Instanzen entstehen quantitative Daten, welche durch die Verarbeitung mit intelligenten Diensten qualitative Erkenntnisse bringen. Die Produktionsanlage steht als erstes Glied in der Wertschöpfungskette des Endprodukts Energie. Allein um dieses Endprodukt mithilfe dezentraler Anlagen zu erzeugen, ist eine digitale Infrastruktur nötig. Aber auch um die veränderten Kundenerwartungen im Rahmen von Industrie 4.0 zu erfüllen, muss ein Veränderungsprozess für die digitale Systemlandschaft entstehen. Als Enabler für die Transformation wurde die Nutzung der Technologien wie Cloud Computing, Big Data und Analytics identifiziert. 
 \\Für die Vereinigung dieser Technologien und die intelligente Vernetzung aller Komponenten im Wertschöpfungsprozess kann eine Innovationsplattform herangezogen werden. Im Rahmen dieser Arbeit wurde angesichts der FF1.2 untersucht, welche Möglichkeiten zur intelligenten Vernetzung die Systemarchitektur der SAP Leonardo IoT Foundation bietet. Die Systemanalyse ergab eine offene und flexible Architektur, die Konformität mit der Referenzarchitektur \ac{rami} aufweist. Die Architektur deckt die Anforderungen an eine Industrie-4.0-Lösung ab: Von der vertikalen Integration der physischen Anlage in die Cloud über verschiedene Kommunikationsprotokolle und anschließender Erzeugung eines digitalen Zwillings, bis hin zur horizontalen Integration in den Geschäftskontext durch die Anbindung der SAP Cloud Platform Integration. Intelligent wird die Vernetzung durch die Anbindung von Diensten wie SAP Leonardo Machine Learning oder Analytics. 
-\\ Auf Basis dieser Erkenntnisse wurde gemäßf FF1.3 ein System für den Prototypen entworfen, welches die Anforderungen des Ausgangsszenarios deckt. Der Prototyp enthält die Integration einer Anlage in die \ac{scp}, die anschließende Verarbeitung der Sensordaten in SAP Leonardo IoT, die Interaktion über die Cloud mit der Anlage sowie die Repräsentation des digitalen Zwillings in einer UI5-Anwendung. 
+\\ Auf Basis dieser Erkenntnisse wurde gemäß FF1.3 ein System für den Prototypen entworfen, welches die Anforderungen des Ausgangsszenarios deckt. Der Prototyp enthält die Integration einer simulierten Anlage in die \ac{scp}, die anschließende Verarbeitung der Sensordaten in SAP Leonardo IoT, die Interaktion über die Cloud mit der Anlage sowie die Repräsentation des digitalen Zwillings in einer UI5-Anwendung. 
 % Kritik
-\\% Evaluation und Erfüllung des Ziels % Kritik 
-Da es unter der Nutzung von Abstraktionsebenen zur Anforderungserhebung möglich war, eindeutige Schwachstellen des Prototypen zu identifizieren und Handlungsempfehlungen zu geben, ist die Anwendbarkeit dieser Systemarchitektur als validiert und die Zielsetzung dieser Arbeit als erreicht anzusehen.
+\\\\% Evaluation und Erfüllung des Ziels % Kritik 
+Da es unter der Nutzung von Abstraktionsebenen zur Anforderungserhebung möglich war, eindeutige Schwachstellen des Prototypen zu identifizieren und Handlungsempfehlungen zu geben, ist die Anwendbarkeit dieser Systemarchitektur als validiert und die Zielsetzung dieser Arbeit als erreicht anzusehen. 
 % Ausblick
-\\Doch die Produktlandschaft von SAP Leonardo steckt in Kinderschuhen. Entwicklung von Produkten ist mangelhaft dokumentiert. Ein Spezialist müsste auf jeden Fall herangezogen werden. Vielleicht könnte es Sinn ergeben, z.B. AWS IoT im Rahmen einer weiteren Forschungsarbeit untersuchen zu lassen. Vorteil von SAP ist halt, dass die Integration von Stamm- und Bewegungsdaten zentral auf SCP möglich ist. Wenn die Analyse genügt, könnte man die Architekturvorlage an einer echten Anlage testen und richtige Daten und KPIs definierten. 
-
-
-
-
-
-
-Jetzt Kritik 
-% Ausblick
-und Ausblick
-Steuerungskomplexität 
-Ziel dieser Bachelorarbeit war die Analyse der Frage,  Der Branchenkontext in diesem Fall stel
-
-Problem: dezentralität erfordert Erfassung von Daten und echtzeitfähige Steuerung der Anlagen 
-Ziel
-Lösung
-
-Frage, ob die derzeitigen Strukturen zeitgemäß sind in Anbetracht der Dynamik der digitalen Welt
-
-Kritik der Lösung: SAP Leo Beta und teilweise unzuverlässig
-
-Anforderungen d. Energiemarktes kurz bennen wegen FF1 und mit FF2 abgleichen. Schwächen des Systems bennen 
-Der als Lösung für den Anwendungsfall des Auftraggebers implementierte Prototyp sollte aufzeigen, wie SAP Leonardo die digitale Transformation im Kontext der Energiewirtschaft unterstützen kann. Da eine Implementierung an einer realen Windenergieanlage einen zu großen Kostenfaktor ergeben hätte, sollte die Eignung und Realisierbarkeit anhand einer Simulation geprüft werden. Die Simulation 
-Was war das Ziel der Arbeit? Forschungsfragen integrieren
-Wie kann die digitale Transformation in der Energiewirtschaft durchgeführt werden
-
-Vieles wird noch nicht unterstützt
-Reflexion:
-Was hab ich gemacht? (Selbst-Kritisch)und SAP sehr BETA und schlecht dokumentiert blabla
-\newline
-Ausblick:
-Ausblick/Weitere Möglichkeiten
-Integration mit SAP Backend
-HANA DB
-APIs/SDK für Leonardo
-Edge Processing mit Interceptors and Adapters, echtes Gerät mit echten Sensorwerten statt RPI und teilweise simulierte Werte
-\newline
-Beantwortung der Frage:, wie gut man mit SAP Leonardo digital transformieren kann auch nach RAMI 4.0 
-Ausblick: Zukunft vernetzte (Industrie) Welt und neues Verständnis von Wertschöpfung
-
-
-In Anbetracht der erzielten Ergebnisse dieser Ausarbeitung besteht in zweierlei Hinsicht weiterer Forschungsbedarf. 
-Entwicklung prozessrelevanter Kennzahlen
-
-Hier digitale Transfomation und Veränderungsprozess um Kundenerwartungen zu erfüllen, Neuausrichtung der digitalen Infrastruktur. Cloudbasierte Innovationsplattform ->
-Um die Anlage im gesamten Wertschöpfungsprozess abbilden zu können wurde eine Innovationsplattform benötigt, welche die Herausforderungen bewältigen kann. Da entsteht FF1.2: Welche Möglichkeiten die Architektur von SAP Leonardo zu intelligenten Vernetzung bietet, wurde in der Systemanalyse erläutert. Eine der wichtigsten Möglichkeiten ist unter anderem die offne Architektur, die mit RAMI Konformität aufweist. Zudem kann man durch SCP Integration die Anlage in eigene Geschäftslogik integrieren aber auch den Kunden (EVU) Dienste zum Überwachen ihres Produkts anbieten. Außerdem Anbindung von intelligenten Diensten wie Machine Learning und Analytics. Schließlich wurde eine Architektur entworfen und umgesetzt. 
-Veränderungsprozess in Hinblick auf Kundenerwartungen: digitale Transformation
-Schließlich ist eine Architekturvorlage für zukünftige Projekte entstanden. 
+\\\\ Forsetzungsgedarf besteht nun in zweierlei Hinsicht. Einerseits kann auf Grundlage der entworfenen Architekturvorlage eine praktische Lösung angewandt werden. In der Handlungsempfehlung wurden bereits Vorschläge zur Umsetzung ausgeschrieben. Allerdings steckt die SAP-Leonardo-Systemlandschaft, da es sich um ein junges Projekt handelt, noch in der Entwicklungsphase. Viele Funktionen sind noch nicht vollständig ausgereift oder sind mangelhaft dokumentiert. Die Entwicklung mit dem zur Verfügung gestellten Portfolio kann deshalb an Grenzen stoßen. Das Heranziehen eines Experten könnte für eine produktive Nutzung von Nöten sein. Andererseits kann es bei fortgeschrittenen Enwicklungserfahrungen im Bereich cloud-nativer und SAP-basierter Entwicklung durch die zur Verfügung gestellten Microservices viel Flexibilität bieten.  Weitere Vorteile können durch die  Integration von SAP-Stamm- und Bewegungsdaten entstehen. Mit einer vollständigen Integration können ideale Voraussetzungen entstehen, den Kunden intelligente digitale Lösungen und Dienste zur Gewährleistung der Produktqualität anzubieten. 
+\\Andererseits könnte die Untersuchung von weiteren Innovationsplattformen, wie z.B. AWS IoT, im Rahmen einer weiteren Forschungsarbeit Erkenntnisse über eine bessere Eignung bringen. 
 \newpage
