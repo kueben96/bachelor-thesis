@@ -3,13 +3,13 @@
 \subsection{Prototypische Implementierung des Anwendungsfalls}
 
 In diesem Kapitel wird die Umsetzung des entwickelten Prototypen im Detail beschrieben.
-Zunächst wird die Erzeugung eines cyberphysischen Systems als Industrie-4.0-Komponente beschrieben. Im Anschluss wird dargestellt, wie Daten des Messinstruments über die \textit{Internet of Things Edge Platform} an die SAP Cloud Platform übergeben werden. Daraufhin wird die Erzeugung eines digitalen Zwilllings und die Zuordnung von Funktionen beschrieben. Abschließend wird dargestellt, wie der Zustand der Anlage den Nutzern in einer UI5-Applikation präsentiert wird.
+Zunächst wird die Erzeugung eines cyberphysischen Systems als Industrie-4.0-Komponente beschrieben. Im Anschluss wird dargestellt, wie Daten des Messinstruments über die \textit{Internet of Things Edge Platform} an die SAP Cloud Platform übergeben werden. Daraufhin wird die Erzeugung eines digitalen Zwillings und die Zuordnung von Funktionen beschrieben. Abschließend wird dargestellt, wie der Zustand der Anlage den Nutzern in einer UI5-Applikation präsentiert wird.
 
 \subsubsection{Erzeugung eines cyberphysischen Systems}
 
-Für die Simulation einer Windergieanlage wird ein System erzeugt, welches Daten aus der Umwelt aufnehmen und verarbeiten kann. Bei den Daten wurde sich für die \textit{Windgeschwindigkeit, Temperatur, Luftfeuchtigkeit, Luftdruck und Luftdichte} entschieden.
+Für die Simulation einer Windenergieanlage wird ein System erzeugt, welches Daten aus der Umwelt aufnehmen und verarbeiten kann. Bei den Daten wurde sich für die \textit{Windgeschwindigkeit, Temperatur, Luftfeuchtigkeit, Luftdruck und Luftdichte} entschieden.
 Als hardwareseitige Basis für die Simulation wird ein \textit{Raspberry Pi 3 B} verwendet, welcher die erstellten \textit{Python} Skripte zur Verarbeitung der Daten nutzt. Der Pi wird um die Zusatzplatine \textit{Grove Pi + Board} erweitert. Somit wird der \textit{DHT11}-Sensor zur Messung von Temperatur und Luftfeuchtigkeit über die 4-Pin-Schnittstelle \textit{D4} einfach ohne Löten und Breadboard angebunden. Für die Messung der Windgeschwindigkeit ist die Entscheidung auf den Anemometer \textit{Eltako Windsensor WS} gefallen. Im Gegensatz zum \textit{DHT11-Sensor} ist der Anenometer ein aktives mechanisches Gerät, dessen Output Berechnungen erfordert, um die Windgeschwindigkeit zu erhalten. Bei den ausgegebenen Signalen handelt es sich um die Berührung zweier Metallkontakte, wobei zwei Signale eine Umdrehung ergeben. Ein Python Skript zählt die Signale über der GPIO-4-Schnittstelle und berechnet die Geschwindigkeit für ein Zeitintervall von 5 Sekunden. Aufgrund mangelhafter Sensorik wird der Luftdruck aus einem Array von realistischen Werten zufällig pro Zeitintervall ausgewählt. Gemeinsam mit der gemessenen Temperatur und dem Luftdruck wird die Luftdichte berechnet. Bevor die Daten an das Gateway gesendet werden, werden sie dem String-Dictionary \texttt{sensorData} übergeben, um eine Anfrage im \textit{JSON-Format} senden zu können.
- Außerdem wird eine rote Grove-LED über die digitale Schnittstelle D3 angebunden. Diese Komponente dient im Gegensatz zu den weiteren Komponenten dazu, bei kritischen Temperaturwerten Befehle zum Aufleuchten zu erhalten. Damit soll gezeigt werden, dass sich der Kreis in einem cyberphysischen System von Sensorik bis Aktorik über SAP Leoanardo als informationsverarbeitende Schicht schließt.
+ Außerdem wird eine rote Grove-LED über die digitale Schnittstelle D3 angebunden. Diese Komponente dient im Gegensatz zu den weiteren Komponenten dazu, bei kritischen Temperaturwerten Befehle zum Aufleuchten zu erhalten. Damit soll gezeigt werden, dass sich der Kreis in einem cyberphysischen System von Sensorik bis Aktorik über SAP Leonardo als informationsverarbeitende Schicht schließt.
 
 \begin{figure}[H]
   \centering
@@ -32,7 +32,7 @@ Als Serveradresse des Edge Gateways wird die IP-Adresse des Raspberry Pi angegeb
 \begin{lstlisting}[caption= Zieladresse für Sensorwerte]
   https://192.168.178.52:8699/measures/<deviceAlternateId>\end{lstlisting}
 
-\noindent Abschließend benötigt die Gateway-Registierung einen \textit{private Key im pem-Format}. Dafür wird eine GET-Anfrage an den Tenant des Internet of Things Service Hosts erstellt.
+\noindent Abschließend benötigt die Gateway-Registrierung einen \textit{private Key im pem-Format}. Dafür wird eine GET-Anfrage an den Tenant des Internet of Things Service Hosts erstellt.
 
 \begin{lstlisting}[caption= GET-Anfrage für einen Client-Key]
 curl -X GET "https://5075f8b9-866e-4a4b-82f8-74687b72f1ab.eu10.cp.iot.sap/5075f8b9-866e-4a4b-82f8-74687b72f1ab/iot/core/api/v1/tenants/988439498/gatewayRegistrations/clientCertificate/pem\end{lstlisting}
@@ -77,7 +77,7 @@ Mit der Registrierung des Gateways sowie des Geräts sind alle Bedingungen erfü
   {'capabilityAlternateId': '1234', 'measures': [{'temperature': '19.0'}, {'wind_speed': '1.12102078977'}, {'pressure': '1010'}, {'humidity': '70.0'}, {'airtight': '1.2'}], 'sensorAlternateId': '1234'}
   ==> HTTP Response: 202 \end{lstlisting}
 
-\noindent Auf Empfängerseite kann der Empfang der Daten auf zweierlei Weisen bestätigt werden. Einerseits kann eine GET-Anfrage an die Zieladresse des Geräts im Internet of Things Service erstellt werden. Ergebnis der Anfrage sind die Messwerte im JSON-Format. Eine einfachere Möglichkeit bietet die Visualisierung der Daten im \textit{IoT Service Cockpit}. Hier werden die empfangenen Daten sowohl im Diagramm als auch in einer Tabelle präsentiert (s. Abbildung \ref{datavisual}). Mit Betrachtung der Zeitstempel für die empfangenen Daten lässt sich ebenfalls bestätigen, dass die Daten alle fünf Sekunden empfangen werden. Damit diese Daten in externe Dienste eingebunden werden können, wird anschließend das \textit{Message Processing} konfiguriert. Aus den verfügbaren Diensten wird entsprechend des Systementwurfs der Dienst \textit{\glqq Leonardo IOT\grqq{}} konfiguriert. Anschließend werden der Konfuguration Selektoren für die Messwerte und Metadaten der Geräte zugeordnet.
+\noindent Auf Empfängerseite kann der Empfang der Daten auf zweierlei Weisen bestätigt werden. Einerseits kann eine GET-Anfrage an die Zieladresse des Geräts im Internet of Things Service erstellt werden. Ergebnis der Anfrage sind die Messwerte im JSON-Format. Eine einfachere Möglichkeit bietet die Visualisierung der Daten im \textit{IoT Service Cockpit}. Hier werden die empfangenen Daten sowohl im Diagramm als auch in einer Tabelle präsentiert (s. Abbildung \ref{datavisual}). Mit Betrachtung der Zeitstempel für die empfangenen Daten lässt sich ebenfalls bestätigen, dass die Daten alle fünf Sekunden empfangen werden. Damit diese Daten in externe Dienste eingebunden werden können, wird anschließend das \textit{Message Processing} konfiguriert. Aus den verfügbaren Diensten wird entsprechend des Systementwurfs der Dienst \textit{\glqq Leonardo IOT\grqq{}} konfiguriert. Anschließend werden der Konfiguration Selektoren für die Messwerte und Metadaten der Geräte zugeordnet.
 
 \begin{figure}[H]
   \includegraphics[width=1\linewidth]{data_visual.png}
@@ -99,7 +99,7 @@ Die Tatsache, dass der Zustand der Anlage im \textit{IoT Service Cockpit} visual
   \end{enumerate}
 \end{enumerate}
 
-\noindent Im Thing Modeler werden dem digitalen Zwilling außerdem Standortkoordinaten, ein Bild sowie die Beispielorganisation PowerSupply hinzugefügt. Mit den aktuellen Einstellungen besitzt der digitale Zwilling lediglich die Fähgikeit, die Messwerte ohne spezielle Funktionen abzubilden.
+\noindent Im Thing Modeler werden dem digitalen Zwilling außerdem Standortkoordinaten, ein Bild sowie die Beispielorganisation PowerSupply hinzugefügt. Mit den aktuellen Einstellungen besitzt der digitale Zwilling lediglich die Fähigkeit, die Messwerte ohne spezielle Funktionen abzubilden.
 
 \begin{figure} [H]
   \centering
@@ -110,7 +110,7 @@ Die Tatsache, dass der Zustand der Anlage im \textit{IoT Service Cockpit} visual
 
 \subsubsection{Visualisierung in einer UI5-Anwendung}
 
-Das Erstellen eines Thing Models und einer Thing-Instanz genügt zunächst, um den Anlagenzustand in einer Webapplikation zu visualisieren. Für die Visualisierung steht in der Web IDE eine Leonardo-IoT-Erweiterung mit Vorlagen zur Erstellung von IoT-Anwendungen zur Verfügung. Vor der Nutzung der Vorlagen muss der Zugriff auf  die modellierten Zwillinge und deren Daten gewährleistet werden. Weil die Web IDE sich in der Neo Umgebung der \ac{scp} und die digitalen Zwillinge sich in der Cloud Foundry Umgebung befinden, werden Vetrauensbeziehungen zwischen den Umgebungen hergestellt. Nachdem in der Neo Umgebung die Destinationen der Leonardo IoT Funktionen angelegt wurden, können die Daten übergeben werden. Im Wizard zum Erstellen der Anwendung wird als Datenquelle der Service \texttt{IOTAS-ADVANCEDLIST-THING-ODATA} und das Property Set \texttt{cf.devbeta.\-windmills:wind\_1} gewählt. Anschließend wird die Erstellung folgender Seiten konfiguriert:
+Das Erstellen eines Thing Models und einer Thing-Instanz genügt zunächst, um den Anlagenzustand in einer Webapplikation zu visualisieren. Für die Visualisierung steht in der Web IDE eine Leonardo-IoT-Erweiterung mit Vorlagen zur Erstellung von IoT-Anwendungen zur Verfügung. Vor der Nutzung der Vorlagen muss der Zugriff auf  die modellierten Zwillinge und deren Daten gewährleistet werden. Weil die Web IDE sich in der Neo Umgebung der \ac{scp} und die digitalen Zwillinge sich in der Cloud Foundry Umgebung befinden, werden Vertrauensbeziehungen zwischen den Umgebungen hergestellt. Nachdem in der Neo Umgebung die Destinationen der Leonardo IoT Funktionen angelegt wurden, können die Daten übergeben werden. Im Wizard zum Erstellen der Anwendung wird als Datenquelle der Service \texttt{IOTAS-ADVANCEDLIST-THING-ODATA} und das Property Set \texttt{cf.devbeta.\-windmills:wind\_1} gewählt. Anschließend wird die Erstellung folgender Seiten konfiguriert:
 
 \begin{itemize}
   \item Startseite mit einer Landkarte zur Verortung der Anlagen und Liste der Anlagen (s.Abbildung \ref{landing})
@@ -152,8 +152,8 @@ Als Bezugspunkt für die Regeln wird der Regelkontext \textit{windea\_context\_}
 \paragraph{Regeln} Im Regeleditor werden anschließend die expliziten Regeln für eingehende Messwerte definiert. Als Regelkontext wird für jede Regel \textit{windea\_context\_} angegeben. Für diesen Anwendungsfall werden vier Regeln nach dem Schema in Abbildung \ref{rules} definiert:
 \begin{itemize}
   \item windea\_regel\_temp: Wenn die Temperatur größer ist als 25, wird ein Event \textit{HighTemp} generiert
-  \item wind\_sturm: Wenn die Windgeschwindigeit 6 übersteigt, wird ein Event\textit{Sturm}
-  \item wind\_windstille: Wenn die Wingeschwindigkeit kleiner ist als 1.85, wird ein Event \textit{Windstille} generiert
+  \item wind\_sturm: Wenn die Windgeschwindigkeit 6 übersteigt, wird ein Event\textit{Sturm}
+  \item wind\_windstille: Wenn die Windgeschwindigkeit kleiner ist als 1.85, wird ein Event \textit{Windstille} generiert
   \item wind\_orkan: Wenn die Windgeschwindigkeit 8 übersteigt, wird ein Event \textit{Orkan} generiert
 \end{itemize}
 
